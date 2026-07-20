@@ -176,10 +176,10 @@ function Landing() {
           <article key={a.title} className={`relative h-[520px] flex items-center ${i % 2 === 1 ? "justify-end text-right" : ""}`}>
             <img src={a.img} alt="" className="absolute inset-0 w-full h-full object-cover" />
             <div className="absolute inset-0 bg-black/50" aria-hidden />
-            <div className="relative max-w-lg px-8 md:px-16 text-white">
-              <div className="uppercase tracking-[0.3em] text-[11px] text-white/80">{a.tag}</div>
-              <h3 className="mt-5 text-3xl md:text-4xl font-light tracking-tight leading-tight">{a.title}</h3>
-              <p className="mt-5 font-light text-white/90 leading-relaxed">{a.desc}</p>
+            <div className="relative max-w-lg px-8 md:px-16 text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
+              <div className="uppercase tracking-[0.3em] text-[11px] text-white">{a.tag}</div>
+              <h3 className="mt-5 text-3xl md:text-4xl font-medium tracking-tight leading-tight">{a.title}</h3>
+              <p className="mt-5 font-normal text-white leading-relaxed">{a.desc}</p>
             </div>
           </article>
         ))}
