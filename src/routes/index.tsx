@@ -5,6 +5,7 @@ import logo from "@/assets/atende-vende-logo.asset.json";
 import atendimentoImg from "@/assets/atendimento.jpg";
 import vendasImg from "@/assets/vendas.jpg";
 import automacaoImg from "@/assets/automacao.jpg";
+import heroRobot from "@/assets/hero-robot.png.asset.json";
 import { ChatWidget } from "@/components/ChatWidget";
 
 export const Route = createFileRoute("/")({
