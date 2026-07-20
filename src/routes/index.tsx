@@ -226,12 +226,11 @@ function Landing() {
           </blockquote>
           <div className="mt-8 text-sm uppercase tracking-[0.22em] text-muted-foreground">Marina Alves — Diretora Comercial</div>
 
-          <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-10">
+          <div className="mt-20 grid grid-cols-3 gap-10">
             {[
               { n: "2x", l: "Mais conversão" },
               { n: "24/7", l: "Atendimento" },
               { n: "-60%", l: "Custo operacional" },
-              { n: "5min", l: "Para configurar" },
             ].map((s) => (
               <div key={s.l}>
                 <div className="text-4xl md:text-5xl font-light text-brand">{s.n}</div>
