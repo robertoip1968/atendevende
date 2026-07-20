@@ -24,12 +24,12 @@ function Landing() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Header */}
-      <header className="sticky top-0 z-40 backdrop-blur-md bg-background/80 border-b border-border">
+      <header className="sticky top-0 z-40 backdrop-blur-md bg-background/80 border-b border-border shadow-card">
         <div className="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between">
-          <a href="#top" className="flex items-center gap-3">
-            <img src={logo.url} alt="Atende&Vende" className="h-14 w-14 object-contain" />
+          <a href="#top" className="flex items-center gap-3 group">
+            <img src={logo.url} alt="Atende&Vende" className="h-14 w-14 object-contain group-hover:scale-105 transition-transform" />
             <span className="font-bold text-2xl tracking-tight">
-              Atende<span className="text-gradient-brand">&</span>Vende
+              Atende<span className="text-gradient-vibrant">&</span>Vende
             </span>
           </a>
           <nav className="hidden md:flex items-center gap-8 text-base text-muted-foreground">
@@ -40,7 +40,7 @@ function Landing() {
           </nav>
           <a
             href="#contato"
-            className="inline-flex items-center gap-2 bg-gradient-brand text-primary-foreground px-5 py-2.5 rounded-full text-base font-medium shadow-card hover:shadow-glow transition"
+            className="inline-flex items-center gap-2 bg-gradient-vibrant text-primary-foreground px-5 py-2.5 rounded-full text-base font-medium shadow-card hover:shadow-glow transition"
           >
             Começar grátis <ArrowRight className="h-5 w-5" />
           </a>
@@ -48,23 +48,30 @@ function Landing() {
       </header>
 
       {/* Hero */}
-      <section id="top" className="relative overflow-hidden bg-gradient-soft">
-        <div className="max-w-7xl mx-auto px-5 py-16 lg:py-24 grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <span className="inline-flex items-center gap-2 bg-card border border-border rounded-full px-3 py-1 text-xs font-medium text-muted-foreground shadow-card">
-              <span className="h-2 w-2 rounded-full bg-accent animate-pulse" /> Powered by IA
+      <section id="top" className="relative overflow-hidden bg-gradient-hero bg-gradient-mesh animate-gradient-shift">
+        {/* Floating abstract blobs */}
+        <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
+          <div className="absolute -top-24 -left-24 h-96 w-96 rounded-full bg-gradient-aurora blur-3xl opacity-60 animate-float" />
+          <div className="absolute top-1/3 -right-24 h-80 w-80 rounded-full bg-gradient-aurora blur-3xl opacity-50 animate-float-slow" style={{ animationDelay: "1.5s" }} />
+          <div className="absolute -bottom-32 left-1/3 h-96 w-96 rounded-full bg-gradient-aurora blur-3xl opacity-40 animate-float" style={{ animationDelay: "3s" }} />
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-5 py-16 lg:py-24 grid lg:grid-cols-2 gap-12 items-center">
+          <div className="animate-fade-up" style={{ animationDelay: "0.1s" }}>
+            <span className="inline-flex items-center gap-2 bg-card/80 backdrop-blur border border-border rounded-full px-4 py-1.5 text-sm font-medium text-muted-foreground shadow-card">
+              <span className="h-2.5 w-2.5 rounded-full bg-accent animate-pulse" /> Powered by IA
             </span>
             <h1 className="mt-5 text-4xl lg:text-6xl font-bold tracking-tight leading-[1.05]">
-              Automatize seu <span className="text-gradient-brand">atendimento</span> e venda mais, 24/7.
+              Automatize seu <span className="text-gradient-vibrant">atendimento</span> e venda mais, 24/7.
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-xl">
               O Atende&Vende integra WhatsApp, Instagram e webchat em uma única plataforma com IA que qualifica leads, responde clientes e dispara vendas automaticamente.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <a href="#contato" className="bg-gradient-brand text-primary-foreground px-6 py-3 rounded-full font-medium shadow-glow hover:opacity-95 transition inline-flex items-center gap-2">
+              <a href="#contato" className="bg-gradient-vibrant animate-gradient-shift text-primary-foreground px-6 py-3 rounded-full font-medium shadow-glow-strong hover:shadow-glow transition inline-flex items-center gap-2">
                 Testar grátis por 7 dias <ArrowRight className="h-4 w-4" />
               </a>
-              <a href="#recursos" className="border border-border bg-card px-6 py-3 rounded-full font-medium hover:bg-muted transition">
+              <a href="#recursos" className="border border-border bg-card/80 backdrop-blur px-6 py-3 rounded-full font-medium hover:bg-muted transition">
                 Ver como funciona
               </a>
             </div>
@@ -75,9 +82,9 @@ function Landing() {
             </div>
           </div>
 
-          <div className="relative">
-            <div className="absolute -inset-6 bg-gradient-brand opacity-20 blur-3xl rounded-3xl" aria-hidden />
-            <div className="relative rounded-2xl overflow-hidden shadow-glow border border-border bg-card">
+          <div className="relative animate-fade-up" style={{ animationDelay: "0.25s" }}>
+            <div className="absolute -inset-8 bg-gradient-vibrant opacity-25 blur-3xl rounded-3xl animate-pulse-glow" aria-hidden />
+            <div className="relative rounded-2xl overflow-hidden shadow-glow-strong border border-border bg-card">
               <video
                 className="w-full h-auto aspect-video object-cover"
                 autoPlay
@@ -96,8 +103,8 @@ function Landing() {
                 />
               </video>
             </div>
-            <div className="absolute -bottom-4 -left-4 bg-card border border-border rounded-xl px-4 py-3 shadow-card flex items-center gap-3">
-              <div className="h-10 w-10 rounded-full bg-gradient-brand flex items-center justify-center">
+            <div className="absolute -bottom-4 -left-4 bg-card/90 backdrop-blur border border-border rounded-xl px-4 py-3 shadow-card flex items-center gap-3 animate-float" style={{ animationDelay: "0.5s" }}>
+              <div className="h-10 w-10 rounded-full bg-gradient-vibrant flex items-center justify-center">
                 <Bot className="h-5 w-5 text-primary-foreground" />
               </div>
               <div className="text-sm">
@@ -119,7 +126,7 @@ function Landing() {
             { n: "5min", l: "Para configurar" },
           ].map((s) => (
             <div key={s.l}>
-              <div className="text-3xl lg:text-4xl font-bold text-gradient-brand">{s.n}</div>
+              <div className="text-3xl lg:text-4xl font-bold text-primary">{s.n}</div>
               <div className="text-sm text-muted-foreground mt-1">{s.l}</div>
             </div>
           ))}
@@ -129,7 +136,7 @@ function Landing() {
       {/* Recursos */}
       <section id="recursos" className="max-w-7xl mx-auto px-5 py-20">
         <div className="text-center max-w-2xl mx-auto">
-          <span className="text-sm font-semibold text-primary uppercase tracking-wider">Recursos</span>
+          <span className="inline-block text-sm font-semibold text-primary uppercase tracking-wider px-3 py-1 rounded-full bg-primary/10">Recursos</span>
           <h2 className="mt-3 text-3xl lg:text-4xl font-bold tracking-tight">Tudo que sua operação precisa em um só lugar</h2>
           <p className="mt-4 text-muted-foreground">Uma plataforma completa para atender, qualificar e converter — sem esforço manual.</p>
         </div>
@@ -142,9 +149,14 @@ function Landing() {
             { icon: TrendingUp, title: "Funil de vendas automático", desc: "Leads qualificados vão direto para o vendedor certo, no momento certo." },
             { icon: Clock, title: "Atendimento 24/7", desc: "Nunca perca um cliente por horário. A IA cuida enquanto seu time descansa." },
             { icon: ShieldCheck, title: "Seguro e escalável", desc: "Infraestrutura em nuvem com criptografia e LGPD nativos." },
-          ].map((f) => (
-            <div key={f.title} className="group p-6 rounded-2xl border border-border bg-card hover:shadow-glow hover:-translate-y-1 transition-all duration-300">
-              <div className="h-12 w-12 rounded-xl bg-gradient-brand flex items-center justify-center shadow-card">
+          ].map((f, i) => (
+            <div
+              key={f.title}
+              className="group relative p-6 rounded-2xl border border-border bg-card hover:shadow-glow hover:-translate-y-1 transition-all duration-300 animate-fade-up"
+              style={{ animationDelay: `${i * 90}ms` }}
+            >
+              <div className="absolute inset-0 rounded-2xl bg-gradient-aurora opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" aria-hidden />
+              <div className="h-12 w-12 rounded-xl bg-gradient-vibrant flex items-center justify-center shadow-card group-hover:scale-110 transition-transform duration-300">
                 <f.icon className="h-6 w-6 text-primary-foreground" />
               </div>
               <h3 className="mt-5 font-semibold text-lg">{f.title}</h3>
@@ -155,10 +167,11 @@ function Landing() {
       </section>
 
       {/* Áreas de atuação */}
-      <section id="areas" className="bg-gradient-soft py-20">
-        <div className="max-w-7xl mx-auto px-5">
+      <section id="areas" className="relative overflow-hidden bg-gradient-soft py-20">
+        <div className="pointer-events-none absolute inset-0 bg-gradient-mesh opacity-60" aria-hidden />
+        <div className="relative max-w-7xl mx-auto px-5">
           <div className="text-center max-w-2xl mx-auto">
-            <span className="text-sm font-semibold text-primary uppercase tracking-wider">Áreas de atuação</span>
+            <span className="inline-block text-sm font-semibold text-primary uppercase tracking-wider px-3 py-1 rounded-full bg-primary/10">Áreas de atuação</span>
             <h2 className="mt-3 text-3xl lg:text-4xl font-bold tracking-tight">Feito para quem vive de atender e vender</h2>
             <p className="mt-4 text-muted-foreground">Do e-commerce à clínica, empresas de todos os portes escalam com o Atende&Vende.</p>
           </div>
@@ -168,9 +181,15 @@ function Landing() {
               { img: atendimentoImg, tag: "Atendimento", title: "SAC & Suporte", desc: "Reduza tempo de resposta e resolva tickets automaticamente com IA que aprende com seu time." },
               { img: vendasImg, tag: "Vendas", title: "Comercial & E-commerce", desc: "Qualifique leads em segundos, envie propostas e feche vendas dentro do próprio WhatsApp." },
               { img: automacaoImg, tag: "Tecnologia", title: "Automação de Processos", desc: "Integre CRM, ERP e planilhas para criar fluxos que rodam sozinhos, 24 horas por dia." },
-            ].map((a) => (
-              <article key={a.title} className="group bg-card rounded-2xl overflow-hidden border border-border shadow-card hover:shadow-glow transition-all duration-300">
-                <div className="aspect-[16/10] overflow-hidden bg-muted">
+            ].map((a, i) => (
+              <article
+                key={a.title}
+                className="group relative bg-card rounded-2xl overflow-hidden border border-border shadow-card hover:shadow-glow transition-all duration-300 animate-fade-up"
+                style={{ animationDelay: `${i * 120}ms` }}
+              >
+                <div className="absolute inset-0 bg-gradient-aurora opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" aria-hidden />
+                <div className="aspect-[16/10] overflow-hidden bg-muted relative">
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent z-10" aria-hidden />
                   <img
                     src={a.img}
                     alt={a.title}
@@ -194,7 +213,7 @@ function Landing() {
       {/* How it works */}
       <section className="max-w-7xl mx-auto px-5 py-20">
         <div className="text-center max-w-2xl mx-auto">
-          <span className="text-sm font-semibold text-primary uppercase tracking-wider">Como funciona</span>
+          <span className="inline-block text-sm font-semibold text-primary uppercase tracking-wider px-3 py-1 rounded-full bg-primary/10">Como funciona</span>
           <h2 className="mt-3 text-3xl lg:text-4xl font-bold tracking-tight">Do primeiro contato à venda, em 3 passos</h2>
         </div>
 
@@ -203,9 +222,14 @@ function Landing() {
             { n: "01", t: "Conecte seus canais", d: "Ligue WhatsApp, Instagram e site em minutos com integrações nativas." },
             { n: "02", t: "Configure o fluxo", d: "Escolha um template pronto ou desenhe o seu no editor visual." },
             { n: "03", t: "Deixe a IA vender", d: "Acompanhe métricas em tempo real enquanto a automação trabalha por você." },
-          ].map((s) => (
-            <div key={s.n} className="relative p-8 rounded-2xl border border-border bg-card">
-              <div className="text-5xl font-bold text-gradient-brand opacity-90">{s.n}</div>
+          ].map((s, i) => (
+            <div
+              key={s.n}
+              className="group relative p-8 rounded-2xl border border-border bg-card hover:shadow-glow transition-all duration-300 animate-fade-up"
+              style={{ animationDelay: `${i * 120}ms` }}
+            >
+              <div className="absolute inset-0 rounded-2xl bg-gradient-aurora opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" aria-hidden />
+              <div className="text-5xl font-bold text-gradient-vibrant opacity-90 group-hover:scale-105 transition-transform duration-300 origin-left">{s.n}</div>
               <h3 className="mt-4 text-xl font-semibold">{s.t}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{s.d}</p>
             </div>
@@ -214,10 +238,11 @@ function Landing() {
       </section>
 
       {/* Planos */}
-      <section id="planos" className="bg-gradient-soft py-20">
-        <div className="max-w-7xl mx-auto px-5">
+      <section id="planos" className="relative overflow-hidden bg-gradient-soft py-20">
+        <div className="pointer-events-none absolute inset-0 bg-gradient-mesh opacity-50" aria-hidden />
+        <div className="relative max-w-7xl mx-auto px-5">
           <div className="text-center max-w-2xl mx-auto">
-            <span className="text-sm font-semibold text-primary uppercase tracking-wider">Planos</span>
+            <span className="inline-block text-sm font-semibold text-primary uppercase tracking-wider px-3 py-1 rounded-full bg-primary/10">Planos</span>
             <h2 className="mt-3 text-3xl lg:text-4xl font-bold tracking-tight">Preço justo, sem surpresa</h2>
           </div>
 
@@ -226,27 +251,31 @@ function Landing() {
               { name: "Start", price: "197", desc: "Ideal para começar.", feats: ["1 canal", "1.000 conversas/mês", "Fluxos básicos", "Suporte por e-mail"], highlight: false },
               { name: "Pro", price: "497", desc: "Para times em crescimento.", feats: ["Canais ilimitados", "10.000 conversas/mês", "IA avançada", "Integrações CRM", "Suporte prioritário"], highlight: true },
               { name: "Scale", price: "Custom", desc: "Para grandes operações.", feats: ["Volume ilimitado", "IA treinada sob medida", "SLA dedicado", "Gerente de conta"], highlight: false },
-            ].map((p) => (
+            ].map((p, i) => (
               <div
                 key={p.name}
-                className={`relative p-8 rounded-2xl border bg-card transition-all duration-300 ${
-                  p.highlight ? "border-primary shadow-glow scale-[1.02]" : "border-border shadow-card"
+                className={`relative p-8 rounded-2xl border bg-card transition-all duration-300 animate-fade-up ${
+                  p.highlight ? "border-primary shadow-glow-strong scale-[1.03] hover:scale-[1.05]" : "border-border shadow-card hover:shadow-glow hover:-translate-y-1"
                 }`}
+                style={{ animationDelay: `${i * 120}ms` }}
               >
                 {p.highlight && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-brand text-primary-foreground text-xs font-semibold px-3 py-1 rounded-full">
-                    Mais popular
-                  </span>
+                  <>
+                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-vibrant text-primary-foreground text-xs font-semibold px-4 py-1.5 rounded-full shadow-glow">
+                      Mais popular
+                    </span>
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-aurora opacity-30 -z-10" aria-hidden />
+                  </>
                 )}
                 <h3 className="text-lg font-semibold">{p.name}</h3>
                 <p className="text-sm text-muted-foreground mt-1">{p.desc}</p>
                 <div className="mt-5">
                   {p.price === "Custom" ? (
-                    <div className="text-4xl font-bold">Sob consulta</div>
+                    <div className="text-4xl font-bold text-gradient-brand">Sob consulta</div>
                   ) : (
                     <div className="flex items-baseline gap-1">
                       <span className="text-sm text-muted-foreground">R$</span>
-                      <span className="text-4xl font-bold">{p.price}</span>
+                      <span className="text-4xl font-bold text-gradient-brand">{p.price}</span>
                       <span className="text-sm text-muted-foreground">/mês</span>
                     </div>
                   )}
@@ -262,7 +291,7 @@ function Landing() {
                   href="#contato"
                   className={`mt-8 block text-center px-4 py-3 rounded-full font-medium transition ${
                     p.highlight
-                      ? "bg-gradient-brand text-primary-foreground shadow-card hover:opacity-95"
+                      ? "bg-gradient-vibrant text-primary-foreground shadow-glow hover:opacity-95"
                       : "border border-border bg-background hover:bg-muted"
                   }`}
                 >
@@ -276,8 +305,9 @@ function Landing() {
 
       {/* CTA / Contato */}
       <section id="contato" className="max-w-5xl mx-auto px-5 py-20">
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-brand p-10 lg:p-16 text-primary-foreground shadow-glow">
-          <div className="absolute inset-0 opacity-20 mix-blend-overlay" style={{ backgroundImage: `url(${automacaoImg})`, backgroundSize: "cover" }} aria-hidden />
+        <div className="relative overflow-hidden rounded-3xl bg-gradient-vibrant animate-gradient-shift p-10 lg:p-16 text-primary-foreground shadow-glow-strong">
+          <div className="absolute inset-0 opacity-15 mix-blend-overlay" style={{ backgroundImage: `url(${automacaoImg})`, backgroundSize: "cover" }} aria-hidden />
+          <div className="absolute inset-0 bg-gradient-mesh opacity-30" aria-hidden />
           <div className="relative grid lg:grid-cols-2 gap-10 items-center">
             <div>
               <h2 className="text-3xl lg:text-4xl font-bold tracking-tight">Pronto para vender no automático?</h2>
@@ -290,7 +320,7 @@ function Landing() {
             </div>
             <form
               onSubmit={(e) => { e.preventDefault(); alert("Recebemos seu contato! Retornamos em breve. 💙"); }}
-              className="bg-white/10 backdrop-blur border border-white/20 rounded-2xl p-6 space-y-3"
+              className="bg-white/15 backdrop-blur-xl border border-white/25 rounded-2xl p-6 space-y-3 shadow-glow"
             >
               <input required placeholder="Seu nome" className="w-full bg-white/95 text-foreground rounded-lg px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-white" />
               <input required type="email" placeholder="Seu e-mail" className="w-full bg-white/95 text-foreground rounded-lg px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-white" />
@@ -308,7 +338,7 @@ function Landing() {
         <div className="max-w-7xl mx-auto px-5 py-10 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2.5">
             <img src={logo.url} alt="Atende&Vende" className="h-8 w-8 object-contain" />
-            <span className="font-semibold">Atende<span className="text-gradient-brand">&</span>Vende</span>
+            <span className="font-semibold">Atende<span className="text-gradient-vibrant">&</span>Vende</span>
           </div>
           <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} Atende&Vende. Todos os direitos reservados.</p>
         </div>
