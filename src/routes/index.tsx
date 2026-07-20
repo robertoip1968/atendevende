@@ -254,9 +254,9 @@ function Landing() {
             ].map((p, i) => (
               <div
                 key={p.name}
-                className=`relative p-8 rounded-2xl border bg-card transition-all duration-300${
-         p.highlight ? "border-primary shadow-glow-strong scale-[1.03] hover:scale-[1.05]" : "border-border shadow-card hover:shadow-glow hover:-translate-y-1"
-        } animate-fade-up`
+                className={`relative p-8 rounded-2xl border bg-card transition-all duration-300 animate-fade-up ${
+                  p.highlight ? "border-primary shadow-glow-strong scale-[1.03] hover:scale-[1.05]" : "border-border shadow-card hover:shadow-glow hover:-translate-y-1"
+                }`}
                 style={{ animationDelay: `${i * 120}ms` }}
               >
                 {p.highlight && (
