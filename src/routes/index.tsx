@@ -219,7 +219,7 @@ function Landing() {
 
           <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-10">
             {[
-              { n: "3x", l: "Mais conversão" },
+              { n: "2x", l: "Mais conversão" },
               { n: "24/7", l: "Atendimento" },
               { n: "-60%", l: "Custo operacional" },
               { n: "5min", l: "Para configurar" },
