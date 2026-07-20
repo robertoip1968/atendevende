@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { ChevronDown, Instagram, Check, ArrowRight, Bot, Workflow, MessageSquare, TrendingUp, Clock, ShieldCheck } from "lucide-react";
 import logo from "@/assets/atende-vende-logo.asset.json";
 import atendimentoImg from "@/assets/atendimento.jpg";
-import vendasImg from "@/assets/vendas.jpg";
+import vendasImg from "@/assets/dashboard-vendas.png.asset.json";
 import automacaoImg from "@/assets/automacao.jpg";
 import heroRobot from "@/assets/hero-robot.png.asset.json";
 import { ChatWidget } from "@/components/ChatWidget";
