@@ -171,7 +171,7 @@ function Landing() {
         {[
           { img: atendimentoImg, tag: "Atendimento", title: "SAC & Suporte", desc: "Reduza o tempo de resposta e resolva tickets automaticamente com IA que aprende com seu time." },
           { img: vendasImg.url, tag: "Vendas", title: "Comercial & E-commerce", desc: "Feche vendas e qualifique leads em segundos pelo\u00A0 WhatsApp." },
-          { img: automacaoImg, tag: "Tecnologia", title: "Automação de Processos", desc: "Integre CRM, ERP e planilhas para criar fluxos que rodam sozinhos, 24 horas por dia." },
+          { img: automacaoImg.url, tag: "Tecnologia", title: "Automação de Processos", desc: "Integre CRM, ERP e planilhas para criar fluxos que rodam sozinhos, 24 horas por dia." },
         ].map((a, i) => (
           <article key={a.title} className={`relative h-[520px] flex items-center ${i % 2 === 1 ? "justify-end text-right" : ""}`}>
             <img src={a.img} alt="" className="absolute inset-0 w-full h-full object-cover" />
