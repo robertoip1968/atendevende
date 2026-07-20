@@ -79,12 +79,12 @@ function Landing() {
         />
         <div className="absolute inset-0 bg-black/45" aria-hidden />
 
-        <div className="relative h-full flex flex-col items-center justify-center text-center px-6">
+        <div className="relative h-full flex flex-col items-start justify-center px-6 md:px-16 lg:px-24 max-w-7xl mx-auto">
           <img src={logo.url} alt="" className="h-20 w-20 object-contain mb-8 drop-shadow-lg" />
-          <h1 className="text-white font-light tracking-tight text-4xl md:text-6xl lg:text-7xl leading-[1.05] max-w-4xl">
+          <h1 className="text-white font-light tracking-tight text-4xl md:text-6xl lg:text-7xl leading-[1.05] max-w-2xl">
             Atende&amp;Vende
           </h1>
-          <p className="mt-5 text-white/90 font-light text-xl md:text-2xl lg:text-3xl max-w-3xl">
+          <p className="mt-5 text-white/90 font-light text-xl md:text-2xl lg:text-3xl max-w-xl">
             Automação de atendimento e vendas, 24/7.
           </p>
           <a
