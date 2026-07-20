@@ -13,8 +13,8 @@ export const Route = createFileRoute("/")({
     meta: [
       { title: "Atende&Vende — Automação de Atendimento e Vendas com IA" },
       { name: "description", content: "Automatize seu fluxo de atendimento e vendas com IA. Integre WhatsApp, Instagram e mais em uma única plataforma." },
-      { property: "og:title", content: "Atende&Vende — Automação de Atendimento e Vendas" },
-      { property: "og:description", content: "Automatize atendimento e vendas com IA. WhatsApp, Instagram e mais em uma plataforma." },
+      { property: "og:title", content: "Atende&Vende — Automação de Atendimento e Vendas com IA" },
+      { property: "og:description", content: "Automatize seu fluxo de atendimento e vendas com IA. Integre WhatsApp, Instagram e mais em uma única plataforma." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

@@ -77,14 +77,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "Atende&Vende — Automação de Atendimento e Vendas com IA" },
+      { name: "description", content: "Automatize seu fluxo de atendimento e vendas com IA. Integre WhatsApp, Instagram e mais em uma única plataforma." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "Atende&Vende — Automação de Atendimento e Vendas com IA" },
+      { property: "og:description", content: "Automatize seu fluxo de atendimento e vendas com IA. Integre WhatsApp, Instagram e mais em uma única plataforma." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Atende&Vende — Automação de Atendimento e Vendas com IA" },
+      { name: "twitter:description", content: "Automatize seu fluxo de atendimento e vendas com IA. Integre WhatsApp, Instagram e mais em uma única plataforma." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/cef64053-2f51-495e-8239-d2a7dfd71186/id-preview-03a69b5d--14c665ce-4757-4ef4-9975-7aac5ad7b51f.lovable.app-1784572960033.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/cef64053-2f51-495e-8239-d2a7dfd71186/id-preview-03a69b5d--14c665ce-4757-4ef4-9975-7aac5ad7b51f.lovable.app-1784572960033.png" },
     ],
     links: [
       {
