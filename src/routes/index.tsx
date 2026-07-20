@@ -185,27 +185,36 @@ function Landing() {
 
           <div className="mt-20 grid md:grid-cols-3 gap-8">
             {[
-              { tag: "Atendimento", title: "SAC & Suporte", desc: "Reduza o tempo de resposta e resolva tickets automaticamente com IA que aprende com seu time." },
-              { tag: "Vendas", title: "Comercial & E-commerce", desc: "Feche vendas e qualifique leads em segundos pelo WhatsApp." },
-              { tag: "Tecnologia", title: "Automação de Processos", desc: "Integre CRM, ERP e planilhas para criar fluxos que rodam sozinhos, 24 horas por dia." },
+              { tag: "Atendimento", title: "SAC & Suporte", desc: "Reduza o tempo de resposta e resolva tickets automaticamente com IA que aprende com seu time.", image: atendimentoImg },
+              { tag: "Vendas", title: "Comercial & E-commerce", desc: "Feche vendas e qualifique leads em segundos pelo WhatsApp.", image: vendasImg.url },
+              { tag: "Tecnologia", title: "Automação de Processos", desc: "Integre CRM, ERP e planilhas para criar fluxos que rodam sozinhos, 24 horas por dia.", image: automacaoImg.url },
             ].map((a) => (
               <article
                 key={a.title}
-                className="group bg-card border-t-4 border-brand p-10 flex flex-col justify-between min-h-[420px] shadow-sm hover:shadow-lg transition-all duration-300"
+                className="group bg-card border-t-4 border-brand overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col"
               >
-                <div>
-                  <div className="uppercase tracking-[0.25em] text-[11px] text-brand font-semibold">{a.tag}</div>
-                  <h3 className="mt-6 text-2xl md:text-3xl font-medium tracking-tight leading-tight text-foreground">{a.title}</h3>
-                  <p className="mt-5 text-muted-foreground font-light leading-relaxed">{a.desc}</p>
+                <div className="aspect-[16/10] overflow-hidden bg-muted">
+                  <img
+                    src={a.image}
+                    alt={a.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
-                <div className="mt-10">
-                  <div className="h-px w-12 bg-border mb-6" />
-                  <a
-                    href="#contato"
-                    className="inline-flex items-center gap-3 text-sm font-medium text-foreground group-hover:gap-4 transition-all"
-                  >
-                    Saiba mais <ArrowRight className="h-4 w-4" />
-                  </a>
+                <div className="p-10 flex flex-col flex-1 justify-between">
+                  <div>
+                    <div className="uppercase tracking-[0.25em] text-[11px] text-brand font-semibold">{a.tag}</div>
+                    <h3 className="mt-6 text-2xl md:text-3xl font-medium tracking-tight leading-tight text-foreground">{a.title}</h3>
+                    <p className="mt-5 text-muted-foreground font-light leading-relaxed">{a.desc}</p>
+                  </div>
+                  <div className="mt-10">
+                    <div className="h-px w-12 bg-border mb-6" />
+                    <a
+                      href="#contato"
+                      className="inline-flex items-center gap-3 text-sm font-medium text-foreground group-hover:gap-4 transition-all"
+                    >
+                      Saiba mais <ArrowRight className="h-4 w-4" />
+                    </a>
+                  </div>
                 </div>
               </article>
             ))}
