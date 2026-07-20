@@ -55,7 +55,7 @@ export function ChatWidget() {
       <button
         onClick={() => setOpen((v) => !v)}
         aria-label="Abrir chat"
-        className="fixed right-5 bottom-5 z-50 h-16 w-16 rounded-full bg-gradient-vibrant shadow-glow-strong flex items-center justify-center text-primary-foreground transition-transform hover:scale-110 active:scale-95 animate-pulse-glow"
+        className="fixed right-5 bottom-5 z-50 h-16 w-16 rounded-full bg-gradient-brand shadow-glow flex items-center justify-center text-primary-foreground transition-transform hover:scale-105 active:scale-95"
       >
         {open ? <X className="h-7 w-7" /> : <MessageCircle className="h-7 w-7" />}
         {!open && (
@@ -71,7 +71,7 @@ export function ChatWidget() {
         role="dialog"
         aria-label="Chat com IA Atende&Vende"
       >
-        <header className="bg-gradient-vibrant text-primary-foreground p-4 flex items-center gap-3">
+        <header className="bg-gradient-brand text-primary-foreground p-4 flex items-center gap-3">
           <div className="h-10 w-10 rounded-full bg-white/95 p-1 flex items-center justify-center">
             <img src={logo.url} alt="Atende&Vende" className="h-full w-full object-contain" />
           </div>
