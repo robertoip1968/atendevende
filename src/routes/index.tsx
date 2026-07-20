@@ -48,9 +48,9 @@ function Landing() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between">
-          <a href="#inicio" className="flex items-center gap-3">
-            <img src={logo.url} alt="Atende&Vende" className="h-11 w-11 object-contain" />
-            <span className={`font-semibold text-lg tracking-tight transition-colors ${scrolled ? "text-foreground" : "text-white drop-shadow"}`}>
+          <a href="#inicio" className="flex items-center gap-4">
+            <img src={logo.url} alt="Atende&Vende" className="h-16 w-16 object-contain" />
+            <span className={`font-semibold text-2xl tracking-tight transition-colors ${scrolled ? "text-foreground" : "text-white drop-shadow"}`}>
               Atende<span className="text-brand">&</span>Vende
             </span>
           </a>
@@ -59,7 +59,7 @@ function Landing() {
               <a
                 key={l.href}
                 href={l.href}
-                className={`text-[11px] uppercase tracking-[0.22em] font-medium transition-colors ${
+                className={`text-sm uppercase tracking-[0.2em] font-medium transition-colors ${
                   scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/90 hover:text-white"
                 }`}
               >
