@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { ChevronDown, Instagram, Check, ArrowRight, Bot, Workflow, MessageSquare, TrendingUp, Clock, ShieldCheck } from "lucide-react";
 import logo from "@/assets/atende-vende-logo.asset.json";
 import atendimentoImg from "@/assets/atendimento.jpg";
-import vendasImg from "@/assets/vendas.jpg";
+import vendasImg from "@/assets/dashboard-vendas.png.asset.json";
 import automacaoImg from "@/assets/automacao.jpg";
 import heroRobot from "@/assets/hero-robot.png.asset.json";
 import { ChatWidget } from "@/components/ChatWidget";
@@ -170,7 +170,7 @@ function Landing() {
       <section id="areas" className="border-t border-border">
         {[
           { img: atendimentoImg, tag: "Atendimento", title: "SAC & Suporte", desc: "Reduza o tempo de resposta e resolva tickets automaticamente com IA que aprende com seu time." },
-          { img: vendasImg, tag: "Vendas", title: "Comercial & E-commerce", desc: "Qualifique leads em segundos e feche vendas dentro do próprio WhatsApp." },
+          { img: vendasImg.url, tag: "Vendas", title: "Comercial & E-commerce", desc: "Qualifique leads em segundos e feche vendas dentro do próprio WhatsApp." },
           { img: automacaoImg, tag: "Tecnologia", title: "Automação de Processos", desc: "Integre CRM, ERP e planilhas para criar fluxos que rodam sozinhos, 24 horas por dia." },
         ].map((a, i) => (
           <article key={a.title} className={`relative h-[520px] flex items-center ${i % 2 === 1 ? "justify-end text-right" : ""}`}>
