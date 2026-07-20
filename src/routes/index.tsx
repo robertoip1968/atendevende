@@ -224,7 +224,6 @@ function Landing() {
           <blockquote className="mt-10 text-2xl md:text-3xl font-light leading-snug tracking-tight">
             Aumentamos a conversão por que a IA responde melhor do que boa parte do seu time comercial.
           </blockquote>
-          <div className="mt-8 text-sm uppercase tracking-[0.22em] text-muted-foreground">Marina Alves — Diretora Comercial</div>
 
           <div className="mt-20 grid grid-cols-3 gap-10">
             {[
