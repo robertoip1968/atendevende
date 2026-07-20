@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { ChevronDown, Instagram, Check, ArrowRight, Bot, Workflow, MessageSquare, TrendingUp, Clock, ShieldCheck } from "lucide-react";
 import logo from "@/assets/atende-vende-logo.asset.json";
 import atendimentoImg from "@/assets/atendimento.jpg";
-import vendasImg from "@/assets/dashboard-vendas.png.asset.json";
+import vendasImg from "@/assets/dashboard-vendas-2.png.asset.json";
 import automacaoImg from "@/assets/automacao-agente.png.asset.json";
 import heroRobot from "@/assets/hero-robot.png.asset.json";
 import { ChatWidget } from "@/components/ChatWidget";
@@ -176,7 +176,7 @@ function Landing() {
           <article key={a.title} className={`relative h-[520px] flex items-center ${i % 2 === 1 ? "justify-end text-right" : ""}`}>
             <img src={a.img} alt="" className="absolute inset-0 w-full h-full object-cover" />
             <div className="absolute inset-0 bg-black/50" aria-hidden />
-            <div className="relative max-w-lg px-8 md:px-16 text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
+            <div className="relative max-w-lg mx-6 md:mx-16 px-8 md:px-12 py-10 text-white border border-white/40 rounded-sm bg-black/20 backdrop-blur-sm drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
               <div className="uppercase tracking-[0.3em] text-[11px] text-white">{a.tag}</div>
               <h3 className="mt-5 text-3xl md:text-4xl font-medium tracking-tight leading-tight">{a.title}</h3>
               <p className="mt-5 font-normal text-white leading-relaxed">{a.desc}</p>
