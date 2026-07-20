@@ -71,7 +71,7 @@ function Landing() {
       </header>
 
       {/* Hero — full bleed image with overlay */}
-      <section id="inicio" className="relative h-screen min-h-[640px] w-full overflow-hidden">
+      <section id="inicio" className="relative h-[80vh] min-h-[560px] w-full overflow-hidden">
         <img
           src={heroRobot.url}
           alt="Robô de IA atendendo cliente em loja"
