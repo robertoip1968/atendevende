@@ -70,19 +70,13 @@ function Landing() {
         </div>
       </header>
 
-      {/* Hero — full bleed video with overlay */}
+      {/* Hero — full bleed image with overlay */}
       <section id="inicio" className="relative h-screen min-h-[640px] w-full overflow-hidden">
-        <video
+        <img
+          src={heroRobot.url}
+          alt="Robô de IA atendendo cliente em loja"
           className="absolute inset-0 w-full h-full object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster={automacaoImg}
-        >
-          <source src="https://cdn.pixabay.com/video/2023/10/06/183376-872566925_large.mp4" type="video/mp4" />
-          <source src="https://videos.pexels.com/video-files/8348606/8348606-hd_1920_1080_25fps.mp4" type="video/mp4" />
-        </video>
+        />
         <div className="absolute inset-0 bg-black/45" aria-hidden />
 
         <div className="relative h-full flex flex-col items-center justify-center text-center px-6">
