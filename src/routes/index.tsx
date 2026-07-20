@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
 import { MessageSquare, Zap, TrendingUp, Bot, Clock, ShieldCheck, Workflow, Instagram, Check, ArrowRight } from "lucide-react";
 import logo from "@/assets/atende-vende-logo.asset.json";
 import atendimentoImg from "@/assets/atendimento.jpg";
