@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { MessageCircle, X, Send } from "lucide-react";
+import { X, Send } from "lucide-react";
 import logo from "@/assets/atende-vende-logo.asset.json";
+import chatbotAvatar from "@/assets/chatbot-avatar.png.asset.json";
 
 type Msg = { role: "bot" | "user"; text: string };
 
@@ -52,16 +53,28 @@ export function ChatWidget() {
   return (
     <>
       {/* Floating button */}
-      <button
-        onClick={() => setOpen((v) => !v)}
-        aria-label="Abrir chat"
-        className="fixed right-5 bottom-5 z-50 h-16 w-16 rounded-full bg-gradient-brand shadow-glow flex items-center justify-center text-primary-foreground transition-transform hover:scale-105 active:scale-95"
-      >
-        {open ? <X className="h-7 w-7" /> : <MessageCircle className="h-7 w-7" />}
+      <div className="fixed right-5 bottom-5 z-50 flex flex-col items-center gap-2">
+        <button
+          onClick={() => setOpen((v) => !v)}
+          aria-label="Abrir chat"
+          className="h-16 w-16 rounded-full bg-gradient-brand shadow-glow flex items-center justify-center text-primary-foreground transition-transform hover:scale-105 active:scale-95 overflow-hidden border-2 border-background"
+        >
+          {open ? (
+            <X className="h-7 w-7" />
+          ) : (
+            <img
+              src={chatbotAvatar.url}
+              alt="Avatar da IA Atende&Vende"
+              className="h-full w-full object-cover"
+            />
+          )}
+        </button>
         {!open && (
-          <span className="absolute -top-1 -right-1 h-4 w-4 rounded-full bg-accent border-2 border-background animate-pulse" />
+          <span className="px-2.5 py-1 rounded-full bg-card border border-border text-xs font-medium text-foreground shadow-sm whitespace-nowrap">
+            Pergunte para nossa IA
+          </span>
         )}
-      </button>
+      </div>
 
       {/* Chat panel */}
       <div
