@@ -153,7 +153,7 @@ function Landing() {
             <div
               key={f.title}
               className="group relative p-6 rounded-2xl border border-border bg-card hover:shadow-glow hover:-translate-y-1 transition-all duration-300 animate-fade-up"
-              style={ animationDelay: `${i * 90}ms` }
+              style={{ animationDelay: `${i * 90}ms` }}
             >
               <div className="absolute inset-0 rounded-2xl bg-gradient-aurora opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" aria-hidden />
               <div className="h-12 w-12 rounded-xl bg-gradient-vibrant flex items-center justify-center shadow-card group-hover:scale-110 transition-transform duration-300">
@@ -185,7 +185,7 @@ function Landing() {
               <article
                 key={a.title}
                 className="group relative bg-card rounded-2xl overflow-hidden border border-border shadow-card hover:shadow-glow transition-all duration-300 animate-fade-up"
-                style={ animationDelay: `${i * 120}ms` }
+                style={{ animationDelay: `${i * 120}ms` }}
               >
                 <div className="absolute inset-0 bg-gradient-aurora opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" aria-hidden />
                 <div className="aspect-[16/10] overflow-hidden bg-muted relative">
@@ -226,7 +226,7 @@ function Landing() {
             <div
               key={s.n}
               className="group relative p-8 rounded-2xl border border-border bg-card hover:shadow-glow transition-all duration-300 animate-fade-up"
-              style={ animationDelay: `${i * 120}ms` }
+              style={{ animationDelay: `${i * 120}ms` }}
             >
               <div className="absolute inset-0 rounded-2xl bg-gradient-aurora opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" aria-hidden />
               <div className="text-5xl font-bold text-gradient-vibrant opacity-90 group-hover:scale-105 transition-transform duration-300 origin-left">{s.n}</div>
@@ -257,7 +257,7 @@ function Landing() {
                 className=`relative p-8 rounded-2xl border bg-card transition-all duration-300${
          p.highlight ? "border-primary shadow-glow-strong scale-[1.03] hover:scale-[1.05]" : "border-border shadow-card hover:shadow-glow hover:-translate-y-1"
         } animate-fade-up`
-                style={ animationDelay: `${i * 120}ms` }
+                style={{ animationDelay: `${i * 120}ms` }}
               >
                 {p.highlight && (
                   <>
