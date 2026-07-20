@@ -8,6 +8,12 @@ import automacaoImg from "@/assets/automacao-agente.png.asset.json";
 import heroRobot from "@/assets/hero-robot.png.asset.json";
 import { ChatWidget } from "@/components/ChatWidget";
 
+const areaImages: Record<string, string> = {
+  "SAC & Suporte": atendimentoImg,
+  "Comercial & E-commerce": vendasImg.url,
+  "Automação de Processos": automacaoImg.url,
+};
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
