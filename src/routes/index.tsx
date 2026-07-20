@@ -25,14 +25,14 @@ function Landing() {
     <div className="min-h-screen bg-background text-foreground">
       {/* Header */}
       <header className="sticky top-0 z-40 backdrop-blur-md bg-background/80 border-b border-border">
-        <div className="max-w-7xl mx-auto px-5 py-3 flex items-center justify-between">
-          <a href="#top" className="flex items-center gap-2.5">
-            <img src={logo.url} alt="Atende&Vende" className="h-10 w-10 object-contain" />
-            <span className="font-bold text-lg tracking-tight">
+        <div className="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between">
+          <a href="#top" className="flex items-center gap-3">
+            <img src={logo.url} alt="Atende&Vende" className="h-14 w-14 object-contain" />
+            <span className="font-bold text-2xl tracking-tight">
               Atende<span className="text-gradient-brand">&</span>Vende
             </span>
           </a>
-          <nav className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
+          <nav className="hidden md:flex items-center gap-8 text-base text-muted-foreground">
             <a href="#recursos" className="hover:text-foreground transition">Recursos</a>
             <a href="#areas" className="hover:text-foreground transition">Áreas de atuação</a>
             <a href="#planos" className="hover:text-foreground transition">Planos</a>
@@ -40,9 +40,9 @@ function Landing() {
           </nav>
           <a
             href="#contato"
-            className="inline-flex items-center gap-2 bg-gradient-brand text-primary-foreground px-4 py-2 rounded-full text-sm font-medium shadow-card hover:shadow-glow transition"
+            className="inline-flex items-center gap-2 bg-gradient-brand text-primary-foreground px-5 py-2.5 rounded-full text-base font-medium shadow-card hover:shadow-glow transition"
           >
-            Começar grátis <ArrowRight className="h-4 w-4" />
+            Começar grátis <ArrowRight className="h-5 w-5" />
           </a>
         </div>
       </header>
