@@ -197,7 +197,7 @@ function Landing() {
                 <div className="p-10 flex flex-col flex-1 justify-between">
                   <div>
                     <div className="uppercase tracking-[0.25em] text-[11px] text-brand font-semibold">{a.tag}</div>
-                    <h3 className="mt-6 text-2xl md:text-3xl font-medium tracking-tight leading-tight text-foreground">{a.title}</h3>
+                    <h3 className="mt-6 text-2xl md:text-3xl font-medium tracking-tight leading-tight text-foreground whitespace-pre-line">{a.title}</h3>
                     <p className="mt-5 text-muted-foreground font-light leading-relaxed">{a.desc}</p>
                   </div>
                   <div className="mt-10">
