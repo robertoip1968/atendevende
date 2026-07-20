@@ -122,10 +122,10 @@ function Landing() {
             <div className="max-w-md">
               <div className="uppercase tracking-[0.3em] text-[11px] text-brand">Nossa proposta</div>
               <h3 className="mt-6 text-3xl md:text-4xl font-light tracking-tight leading-tight">
-                Um atendente que nunca dorme.
+                Um atendente / vendedor que nunca dorme.
               </h3>
               <p className="mt-6 text-muted-foreground font-light leading-relaxed">
-                Configure em minutos, integre seus canais e deixe a IA conduzir o cliente do primeiro "olá" até o fechamento
+                Configure e integre seus canais e deixe a IA conduzir o cliente do primeiro "olá" até o fechamento
                 da venda — com tom humano e memória de contexto.
               </p>
               <a href="#contato" className="mt-8 inline-flex items-center gap-3 text-sm uppercase tracking-[0.22em] font-medium border-b border-foreground pb-1 hover:gap-4 transition-all">
@@ -222,7 +222,7 @@ function Landing() {
           <div className="uppercase tracking-[0.3em] text-[11px] text-muted-foreground">Resultados</div>
           <div className="mt-6 h-px w-12 bg-border mx-auto" />
           <blockquote className="mt-10 text-2xl md:text-3xl font-light leading-snug tracking-tight">
-            “Triplicamos nossa conversão em 60 dias. A IA responde melhor do que boa parte do meu time comercial.”
+            Aumentamos a conversão por que a IA responde melhor do que boa parte do seu time comercial.
           </blockquote>
           <div className="mt-8 text-sm uppercase tracking-[0.22em] text-muted-foreground">Marina Alves — Diretora Comercial</div>
 
