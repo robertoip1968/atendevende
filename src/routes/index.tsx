@@ -84,12 +84,12 @@ function Landing() {
           <h1 className="text-white font-light tracking-tight text-[1.8rem] md:text-[3rem] lg:text-[3.6rem] leading-[1.05] max-w-2xl">
             Atende&amp;Vende
           </h1>
-          <p className="mt-5 text-white/90 font-bold text-xl md:text-2xl lg:text-3xl max-w-xl">
+          <p className="mt-5 text-white/90 text-xl md:text-2xl lg:text-3xl max-w-xl">
             Automação de vendas e atendimento, 24/7.
           </p>
           <a
             href="#sobre"
-            className="mt-12 inline-flex flex-col items-center gap-2 text-white/90 hover:text-white uppercase tracking-[0.25em] text-[11px] font-bold"
+            className="mt-12 inline-flex flex-col items-center gap-2 text-white/90 hover:text-white uppercase tracking-[0.25em] text-[11px]"
           >
             Saiba mais
             <ChevronDown className="h-5 w-5 animate-bounce" />
