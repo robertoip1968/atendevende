@@ -77,23 +77,24 @@ function Landing() {
           alt="Robô de IA atendendo cliente em loja"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-black/45" aria-hidden />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/20" aria-hidden />
 
         <div className="relative h-full flex flex-col items-start justify-center px-6 md:px-16 lg:px-24 max-w-7xl mx-auto">
-          
-          <h1 className="text-white font-light tracking-tight text-4xl md:text-6xl lg:text-7xl leading-[1.05] max-w-2xl">
-            Atende&amp;Vende
-          </h1>
-          <p className="mt-5 text-white/90 font-light text-xl md:text-2xl lg:text-3xl max-w-xl">
-            Automação de vendas e atendimento, 24/7.
-          </p>
-          <a
-            href="#sobre"
-            className="mt-12 inline-flex flex-col items-center gap-2 text-white/90 hover:text-white uppercase tracking-[0.25em] text-[11px]"
-          >
-            Saiba mais
-            <ChevronDown className="h-5 w-5 animate-bounce" />
-          </a>
+          <div className="bg-black/40 backdrop-blur-sm border border-white/20 rounded-lg p-8 md:p-10 shadow-2xl">
+            <h1 className="text-white font-semibold tracking-tight text-4xl md:text-6xl lg:text-7xl leading-[1.05] max-w-2xl drop-shadow-[0_4px_12px_rgba(0,0,0,0.7)]">
+              Atende&amp;Vende
+            </h1>
+            <p className="mt-5 text-white font-medium text-xl md:text-2xl lg:text-3xl max-w-xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]">
+              Automação de vendas e atendimento, 24/7.
+            </p>
+            <a
+              href="#sobre"
+              className="mt-8 inline-flex items-center gap-3 bg-white text-black hover:bg-white/90 uppercase tracking-[0.2em] text-[11px] font-semibold px-6 py-3 rounded-sm transition-colors"
+            >
+              Saiba mais
+              <ChevronDown className="h-4 w-4" />
+            </a>
+          </div>
         </div>
       </section>
 
