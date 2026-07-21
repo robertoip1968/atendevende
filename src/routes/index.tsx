@@ -81,7 +81,7 @@ function Landing() {
 
         <div className="relative h-full flex flex-col items-start justify-center px-6 md:px-16 lg:px-24 max-w-7xl mx-auto">
           
-          <h1 className="text-white font-light tracking-tight text-4xl md:text-6xl lg:text-7xl leading-[1.05] max-w-2xl">
+          <h1 className="text-white font-light tracking-tight text-[1.8rem] md:text-[3rem] lg:text-[3.6rem] leading-[1.05] max-w-2xl">
             Atende&amp;Vende
           </h1>
           <p className="mt-5 text-white/90 font-light text-xl md:text-2xl lg:text-3xl max-w-xl">
