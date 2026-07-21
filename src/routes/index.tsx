@@ -126,7 +126,7 @@ function Landing() {
               </h3>
               <p className="mt-6 text-muted-foreground font-light leading-relaxed">
                 Configure e integre seus canais e deixe a IA conduzir o cliente do primeiro "olá" até o fechamento
-                da venda — com tom humano e memória de contexto.
+                da venda / agendamento — com tom humano e memória de contexto.
               </p>
               <a href="#contato" className="mt-8 inline-flex items-center gap-3 text-sm uppercase tracking-[0.22em] font-medium border-b border-foreground pb-1 hover:gap-4 transition-all">
                 Fale conosco <ArrowRight className="h-4 w-4" />
