@@ -249,29 +249,85 @@ function Landing() {
             <h2 className="mt-8 text-3xl md:text-4xl font-light tracking-tight">Preço justo, sem surpresa.</h2>
           </div>
 
-          <div className="mt-16 grid md:grid-cols-3 gap-6">
+          <div className="mt-16 grid md:grid-cols-3 gap-6 items-start">
             {[
-              { name: "Start", price: "197", desc: "Ideal para começar.", feats: ["1 canal", "1.000 conversas/mês", "Fluxos básicos", "Suporte por e-mail"], highlight: false },
-              { name: "Pro", price: "497", desc: "Para times em crescimento.", feats: ["Canais ilimitados", "10.000 conversas/mês", "IA avançada", "Integrações CRM", "Suporte prioritário"], highlight: true },
-              { name: "Scale", price: "Custom", desc: "Para grandes operações.", feats: ["Volume ilimitado", "IA sob medida", "SLA dedicado", "Gerente de conta"], highlight: false },
+              {
+                name: "Plano Essencial",
+                price: "790",
+                impl: "2.500",
+                desc: "Para empresas que desejam começar a automatizar o atendimento pelo WhatsApp.",
+                feats: [
+                  "1 número de WhatsApp",
+                  "Atendimento automatizado com IA",
+                  "Respostas sobre produtos e serviços",
+                  "Captura e qualificação de clientes",
+                  "Fluxo principal personalizado",
+                  "Histórico de atendimentos",
+                  "Suporte técnico em horário comercial",
+                ],
+                cta: "QUERO COMEÇAR",
+                highlight: false,
+                badge: null,
+              },
+              {
+                name: "Plano Profissional",
+                price: "990",
+                impl: "3.000",
+                desc: "Para empresas que desejam automatizar atendimento, vendas e processos internos.",
+                feats: [
+                  "Tudo do Plano Essencial",
+                  "IA treinada para o negócio",
+                  "Múltiplos fluxos de atendimento",
+                  "Consulta de produtos, preços ou serviços",
+                  "Integração com formulário, CRM ou sistema interno",
+                  "Recuperação de clientes e follow-up",
+                  "Relatórios de atendimento e conversão",
+                  "Suporte prioritário",
+                ],
+                cta: "QUERO AUTOMATIZAR MINHAS VENDAS",
+                highlight: true,
+                badge: "MAIS ESCOLHIDO",
+              },
+              {
+                name: "Plano Performance",
+                price: "1.290",
+                impl: "3.500",
+                desc: "Para operações que precisam de automações avançadas e integrações personalizadas.",
+                feats: [
+                  "Tudo do Plano Profissional",
+                  "Fluxos avançados de vendas e atendimento",
+                  "Integração com ERP, CRM ou banco de dados",
+                  "Automação de pedidos e pagamentos",
+                  "Follow-up e recuperação de oportunidades",
+                  "Painel de acompanhamento",
+                  "Ajustes contínuos de melhoria",
+                  "Atendimento técnico com prioridade",
+                  "Reunião periódica de acompanhamento",
+                ],
+                cta: "FALAR COM UM ESPECIALISTA",
+                highlight: false,
+                badge: null,
+              },
             ].map((p) => (
               <div
                 key={p.name}
-                className={`p-10 border transition-colors ${p.highlight ? "border-foreground bg-foreground text-background" : "border-border bg-card"}`}
+                className={`relative p-10 border transition-colors ${p.highlight ? "border-foreground bg-foreground text-background" : "border-border bg-card"}`}
               >
+                {p.badge && (
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand text-white text-[10px] uppercase tracking-[0.25em] px-4 py-1.5">
+                    {p.badge}
+                  </div>
+                )}
                 <div className={`uppercase tracking-[0.3em] text-[11px] ${p.highlight ? "text-background/70" : "text-muted-foreground"}`}>{p.name}</div>
-                <div className="mt-6">
-                  {p.price === "Custom" ? (
-                    <div className="text-3xl font-light">Sob consulta</div>
-                  ) : (
-                    <div className="flex items-baseline gap-1">
-                      <span className={`text-sm ${p.highlight ? "text-background/70" : "text-muted-foreground"}`}>R$</span>
-                      <span className="text-5xl font-light">{p.price}</span>
-                      <span className={`text-sm ${p.highlight ? "text-background/70" : "text-muted-foreground"}`}>/mês</span>
-                    </div>
-                  )}
+                <div className="mt-6 flex items-baseline gap-1">
+                  <span className={`text-sm ${p.highlight ? "text-background/70" : "text-muted-foreground"}`}>R$</span>
+                  <span className="text-5xl font-light">{p.price}</span>
+                  <span className={`text-sm ${p.highlight ? "text-background/70" : "text-muted-foreground"}`}>/mês</span>
                 </div>
-                <p className={`mt-3 text-sm font-light ${p.highlight ? "text-background/80" : "text-muted-foreground"}`}>{p.desc}</p>
+                <div className={`mt-2 text-sm font-light ${p.highlight ? "text-background/70" : "text-muted-foreground"}`}>
+                  Implantação: R$ {p.impl}
+                </div>
+                <p className={`mt-4 text-sm font-light ${p.highlight ? "text-background/80" : "text-muted-foreground"}`}>{p.desc}</p>
                 <ul className="mt-8 space-y-3">
                   {p.feats.map((f) => (
                     <li key={f} className="flex items-start gap-3 text-sm font-light">
@@ -281,11 +337,11 @@ function Landing() {
                 </ul>
                 <a
                   href="#contato"
-                  className={`mt-10 block text-center text-[11px] uppercase tracking-[0.25em] py-4 border transition ${
+                  className={`mt-10 block text-center text-[11px] uppercase tracking-[0.2em] py-4 border transition ${
                     p.highlight ? "border-background hover:bg-background hover:text-foreground" : "border-foreground hover:bg-foreground hover:text-background"
                   }`}
                 >
-                  {p.price === "Custom" ? "Falar com vendas" : "Começar agora"}
+                  {p.cta}
                 </a>
               </div>
             ))}
