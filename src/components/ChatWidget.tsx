@@ -53,7 +53,7 @@ export function ChatWidget() {
   return (
     <>
       {/* Floating button */}
-      <div className="fixed right-5 bottom-5 z-50 flex flex-col items-center gap-2">
+      <div className="fixed right-5 top-1/2 -translate-y-1/2 z-50 flex flex-col items-center gap-2">
         <button
           onClick={() => setOpen((v) => !v)}
           aria-label="Abrir chat"
