@@ -106,8 +106,8 @@ function Landing() {
             Transformamos conversas em vendas com inteligência artificial.
           </h2>
           <p className="mt-8 text-lg text-muted-foreground font-light leading-relaxed">
-            A Atende&Vende integra WhatsApp, Instagram e webchat em uma única plataforma. Uma IA que qualifica leads,
-            responde clientes e dispara vendas — enquanto seu time foca no que realmente importa.
+            A Atende&Vende integra WhatsApp, Instagram e webchat em uma única plataforma. Uma IA que vende, qualifica leads,
+            responde clientes e realiza agendamentos — enquanto seu time foca no que realmente importa.
           </p>
         </div>
       </section>
