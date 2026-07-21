@@ -53,7 +53,7 @@ export function ChatWidget() {
   return (
     <>
       {/* Floating button */}
-      <div className="fixed right-5 bottom-5 z-50 flex flex-col items-center gap-2">
+      <div className="fixed right-5 top-1/2 -translate-y-1/2 z-50 flex flex-col items-center gap-2">
         <button
           onClick={() => setOpen((v) => !v)}
           aria-label="Abrir chat"
@@ -78,7 +78,7 @@ export function ChatWidget() {
 
       {/* Chat panel */}
       <div
-        className={`fixed right-5 bottom-24 z-50 w-[92vw] max-w-sm h-[70vh] max-h-[560px] bg-card rounded-2xl shadow-glow border border-border flex flex-col overflow-hidden transition-all duration-300 origin-bottom-right ${
+        className={`fixed right-5 top-1/2 -translate-y-1/2 z-50 w-[92vw] max-w-sm h-[70vh] max-h-[560px] bg-card rounded-2xl shadow-glow border border-border flex flex-col overflow-hidden transition-all duration-300 origin-center-right ${
           open ? "opacity-100 scale-100 pointer-events-auto" : "opacity-0 scale-95 pointer-events-none"
         }`}
         role="dialog"
