@@ -149,9 +149,9 @@ function Landing() {
 
           <div className="mt-20 grid md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-14">
             {[
-              { icon: Bot, title: "IA humanizada", desc: "Respostas naturais e transferência inteligente para o time." },
-              { icon: Workflow, title: "Fluxos visuais", desc: "Desenhe automações em minutos, sem código." },
-              { icon: MessageSquare, title: "Multi-canal", desc: "WhatsApp, Instagram, Messenger e webchat unificados." },
+              { icon: Bot, title: "IA humanizada", desc: "Respostas naturais e transferência inteligente para o time quando precisar." },
+              { icon: Workflow, title: "Processos automatizados", desc: "Deixe a IA fazer o trabalho burocrático repetitivo." },
+              { icon: MessageSquare, title: "Multi-canal", desc: "Todas as informações em um único lugar: WhatsApp, Instagram, Messenger e site unificados." },
               { icon: TrendingUp, title: "Funil automático", desc: "Leads qualificados vão ao vendedor certo, na hora certa." },
               { icon: Clock, title: "24/7", desc: "Sua operação nunca para — a IA cuida do overnight." },
               { icon: ShieldCheck, title: "Seguro e LGPD", desc: "Infraestrutura em nuvem com criptografia nativa." },
