@@ -154,7 +154,7 @@ function Landing() {
               { icon: MessageSquare, title: "Multi-canal", desc: "Todas as informações em um único lugar: WhatsApp, Instagram, Messenger e site unificados." },
               { icon: TrendingUp, title: "Funil automático", desc: "Leads qualificados vão ao vendedor certo, na hora certa." },
               { icon: Clock, title: "24/7", desc: "Sua operação nunca para — a IA cuida do overnight." },
-              { icon: ShieldCheck, title: "Seguro e LGPD", desc: "Infraestrutura em nuvem com criptografia nativa." },
+              { icon: ShieldCheck, title: "Seguro e LGPD", desc: "Todos os dados das conversas preservados e protegidos." },
             ].map((f) => (
               <div key={f.title} className="text-center md:text-left">
                 <f.icon className="h-7 w-7 text-brand mx-auto md:mx-0" strokeWidth={1.4} />
