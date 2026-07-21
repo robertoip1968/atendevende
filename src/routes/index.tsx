@@ -85,7 +85,7 @@ function Landing() {
             Atende&amp;Vende
           </h1>
           <p className="mt-5 text-white/90 text-xl md:text-2xl lg:text-3xl max-w-xl">
-            Automação de vendas e atendimento, 24/7.
+            Automação de vendas e atendimento 24/7
           </p>
           <a
             href="#sobre"
