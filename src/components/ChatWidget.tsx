@@ -84,16 +84,26 @@ export function ChatWidget() {
         role="dialog"
         aria-label="Chat com IA Atende&Vende"
       >
-        <header className="bg-gradient-brand text-primary-foreground p-4 flex items-center gap-3">
-          <div className="h-10 w-10 rounded-full bg-white/95 p-1 flex items-center justify-center">
-            <img src={logo.url} alt="Atende&Vende" className="h-full w-full object-contain" />
-          </div>
-          <div>
-            <div className="font-semibold leading-tight">IA Atende&Vende</div>
-            <div className="text-xs opacity-90 flex items-center gap-1.5">
-              <span className="h-2 w-2 rounded-full bg-green-400" /> Online agora
+        <header className="bg-gradient-brand text-primary-foreground p-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="h-10 w-10 rounded-full bg-white/95 p-1 flex items-center justify-center">
+              <img src={logo.url} alt="Atende&Vende" className="h-full w-full object-contain" />
+            </div>
+            <div>
+              <div className="font-semibold leading-tight">IA Atende&Vende</div>
+              <div className="text-xs opacity-90 flex items-center gap-1.5">
+                <span className="h-2 w-2 rounded-full bg-green-400" /> Online agora
+              </div>
             </div>
           </div>
+          <button
+            type="button"
+            onClick={() => setOpen(false)}
+            aria-label="Fechar chat"
+            className="h-9 w-9 rounded-full bg-white/15 hover:bg-white/25 flex items-center justify-center transition"
+          >
+            <X className="h-5 w-5" />
+          </button>
         </header>
 
         <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 space-y-3 bg-gradient-soft">
