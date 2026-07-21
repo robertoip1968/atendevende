@@ -81,15 +81,15 @@ function Landing() {
 
         <div className="relative h-full flex flex-col items-start justify-center px-6 md:px-16 lg:px-24 max-w-7xl mx-auto">
           
-          <h1 className="text-blue-950 font-light tracking-tight text-4xl md:text-6xl lg:text-7xl leading-[1.05] max-w-2xl">
+          <h1 className="text-white font-light tracking-tight text-4xl md:text-6xl lg:text-7xl leading-[1.05] max-w-2xl">
             Atende&amp;Vende
           </h1>
-          <p className="mt-5 text-blue-900 font-light text-xl md:text-2xl lg:text-3xl max-w-xl">
+          <p className="mt-5 text-white/90 font-light text-xl md:text-2xl lg:text-3xl max-w-xl">
             Automação de vendas e atendimento, 24/7.
           </p>
           <a
             href="#sobre"
-            className="mt-12 inline-flex flex-col items-center gap-2 text-blue-900 hover:text-blue-950 uppercase tracking-[0.25em] text-[11px]"
+            className="mt-12 inline-flex flex-col items-center gap-2 text-white/90 hover:text-white uppercase tracking-[0.25em] text-[11px]"
           >
             Saiba mais
             <ChevronDown className="h-5 w-5 animate-bounce" />
