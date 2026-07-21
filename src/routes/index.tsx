@@ -179,7 +179,7 @@ function Landing() {
 
           <div className="mt-20 grid md:grid-cols-3 gap-8">
             {[
-              { tag: "Atendimento", title: "SAC &\u00a0\nSuporte", desc: "Reduza o tempo de resposta e resolva tickets automaticamente com IA que aprende com seu time.", image: atendimentoImg },
+              { tag: "Atendimento", title: "SAC, Suporte &\nAgendamento", desc: "Reduza o tempo de resposta, tire dúvidas e realize agendamentos automaticamente com a IA que aprende com seu time.", image: atendimentoImg },
               { tag: "Vendas", title: "Comercial &\u00a0\nE-commerce", desc: "Feche vendas e qualifique leads em segundos pelo WhatsApp.", image: vendasImg.url },
               { tag: "Tecnologia", title: "Automação de Processos", desc: "Integre CRM, ERP e planilhas para criar fluxos que rodam sozinhos, 24 horas por dia.", image: automacaoImg.url },
             ].map((a) => (
