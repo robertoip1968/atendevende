@@ -70,8 +70,8 @@ export function ChatWidget() {
           )}
         </button>
         {!open && (
-          <span className="px-2.5 py-1 rounded-full bg-card border border-border text-xs font-medium text-foreground shadow-sm whitespace-nowrap">
-            Pergunte para nossa IA
+          <span className="px-3.5 py-1.5 rounded-2xl bg-card border border-border text-xs font-medium text-foreground shadow-sm whitespace-pre-line text-center">
+            Pergunte para nossa IA{"\n"}como{"\u00a0"}podemos ajudá-lo
           </span>
         )}
       </div>
