@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { ChevronDown, Instagram, Check, ArrowRight, Bot, Workflow, MessageSquare, TrendingUp, Clock, ShieldCheck } from "lucide-react";
+import { Instagram, Check, ArrowRight, MessageSquare, Cog, Repeat, Users, Clock3, Timer, UserCheck, CalendarCheck, Send } from "lucide-react";
 import logo from "@/assets/atende-vende-logo.asset.json";
 import atendimentoImg from "@/assets/atendimento.jpg";
 import vendasImg from "@/assets/vendas-whatsapp.png.asset.json";
@@ -11,10 +11,10 @@ import { ChatWidget } from "@/components/ChatWidget";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Atende&Vende — Automação de Atendimento e Vendas com IA" },
-      { name: "description", content: "Automatize seu fluxo de atendimento e vendas com IA. Integre WhatsApp, Instagram e mais em uma única plataforma." },
-      { property: "og:title", content: "Atende&Vende — Automação de Atendimento e Vendas com IA" },
-      { property: "og:description", content: "Automatize seu fluxo de atendimento e vendas com IA. Integre WhatsApp, Instagram e mais em uma única plataforma." },
+      { title: "Atende&Vende — Atenda, acompanhe e venda pelo WhatsApp" },
+      { name: "description", content: "O Atende&Vende responde, qualifica e conduz cada oportunidade até o orçamento, agendamento, pedido ou venda. Uma operação comercial automatizada e acompanhada." },
+      { property: "og:title", content: "Atende&Vende — Atenda, acompanhe e venda pelo WhatsApp" },
+      { property: "og:description", content: "Muito mais do que responder mensagens: o Atende&Vende organiza a jornada comercial e acompanha cada oportunidade até o resultado." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -34,10 +34,14 @@ function Landing() {
   const navLinks = [
     { href: "#inicio", label: "Início" },
     { href: "#sobre", label: "A Atende&Vende" },
+    { href: "#como-funciona", label: "Como funciona" },
     { href: "#beneficios", label: "Benefícios" },
-    { href: "#areas", label: "Áreas" },
+    { href: "#planos", label: "Planos" },
     { href: "#contato", label: "Contato" },
   ];
+
+  const container = "max-w-[1240px] mx-auto px-5 md:px-8 lg:px-12";
+  const sectionPad = "py-14 md:py-18 lg:py-22";
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -47,19 +51,19 @@ function Landing() {
           scrolled ? "bg-background/95 backdrop-blur border-b border-border py-3" : "bg-transparent py-5"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between">
+        <div className={`${container} flex items-center justify-between`}>
           <a href="#inicio" className="flex items-center gap-4">
             <img src={logo.url} alt="Atende&Vende" className="h-16 w-16 object-contain" />
             <span className={`font-semibold text-2xl tracking-tight transition-colors ${scrolled ? "text-foreground" : "text-white drop-shadow"}`}>
               Atende<span className="text-brand">&</span>Vende
             </span>
           </a>
-          <nav className="hidden md:flex items-center gap-10">
+          <nav className="hidden lg:flex items-center gap-8">
             {navLinks.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
-                className={`text-sm uppercase tracking-[0.2em] font-medium transition-colors ${
+                className={`text-sm uppercase tracking-[0.18em] font-medium transition-colors ${
                   scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/90 hover:text-white"
                 }`}
               >
@@ -70,118 +74,174 @@ function Landing() {
         </div>
       </header>
 
-      {/* Hero — full bleed image with overlay */}
-      <section id="inicio" className="relative h-[80vh] min-h-[560px] w-full overflow-hidden">
+      {/* Hero */}
+      <section id="inicio" className="relative h-[78vh] min-h-[560px] w-full overflow-hidden">
         <img
           src={heroRobot.url}
-          alt="Robô de IA atendendo cliente em loja"
+          alt="Interface Atende&Vende conduzindo uma conversa pelo WhatsApp"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-black/45" aria-hidden />
+        <div className="absolute inset-0 bg-black/50" aria-hidden />
 
-        <div className="relative h-full flex flex-col items-start justify-center px-6 md:px-16 lg:px-24 max-w-7xl mx-auto">
-          
-          <h1 className="text-white font-light tracking-tight text-[1.8rem] md:text-[3rem] lg:text-[3.6rem] leading-[1.05] max-w-2xl">
-            Atende&amp;Vende
-          </h1>
-          <p className="mt-5 text-white/90 text-xl md:text-2xl lg:text-3xl max-w-xl">
-            Soluções baseadas em IA&nbsp;para organizar atendimentos e converter em vendas
-          </p>
-          <a
-            href="#sobre"
-            className="mt-12 inline-flex flex-col items-center gap-2 text-white/90 hover:text-white uppercase tracking-[0.25em] text-[11px]"
-          >
-            Saiba mais
-            <ChevronDown className="h-5 w-5 animate-bounce" />
-          </a>
-        </div>
-      </section>
-
-      {/* Sobre — editorial intro */}
-      <section id="sobre" className="py-28 lg:py-36">
-        <div className="max-w-3xl mx-auto px-6 text-center">
-          <div className="uppercase tracking-[0.3em] text-[11px] text-muted-foreground">Sobre</div>
-          <div className="mt-6 h-px w-12 bg-border mx-auto" />
-          <h2 className="mt-8 text-3xl md:text-4xl font-light tracking-tight leading-tight">
-            Transformamos conversas em vendas com inteligência artificial.
-          </h2>
-          <p className="mt-8 text-lg text-muted-foreground font-light leading-relaxed">
-            A Atende&Vende integra WhatsApp, Instagram e webchat em uma única plataforma. Uma IA que vende, qualifica leads,
-            responde clientes e realiza agendamentos — enquanto seu time foca no que realmente importa.
-          </p>
-        </div>
-      </section>
-
-      {/* Split image + text block */}
-      <section className="border-y border-border">
-        <div className="grid md:grid-cols-2">
-          <div className="aspect-[4/3] md:aspect-auto md:min-h-[560px]">
-            <img src={atendimentoImg} alt="Atendimento com IA" className="w-full h-full object-cover" />
+        <div className={`relative h-full flex flex-col items-start justify-center ${container}`}>
+          <div className="uppercase tracking-[0.28em] text-[11px] text-white/80 font-medium">
+            Atendimento e vendas pelo WhatsApp
           </div>
-          <div className="flex items-center px-6 md:px-16 py-16">
-            <div className="max-w-md">
-              <div className="uppercase tracking-[0.3em] text-[11px] text-brand">Nossa proposta</div>
-              <h3 className="mt-6 text-3xl md:text-4xl font-light tracking-tight leading-tight">
-                Um atendente / vendedor que nunca dorme.
-              </h3>
-              <p className="mt-6 text-muted-foreground font-light leading-relaxed">
-                Configure e integre seus canais e deixe a IA conduzir o cliente do primeiro "olá" até o fechamento
-                da venda / agendamento — com tom humano e memória de contexto.
+          <h1 className="mt-5 text-white font-light tracking-tight text-[1.9rem] md:text-[3rem] lg:text-[3.4rem] leading-[1.05] max-w-3xl">
+            Atenda, acompanhe e venda sem perder clientes pelo caminho.
+          </h1>
+          <p className="mt-5 text-white/90 text-lg md:text-xl lg:text-2xl max-w-2xl font-light">
+            O Atende&amp;Vende responde, qualifica e conduz cada oportunidade até o orçamento, agendamento, pedido ou venda.
+          </p>
+
+          <div className="mt-10 flex flex-wrap items-center gap-4">
+            <a
+              href="#contato"
+              className="inline-flex items-center gap-3 bg-brand text-white text-[11px] uppercase tracking-[0.22em] font-medium px-7 py-4 hover:bg-brand/90 transition"
+            >
+              Solicitar diagnóstico <ArrowRight className="h-4 w-4" />
+            </a>
+            <a
+              href="#como-funciona"
+              className="inline-flex items-center gap-3 border border-white/70 text-white text-[11px] uppercase tracking-[0.22em] font-medium px-7 py-4 hover:bg-white hover:text-foreground transition"
+            >
+              Ver como funciona
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Sobre — consolidada */}
+      <section id="sobre" className={sectionPad}>
+        <div className={`${container} grid lg:grid-cols-12 gap-10 lg:gap-16 items-start`}>
+          <div className="lg:col-span-7">
+            <div className="uppercase tracking-[0.3em] text-[11px] text-muted-foreground">Sobre</div>
+            <div className="mt-5 h-px w-12 bg-border" />
+            <h2 className="mt-6 text-3xl md:text-4xl font-light tracking-tight leading-tight">
+              Muito mais do que responder mensagens.
+            </h2>
+            <p className="mt-6 text-lg text-muted-foreground font-light leading-relaxed">
+              Responder rápido é apenas o primeiro passo. Muitas oportunidades são perdidas depois da primeira resposta,
+              quando ninguém acompanha o cliente até a decisão.
+            </p>
+            <p className="mt-4 text-lg text-muted-foreground font-light leading-relaxed">
+              O Atende&Vende organiza a jornada comercial: entende a necessidade, executa tarefas, acompanha a oportunidade
+              e aciona sua equipe no momento certo.
+            </p>
+          </div>
+
+          <div className="lg:col-span-5 lg:pt-6">
+            <div className="border-l-2 border-brand pl-6">
+              <p className="text-xl md:text-2xl font-light tracking-tight leading-snug">
+                A IA cuida do processo.<br />
+                <span className="text-brand">Sua equipe cuida das decisões.</span>
               </p>
-              <a href="#contato" className="mt-8 inline-flex items-center gap-3 text-sm uppercase tracking-[0.22em] font-medium border-b border-foreground pb-1 hover:gap-4 transition-all">
-                Fale conosco <ArrowRight className="h-4 w-4" />
-              </a>
+            </div>
+            <div className="mt-8 grid grid-cols-3 gap-4 text-center">
+              {[
+                { n: "01", l: "Organiza" },
+                { n: "02", l: "Executa" },
+                { n: "03", l: "Acompanha" },
+              ].map((i) => (
+                <div key={i.n} className="border border-border py-5">
+                  <div className="text-brand text-sm font-medium">{i.n}</div>
+                  <div className="mt-1 text-[11px] uppercase tracking-[0.2em] text-muted-foreground">{i.l}</div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Benefícios — clean grid */}
-      <section id="beneficios" className="py-28 lg:py-36">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center max-w-2xl mx-auto">
+      {/* Benefícios */}
+      <section id="beneficios" className={`${sectionPad} bg-muted/30 border-y border-border`}>
+        <div className={container}>
+          <div className="max-w-3xl">
             <div className="uppercase tracking-[0.3em] text-[11px] text-muted-foreground">Benefícios</div>
-            <div className="mt-6 h-px w-12 bg-border mx-auto" />
-            <h2 className="mt-8 text-3xl md:text-4xl font-light tracking-tight">
-              Tudo o que sua operação precisa.
+            <div className="mt-5 h-px w-12 bg-border" />
+            <h2 className="mt-6 text-3xl md:text-4xl font-light tracking-tight leading-tight">
+              Tudo o que sua operação precisa para atender, acompanhar e vender melhor.
             </h2>
           </div>
 
-          <div className="mt-20 grid md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-14">
+          <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: Bot, title: "IA humanizada", desc: "Respostas naturais e transferência inteligente para o time quando precisar." },
-              { icon: Workflow, title: "Processos automatizados", desc: "Deixe a IA fazer o trabalho burocrático repetitivo." },
-              { icon: MessageSquare, title: "Multi-canal", desc: "Todas as informações em um único lugar: WhatsApp, Instagram, Messenger e site unificados." },
-              { icon: TrendingUp, title: "Funil automático", desc: "Leads qualificados vão ao vendedor certo, na hora certa." },
-              { icon: Clock, title: "24/7", desc: "Sua operação nunca para — a IA cuida do overnight." },
-              { icon: ShieldCheck, title: "Seguro e LGPD", desc: "Todos os dados das conversas preservados e protegidos." },
+              { icon: MessageSquare, title: "Atende e qualifica", desc: "Responde rapidamente e identifica o que cada cliente procura." },
+              { icon: Cog, title: "Executa processos", desc: "Consulta informações, agenda, gera orçamento ou registra pedidos." },
+              { icon: Repeat, title: "Acompanha oportunidades", desc: "Faz follow-up e recupera conversas que pararam antes da decisão." },
+              { icon: Users, title: "Transfere com contexto", desc: "Entrega à equipe o histórico da conversa e o próximo passo recomendado." },
             ].map((f) => (
-              <div key={f.title} className="text-center md:text-left">
-                <f.icon className="h-7 w-7 text-brand mx-auto md:mx-0" strokeWidth={1.4} />
+              <div key={f.title} className="bg-card border border-border p-7">
+                <f.icon className="h-6 w-6 text-brand" strokeWidth={1.5} />
                 <h3 className="mt-5 text-lg font-medium tracking-tight">{f.title}</h3>
                 <p className="mt-3 text-sm text-muted-foreground font-light leading-relaxed">{f.desc}</p>
               </div>
             ))}
           </div>
+
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+            {["24/7", "Texto e áudio", "Integrações", "Histórico", "Segurança"].map((t, i, a) => (
+              <span key={t} className="flex items-center gap-6">
+                {t}
+                {i < a.length - 1 && <span className="h-1 w-1 rounded-full bg-border" />}
+              </span>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Áreas — clean grid cards */}
-      <section id="areas" className="py-28 lg:py-36 bg-muted/30 border-t border-border">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center max-w-2xl mx-auto">
+      {/* Como funciona */}
+      <section id="como-funciona" className={sectionPad}>
+        <div className={container}>
+          <div className="max-w-2xl">
+            <div className="uppercase tracking-[0.3em] text-[11px] text-muted-foreground">Como funciona</div>
+            <div className="mt-5 h-px w-12 bg-border" />
+            <h2 className="mt-6 text-3xl md:text-4xl font-light tracking-tight leading-tight">
+              Da primeira mensagem ao resultado.
+            </h2>
+            <p className="mt-5 text-muted-foreground font-light">
+              O Atende&Vende acompanha cada oportunidade durante todo o processo comercial.
+            </p>
+          </div>
+
+          <div className="mt-14 relative">
+            <div className="hidden lg:block absolute top-8 left-[8%] right-[8%] h-px bg-border" aria-hidden />
+            <ol className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 relative">
+              {[
+                { n: "01", title: "Recebe e entende", desc: "Responde na hora pelo WhatsApp e identifica o que o cliente precisa." },
+                { n: "02", title: "Executa a tarefa", desc: "Consulta preço, agenda, gera orçamento ou registra o pedido." },
+                { n: "03", title: "Acompanha a oportunidade", desc: "Faz follow-up automático e retoma conversas paradas." },
+                { n: "04", title: "Entrega para o time", desc: "Transfere com contexto e próximo passo recomendado para sua equipe." },
+              ].map((s) => (
+                <li key={s.n} className="relative">
+                  <div className="h-16 w-16 rounded-full bg-background border-2 border-brand text-brand flex items-center justify-center text-sm font-medium tracking-widest mx-auto lg:mx-0">
+                    {s.n}
+                  </div>
+                  <h3 className="mt-5 text-lg font-medium tracking-tight text-center lg:text-left">{s.title}</h3>
+                  <p className="mt-3 text-sm text-muted-foreground font-light leading-relaxed text-center lg:text-left">{s.desc}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      {/* Áreas de atuação */}
+      <section id="areas" className={`${sectionPad} bg-muted/30 border-y border-border`}>
+        <div className={container}>
+          <div className="max-w-2xl">
             <div className="uppercase tracking-[0.3em] text-[11px] text-muted-foreground">Áreas de atuação</div>
-            <div className="mt-6 h-px w-12 bg-border mx-auto" />
-            <h2 className="mt-8 text-3xl md:text-4xl font-light tracking-tight">
+            <div className="mt-5 h-px w-12 bg-border" />
+            <h2 className="mt-6 text-3xl md:text-4xl font-light tracking-tight">
               Soluções para cada etapa do seu negócio.
             </h2>
           </div>
 
-          <div className="mt-20 grid md:grid-cols-3 gap-8">
+          <div className="mt-14 grid md:grid-cols-3 gap-6">
             {[
-              { tag: "Atendimento", title: "SAC, Suporte &\nAgendamento", desc: "Reduza o tempo de resposta, tire dúvidas e realize agendamentos automaticamente com a IA que aprende com seu time.", image: atendimentoImg },
-              { tag: "Vendas", title: "Comercial &\u00a0\nE-commerce", desc: "Feche vendas e qualifique leads em segundos pelo WhatsApp.", image: vendasImg.url },
-              { tag: "Tecnologia", title: "Automação de Processos", desc: "Integre CRM, ERP e planilhas para criar fluxos que rodam sozinhos, 24 horas por dia.", image: automacaoImg.url },
+              { tag: "Atendimento", title: "Atendimento e suporte", desc: "Respostas, triagem, dúvidas frequentes e encaminhamento para a equipe.", image: atendimentoImg },
+              { tag: "Vendas", title: "Vendas e pedidos", desc: "Produtos, preços, orçamentos, pedidos, pagamentos e follow-up.", image: vendasImg.url },
+              { tag: "Automação", title: "Agendamentos e automação", desc: "Agenda, confirmações, reagendamentos e integração com os sistemas da empresa.", image: automacaoImg.url },
             ].map((a) => (
               <article
                 key={a.title}
@@ -194,21 +254,10 @@ function Landing() {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
-                <div className="p-10 flex flex-col flex-1 justify-between">
-                  <div>
-                    <div className="uppercase tracking-[0.25em] text-[11px] text-brand font-semibold">{a.tag}</div>
-                    <h3 className="mt-6 text-2xl md:text-3xl font-medium tracking-tight leading-tight text-foreground whitespace-pre-line">{a.title}</h3>
-                    <p className="mt-5 text-muted-foreground font-light leading-relaxed">{a.desc}</p>
-                  </div>
-                  <div className="mt-10">
-                    <div className="h-px w-12 bg-border mb-6" />
-                    <a
-                      href="#contato"
-                      className="inline-flex items-center gap-3 text-sm font-medium text-foreground group-hover:gap-4 transition-all"
-                    >
-                      Saiba mais <ArrowRight className="h-4 w-4" />
-                    </a>
-                  </div>
+                <div className="p-8 flex flex-col flex-1">
+                  <div className="uppercase tracking-[0.25em] text-[11px] text-brand font-semibold">{a.tag}</div>
+                  <h3 className="mt-4 text-xl md:text-2xl font-medium tracking-tight leading-tight text-foreground">{a.title}</h3>
+                  <p className="mt-3 text-muted-foreground font-light leading-relaxed text-sm">{a.desc}</p>
                 </div>
               </article>
             ))}
@@ -216,24 +265,31 @@ function Landing() {
         </div>
       </section>
 
-      {/* Depoimento / stats */}
-      <section className="py-28 lg:py-36 bg-muted/40">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <div className="uppercase tracking-[0.3em] text-[11px] text-muted-foreground">Resultados</div>
-          <div className="mt-6 h-px w-12 bg-border mx-auto" />
-          <blockquote className="mt-10 text-2xl md:text-3xl font-light leading-snug tracking-tight">
-            Aumentamos a conversão por que a IA responde melhor do que boa parte do seu time comercial.
-          </blockquote>
+      {/* Resultados */}
+      <section className={sectionPad}>
+        <div className={`${container} grid lg:grid-cols-12 gap-10 items-start`}>
+          <div className="lg:col-span-5">
+            <div className="uppercase tracking-[0.3em] text-[11px] text-muted-foreground">Resultados</div>
+            <div className="mt-5 h-px w-12 bg-border" />
+            <h2 className="mt-6 text-3xl md:text-4xl font-light tracking-tight leading-tight">
+              Mais controle sobre cada oportunidade.
+            </h2>
+            <p className="mt-6 text-muted-foreground font-light leading-relaxed">
+              O Atende&Vende ajuda sua empresa a acompanhar onde os clientes estão parando e quais etapas do
+              atendimento podem ser melhoradas.
+            </p>
+          </div>
 
-          <div className="mt-20 grid grid-cols-3 gap-10">
+          <div className="lg:col-span-7 grid sm:grid-cols-2 gap-5">
             {[
-              { n: "2x", l: "Mais conversão" },
-              { n: "24/7", l: "Atendimento" },
-              { n: "-60%", l: "Custo operacional" },
-            ].map((s) => (
-              <div key={s.l}>
-                <div className="text-4xl md:text-5xl font-light text-brand">{s.n}</div>
-                <div className="mt-2 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">{s.l}</div>
+              { icon: Timer, l: "Tempo de primeira resposta" },
+              { icon: UserCheck, l: "Clientes qualificados" },
+              { icon: Repeat, l: "Follow-ups realizados" },
+              { icon: CalendarCheck, l: "Agendamentos e pedidos concluídos" },
+            ].map((i) => (
+              <div key={i.l} className="border border-border p-6 flex items-start gap-4 bg-card">
+                <i.icon className="h-6 w-6 text-brand shrink-0" strokeWidth={1.5} />
+                <div className="text-sm font-medium tracking-tight">{i.l}</div>
               </div>
             ))}
           </div>
@@ -241,28 +297,27 @@ function Landing() {
       </section>
 
       {/* Planos */}
-      <section id="planos" className="py-28 lg:py-36">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center max-w-2xl mx-auto">
+      <section id="planos" className={`${sectionPad} bg-muted/30 border-y border-border`}>
+        <div className={container}>
+          <div className="max-w-2xl mx-auto text-center">
             <div className="uppercase tracking-[0.3em] text-[11px] text-muted-foreground">Planos</div>
-            <div className="mt-6 h-px w-12 bg-border mx-auto" />
-            <h2 className="mt-8 text-3xl md:text-4xl font-light tracking-tight">Preço justo, sem surpresa.</h2>
+            <div className="mt-5 h-px w-12 bg-border mx-auto" />
+            <h2 className="mt-6 text-3xl md:text-4xl font-light tracking-tight">Preço justo, sem surpresa.</h2>
           </div>
 
-          <div className="mt-16 grid md:grid-cols-3 gap-6 items-start">
+          <div className="mt-14 grid md:grid-cols-3 gap-6 items-start">
             {[
               {
                 name: "Plano Essencial",
                 price: "790",
                 impl: "2.500",
-                desc: "Para empresas que desejam começar a automatizar o atendimento pelo WhatsApp.",
+                desc: "Para automatizar um processo principal de atendimento.",
                 feats: [
                   "1 número de WhatsApp",
                   "Atendimento automatizado com IA",
                   "Respostas sobre produtos e serviços",
                   "Captura e qualificação de clientes",
                   "Fluxo principal personalizado",
-                  "Histórico de atendimentos",
                   "Suporte técnico em horário comercial",
                 ],
                 cta: "QUERO COMEÇAR",
@@ -273,16 +328,14 @@ function Landing() {
                 name: "Plano Profissional",
                 price: "990",
                 impl: "3.000",
-                desc: "Para empresas que desejam automatizar atendimento, vendas e processos internos.",
+                desc: "Para automatizar atendimento, qualificação e acompanhamento comercial.",
                 feats: [
                   "Tudo do Plano Essencial",
                   "IA treinada para o negócio",
                   "Múltiplos fluxos de atendimento",
-                  "Consulta de produtos, preços ou serviços",
                   "Integração com formulário, CRM ou sistema interno",
                   "Recuperação de clientes e follow-up",
                   "Relatórios de atendimento e conversão",
-                  "Suporte prioritário",
                 ],
                 cta: "QUERO AUTOMATIZAR MINHAS VENDAS",
                 highlight: true,
@@ -292,16 +345,13 @@ function Landing() {
                 name: "Plano Performance",
                 price: "1.290",
                 impl: "3.500",
-                desc: "Para operações que precisam de automações avançadas e integrações personalizadas.",
+                desc: "Para integrar atendimento, pedidos, pagamentos e sistemas internos.",
                 feats: [
                   "Tudo do Plano Profissional",
-                  "Fluxos avançados de vendas e atendimento",
                   "Integração com ERP, CRM ou banco de dados",
                   "Automação de pedidos e pagamentos",
                   "Follow-up e recuperação de oportunidades",
                   "Painel de acompanhamento",
-                  "Ajustes contínuos de melhoria",
-                  "Atendimento técnico com prioridade",
                   "Reunião periódica de acompanhamento",
                 ],
                 cta: "FALAR COM UM ESPECIALISTA",
@@ -311,7 +361,7 @@ function Landing() {
             ].map((p) => (
               <div
                 key={p.name}
-                className={`relative p-10 border transition-colors ${p.highlight ? "border-foreground bg-foreground text-background" : "border-border bg-card"}`}
+                className={`relative p-8 border transition-colors ${p.highlight ? "border-foreground bg-foreground text-background" : "border-border bg-card"}`}
               >
                 {p.badge && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand text-white text-[10px] uppercase tracking-[0.25em] px-4 py-1.5">
@@ -319,7 +369,7 @@ function Landing() {
                   </div>
                 )}
                 <div className={`uppercase tracking-[0.3em] text-[11px] ${p.highlight ? "text-background/70" : "text-muted-foreground"}`}>{p.name}</div>
-                <div className="mt-6 flex items-baseline gap-1">
+                <div className="mt-5 flex items-baseline gap-1">
                   <span className={`text-sm ${p.highlight ? "text-background/70" : "text-muted-foreground"}`}>R$</span>
                   <span className="text-5xl font-light">{p.price}</span>
                   <span className={`text-sm ${p.highlight ? "text-background/70" : "text-muted-foreground"}`}>/mês</span>
@@ -328,7 +378,7 @@ function Landing() {
                   Implantação: R$ {p.impl}
                 </div>
                 <p className={`mt-4 text-sm font-light ${p.highlight ? "text-background/80" : "text-muted-foreground"}`}>{p.desc}</p>
-                <ul className="mt-8 space-y-3">
+                <ul className="mt-6 space-y-3">
                   {p.feats.map((f) => (
                     <li key={f} className="flex items-start gap-3 text-sm font-light">
                       <Check className={`h-4 w-4 mt-0.5 shrink-0 ${p.highlight ? "text-background" : "text-brand"}`} /> {f}
@@ -337,7 +387,7 @@ function Landing() {
                 </ul>
                 <a
                   href="#contato"
-                  className={`mt-10 block text-center text-[11px] uppercase tracking-[0.2em] py-4 border transition ${
+                  className={`mt-8 block text-center text-[11px] uppercase tracking-[0.2em] py-4 border transition ${
                     p.highlight ? "border-background hover:bg-background hover:text-foreground" : "border-foreground hover:bg-foreground hover:text-background"
                   }`}
                 >
@@ -350,28 +400,29 @@ function Landing() {
       </section>
 
       {/* Contato */}
-      <section id="contato" className="border-t border-border py-28 lg:py-36">
-        <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-16">
+      <section id="contato" className={sectionPad}>
+        <div className={`${container} grid md:grid-cols-2 gap-12 lg:gap-20`}>
           <div>
             <div className="uppercase tracking-[0.3em] text-[11px] text-muted-foreground">Contato</div>
-            <div className="mt-6 h-px w-12 bg-border" />
-            <h2 className="mt-8 text-3xl md:text-4xl font-light tracking-tight leading-tight">
-              Vamos conversar sobre o seu atendimento.
+            <div className="mt-5 h-px w-12 bg-border" />
+            <h2 className="mt-6 text-3xl md:text-4xl font-light tracking-tight leading-tight">
+              Descubra onde sua empresa está perdendo oportunidades.
             </h2>
             <p className="mt-6 text-muted-foreground font-light">
-              Preencha o formulário e um especialista entra em contato em minutos.
+              Conte como funciona seu atendimento e avaliaremos o que pode ser automatizado.
             </p>
-            <div className="mt-10 flex items-center gap-4 text-sm text-muted-foreground">
+            <div className="mt-8 flex items-center gap-3 text-sm text-muted-foreground">
               <Instagram className="h-4 w-4" /> @atendevende
             </div>
           </div>
 
           <form
-            onSubmit={(e) => { e.preventDefault(); alert("Recebemos seu contato! Retornamos em breve."); }}
+            onSubmit={(e) => { e.preventDefault(); alert("Recebemos sua solicitação. Nossa equipe entrará em contato para entender melhor sua operação."); }}
             className="space-y-5"
           >
             {[
               { name: "nome", ph: "Nome", type: "text" },
+              { name: "empresa", ph: "Empresa", type: "text" },
               { name: "email", ph: "E-mail", type: "email" },
               { name: "whats", ph: "WhatsApp", type: "text" },
             ].map((f) => (
@@ -383,8 +434,8 @@ function Landing() {
                 className="w-full bg-transparent border-0 border-b border-border py-4 text-sm placeholder:text-muted-foreground focus:outline-none focus:border-foreground transition"
               />
             ))}
-            <button className="mt-4 inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.25em] font-medium border-b border-foreground pb-2 hover:gap-4 transition-all">
-              Enviar mensagem <ArrowRight className="h-4 w-4" />
+            <button className="mt-4 inline-flex items-center gap-3 bg-brand text-white text-[11px] uppercase tracking-[0.22em] font-medium px-7 py-4 hover:bg-brand/90 transition">
+              Solicitar diagnóstico <Send className="h-4 w-4" />
             </button>
           </form>
         </div>
@@ -392,10 +443,15 @@ function Landing() {
 
       {/* Footer */}
       <footer className="border-t border-border">
-        <div className="max-w-7xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className={`${container} py-8 flex flex-col md:flex-row items-center justify-between gap-4`}>
           <div className="flex items-center gap-2.5">
             <img src={logo.url} alt="Atende&Vende" className="h-7 w-7 object-contain" />
             <span className="text-sm font-medium">Atende<span className="text-brand">&</span>Vende</span>
+          </div>
+          <div className="flex items-center gap-6 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+            <a href="#como-funciona" className="hover:text-foreground transition">Como funciona</a>
+            <a href="#planos" className="hover:text-foreground transition">Planos</a>
+            <a href="#contato" className="hover:text-foreground transition">Contato</a>
           </div>
           <p className="text-xs uppercase tracking-[0.22em] text-muted-foreground">
             © {new Date().getFullYear()} Atende&Vende

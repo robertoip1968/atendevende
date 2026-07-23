@@ -5,26 +5,38 @@ import chatbotAvatar from "@/assets/chatbot-avatar.png.asset.json";
 
 type Msg = { role: "bot" | "user"; text: string };
 
+const quickOptions = [
+  "Demora para responder",
+  "Falta de acompanhamento",
+  "Equipe sobrecarregada",
+  "Dificuldade para vender",
+  "Necessidade de integração",
+  "Quero conhecer a solução",
+];
+
 const initialMsgs: Msg[] = [
-  { role: "bot", text: "Olá! 👋 Eu sou a IA do Atende&Vende. Como posso te ajudar hoje?" },
-  { role: "bot", text: "Posso falar sobre: automação de atendimento, integração com WhatsApp, funil de vendas ou agendar uma demo." },
+  { role: "bot", text: "Olá! Qual é hoje o maior problema do seu atendimento?" },
 ];
 
 function reply(input: string): string {
   const t = input.toLowerCase();
+  if (/(demora|resposta|lento|tempo)/.test(t))
+    return "Entendi. O Atende&Vende responde na hora pelo WhatsApp, 24/7, e garante que nenhum cliente fique esperando.";
+  if (/(acompanh|follow|sumiu|parou)/.test(t))
+    return "O Atende&Vende faz follow-up automático e retoma conversas que pararam antes da decisão.";
+  if (/(sobrecarreg|equipe|time|volume)/.test(t))
+    return "A IA cuida do atendimento inicial, qualifica e só transfere para sua equipe quando faz sentido — com todo o contexto.";
+  if (/(vend|convers|orçamento|pedido)/.test(t))
+    return "Conduzimos o cliente até orçamento, pedido ou agendamento dentro do próprio WhatsApp. Quer receber um diagnóstico?";
+  if (/(integr|crm|erp|sistema|api)/.test(t))
+    return "Integramos com CRM, ERP, planilhas e sistemas internos para automatizar processos ponta a ponta.";
+  if (/(conhec|solu|saber|demo|diagn)/.test(t))
+    return "Ótimo! Deixe seu nome e WhatsApp no formulário abaixo que um especialista entra em contato para um diagnóstico gratuito.";
   if (/(pre[çc]o|valor|plano|custo)/.test(t))
-    return "Temos planos a partir de R$ 197/mês. Quer que eu te envie uma proposta personalizada? Deixe seu e-mail!";
-  if (/(whats|zap|instagram|canal)/.test(t))
-    return "Integramos WhatsApp Oficial, Instagram Direct, Messenger e webchat em uma só caixa de entrada. 🚀";
-  if (/(demo|teste|experi)/.test(t))
-    return "Perfeito! Agende uma demo gratuita de 20 min. Me passe seu nome e telefone que nosso time entra em contato.";
-  if (/(venda|fluxo|funil|convers[aã]o)/.test(t))
-    return "Nosso fluxo qualifica leads 24/7, envia para o vendedor certo e aumenta a conversão em até 3x. 📈";
+    return "Temos planos a partir de R$ 790/mês. Posso te encaminhar para a seção de planos ou para falar com um especialista.";
   if (/(oi|ol[aá]|bom dia|boa tarde|boa noite)/.test(t))
-    return "Oi! Que bom te ver por aqui. Qual desafio de atendimento você quer resolver?";
-  if (/(obrigad|valeu|thanks)/.test(t))
-    return "Por nada! Estou aqui sempre que precisar. 💙";
-  return "Legal! Um especialista humano pode te dar mais detalhes. Quer agendar uma conversa rápida?";
+    return "Oi! Qual é hoje o maior desafio do seu atendimento?";
+  return "Anotado. Um especialista pode te ajudar com um diagnóstico. Quer que eu conecte você com o time?";
 }
 
 export function ChatWidget() {
@@ -38,26 +50,29 @@ export function ChatWidget() {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
   }, [msgs, typing]);
 
-  function send() {
-    const text = input.trim();
-    if (!text) return;
-    setMsgs((m) => [...m, { role: "user", text }]);
+  function sendText(text: string) {
+    const clean = text.trim();
+    if (!clean) return;
+    setMsgs((m) => [...m, { role: "user", text: clean }]);
     setInput("");
     setTyping(true);
     setTimeout(() => {
-      setMsgs((m) => [...m, { role: "bot", text: reply(text) }]);
+      setMsgs((m) => [...m, { role: "bot", text: reply(clean) }]);
       setTyping(false);
     }, 700);
+  }
+  function send() {
+    sendText(input);
   }
 
   return (
     <>
       {/* Floating button */}
-      <div className="fixed right-5 top-1/2 -translate-y-1/2 z-50 flex flex-col items-center gap-2">
+      <div className="fixed right-4 md:right-5 bottom-4 md:top-1/2 md:bottom-auto md:-translate-y-1/2 z-50 flex flex-col items-center gap-2">
         <button
           onClick={() => setOpen((v) => !v)}
           aria-label="Abrir chat"
-          className="h-16 w-16 rounded-full bg-gradient-brand shadow-glow flex items-center justify-center text-primary-foreground transition-transform hover:scale-105 active:scale-95 overflow-hidden border-2 border-background"
+          className="h-14 w-14 md:h-16 md:w-16 rounded-full bg-gradient-brand shadow-glow flex items-center justify-center text-primary-foreground transition-transform hover:scale-105 active:scale-95 overflow-hidden border-2 border-background"
         >
           {open ? (
             <X className="h-7 w-7" />
@@ -70,15 +85,15 @@ export function ChatWidget() {
           )}
         </button>
         {!open && (
-          <span className="px-3.5 py-1.5 rounded-2xl bg-card border border-border text-xs font-medium text-foreground shadow-sm whitespace-pre-line text-center">
-            Pergunte para nossa IA{"\n"}como{"\u00a0"}podemos ajudá-lo
+          <span className="hidden md:inline-block px-3.5 py-1.5 rounded-2xl bg-card border border-border text-xs font-medium text-foreground shadow-sm text-center max-w-[180px]">
+            Veja como o Atende&Vende pode ajudar sua empresa.
           </span>
         )}
       </div>
 
       {/* Chat panel */}
       <div
-        className={`fixed right-5 top-1/2 -translate-y-1/2 z-50 w-[92vw] max-w-sm h-[70vh] max-h-[560px] bg-card rounded-2xl shadow-glow border border-border flex flex-col overflow-hidden transition-all duration-300 origin-center-right ${
+        className={`fixed right-4 md:right-5 bottom-20 md:top-1/2 md:bottom-auto md:-translate-y-1/2 z-50 w-[92vw] max-w-sm h-[70vh] max-h-[560px] bg-card rounded-2xl shadow-glow border border-border flex flex-col overflow-hidden transition-all duration-300 origin-center-right ${
           open ? "opacity-100 scale-100 pointer-events-auto" : "opacity-0 scale-95 pointer-events-none"
         }`}
         role="dialog"
@@ -120,6 +135,20 @@ export function ChatWidget() {
               </div>
             </div>
           ))}
+          {msgs.length === 1 && !typing && (
+            <div className="flex flex-wrap gap-2 pt-1">
+              {quickOptions.map((q) => (
+                <button
+                  key={q}
+                  type="button"
+                  onClick={() => sendText(q)}
+                  className="text-xs px-3 py-1.5 rounded-full border border-border bg-card hover:bg-muted transition"
+                >
+                  {q}
+                </button>
+              ))}
+            </div>
+          )}
           {typing && (
             <div className="flex justify-start">
               <div className="bg-card px-4 py-3 rounded-2xl rounded-bl-sm shadow-card flex gap-1">
