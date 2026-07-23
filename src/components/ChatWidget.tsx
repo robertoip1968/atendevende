@@ -135,6 +135,20 @@ export function ChatWidget() {
               </div>
             </div>
           ))}
+          {msgs.length === 1 && !typing && (
+            <div className="flex flex-wrap gap-2 pt-1">
+              {quickOptions.map((q) => (
+                <button
+                  key={q}
+                  type="button"
+                  onClick={() => sendText(q)}
+                  className="text-xs px-3 py-1.5 rounded-full border border-border bg-card hover:bg-muted transition"
+                >
+                  {q}
+                </button>
+              ))}
+            </div>
+          )}
           {typing && (
             <div className="flex justify-start">
               <div className="bg-card px-4 py-3 rounded-2xl rounded-bl-sm shadow-card flex gap-1">
