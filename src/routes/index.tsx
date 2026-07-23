@@ -6,6 +6,7 @@ import atendimentoImg from "@/assets/atendimento.jpg";
 import vendasImg from "@/assets/vendas-whatsapp.png.asset.json";
 import automacaoImg from "@/assets/automacao-agente.png.asset.json";
 import heroRobot from "@/assets/hero-robot.png.asset.json";
+import comoFuncionaImg from "@/assets/como-funciona.png.asset.json";
 import { ChatWidget } from "@/components/ChatWidget";
 
 export const Route = createFileRoute("/")({
@@ -193,36 +194,11 @@ function Landing() {
       {/* Como funciona */}
       <section id="como-funciona" className={sectionPad}>
         <div className={container}>
-          <div className="max-w-2xl">
-            <div className="uppercase tracking-[0.3em] text-[11px] text-muted-foreground">Como funciona</div>
-            <div className="mt-5 h-px w-12 bg-border" />
-            <h2 className="mt-6 text-3xl md:text-4xl font-light tracking-tight leading-tight">
-              Da primeira mensagem ao resultado.
-            </h2>
-            <p className="mt-5 text-muted-foreground font-light">
-              O Atende&Vende acompanha cada oportunidade durante todo o processo comercial.
-            </p>
-          </div>
-
-          <div className="mt-14 relative">
-            <div className="hidden lg:block absolute top-8 left-[8%] right-[8%] h-px bg-border" aria-hidden />
-            <ol className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 relative">
-              {[
-                { n: "01", title: "Recebe e entende", desc: "Responde na hora pelo WhatsApp e identifica o que o cliente precisa." },
-                { n: "02", title: "Executa a tarefa", desc: "Consulta preço, agenda, gera orçamento ou registra o pedido." },
-                { n: "03", title: "Acompanha a oportunidade", desc: "Faz follow-up automático e retoma conversas paradas." },
-                { n: "04", title: "Entrega para o time", desc: "Transfere com contexto e próximo passo recomendado para sua equipe." },
-              ].map((s) => (
-                <li key={s.n} className="relative">
-                  <div className="h-16 w-16 rounded-full bg-background border-2 border-brand text-brand flex items-center justify-center text-sm font-medium tracking-widest mx-auto lg:mx-0">
-                    {s.n}
-                  </div>
-                  <h3 className="mt-5 text-lg font-medium tracking-tight text-center lg:text-left">{s.title}</h3>
-                  <p className="mt-3 text-sm text-muted-foreground font-light leading-relaxed text-center lg:text-left">{s.desc}</p>
-                </li>
-              ))}
-            </ol>
-          </div>
+          <img
+            src={comoFuncionaImg.url}
+            alt="Como funciona o Atende&Vende: recebe e entende, consulta e executa, acompanha e recupera, transfere e registra"
+            className="w-full h-auto rounded-lg"
+          />
         </div>
       </section>
 
