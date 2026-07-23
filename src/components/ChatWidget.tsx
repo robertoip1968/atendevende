@@ -5,26 +5,38 @@ import chatbotAvatar from "@/assets/chatbot-avatar.png.asset.json";
 
 type Msg = { role: "bot" | "user"; text: string };
 
+const quickOptions = [
+  "Demora para responder",
+  "Falta de acompanhamento",
+  "Equipe sobrecarregada",
+  "Dificuldade para vender",
+  "Necessidade de integração",
+  "Quero conhecer a solução",
+];
+
 const initialMsgs: Msg[] = [
-  { role: "bot", text: "Olá! 👋 Eu sou a IA do Atende&Vende. Como posso te ajudar hoje?" },
-  { role: "bot", text: "Posso falar sobre: automação de atendimento, integração com WhatsApp, funil de vendas ou agendar uma demo." },
+  { role: "bot", text: "Olá! Qual é hoje o maior problema do seu atendimento?" },
 ];
 
 function reply(input: string): string {
   const t = input.toLowerCase();
+  if (/(demora|resposta|lento|tempo)/.test(t))
+    return "Entendi. O Atende&Vende responde na hora pelo WhatsApp, 24/7, e garante que nenhum cliente fique esperando.";
+  if (/(acompanh|follow|sumiu|parou)/.test(t))
+    return "O Atende&Vende faz follow-up automático e retoma conversas que pararam antes da decisão.";
+  if (/(sobrecarreg|equipe|time|volume)/.test(t))
+    return "A IA cuida do atendimento inicial, qualifica e só transfere para sua equipe quando faz sentido — com todo o contexto.";
+  if (/(vend|convers|orçamento|pedido)/.test(t))
+    return "Conduzimos o cliente até orçamento, pedido ou agendamento dentro do próprio WhatsApp. Quer receber um diagnóstico?";
+  if (/(integr|crm|erp|sistema|api)/.test(t))
+    return "Integramos com CRM, ERP, planilhas e sistemas internos para automatizar processos ponta a ponta.";
+  if (/(conhec|solu|saber|demo|diagn)/.test(t))
+    return "Ótimo! Deixe seu nome e WhatsApp no formulário abaixo que um especialista entra em contato para um diagnóstico gratuito.";
   if (/(pre[çc]o|valor|plano|custo)/.test(t))
-    return "Temos planos a partir de R$ 197/mês. Quer que eu te envie uma proposta personalizada? Deixe seu e-mail!";
-  if (/(whats|zap|instagram|canal)/.test(t))
-    return "Integramos WhatsApp Oficial, Instagram Direct, Messenger e webchat em uma só caixa de entrada. 🚀";
-  if (/(demo|teste|experi)/.test(t))
-    return "Perfeito! Agende uma demo gratuita de 20 min. Me passe seu nome e telefone que nosso time entra em contato.";
-  if (/(venda|fluxo|funil|convers[aã]o)/.test(t))
-    return "Nosso fluxo qualifica leads 24/7, envia para o vendedor certo e aumenta a conversão em até 3x. 📈";
+    return "Temos planos a partir de R$ 790/mês. Posso te encaminhar para a seção de planos ou para falar com um especialista.";
   if (/(oi|ol[aá]|bom dia|boa tarde|boa noite)/.test(t))
-    return "Oi! Que bom te ver por aqui. Qual desafio de atendimento você quer resolver?";
-  if (/(obrigad|valeu|thanks)/.test(t))
-    return "Por nada! Estou aqui sempre que precisar. 💙";
-  return "Legal! Um especialista humano pode te dar mais detalhes. Quer agendar uma conversa rápida?";
+    return "Oi! Qual é hoje o maior desafio do seu atendimento?";
+  return "Anotado. Um especialista pode te ajudar com um diagnóstico. Quer que eu conecte você com o time?";
 }
 
 export function ChatWidget() {
