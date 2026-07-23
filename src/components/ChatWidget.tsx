@@ -50,16 +50,19 @@ export function ChatWidget() {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
   }, [msgs, typing]);
 
-  function send() {
-    const text = input.trim();
-    if (!text) return;
-    setMsgs((m) => [...m, { role: "user", text }]);
+  function sendText(text: string) {
+    const clean = text.trim();
+    if (!clean) return;
+    setMsgs((m) => [...m, { role: "user", text: clean }]);
     setInput("");
     setTyping(true);
     setTimeout(() => {
-      setMsgs((m) => [...m, { role: "bot", text: reply(text) }]);
+      setMsgs((m) => [...m, { role: "bot", text: reply(clean) }]);
       setTyping(false);
     }, 700);
+  }
+  function send() {
+    sendText(input);
   }
 
   return (
