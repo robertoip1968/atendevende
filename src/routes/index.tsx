@@ -175,7 +175,7 @@ function Landing() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/55 to-black/30" aria-hidden />
 
         <div className="relative max-w-7xl mx-auto px-6 md:px-10 py-16 md:py-24 flex flex-col justify-center min-h-[70vh]">
-          <div className="max-w-3xl animate-[fadeIn_0.6s_ease-out]">
+          <div className="max-w-3xl animate-in fade-in slide-in-from-bottom-4 duration-700">
             <div className="uppercase tracking-[0.24em] text-[11px] md:text-xs text-white/80 font-medium">
               Atendimento, vendas e acompanhamento pelo WhatsApp
             </div>
