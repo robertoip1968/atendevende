@@ -211,7 +211,7 @@ function Landing() {
                 { n: "01", title: "Recebe e entende", desc: "Responde na hora pelo WhatsApp e identifica o que o cliente precisa." },
                 { n: "02", title: "Executa a tarefa", desc: "Consulta preço, agenda, gera orçamento ou registra o pedido." },
                 { n: "03", title: "Acompanha a oportunidade", desc: "Faz follow-up automático e retoma conversas paradas." },
-                { n: "04", title: "Entrega para o time", desc: "Transfere com contexto e próximo passo recomendado para sua equipe." },
+                { n: "04", title: "Fecha o negócio", desc: "Fecha a venda ou transfere com contexto e próximo passo." },
               ].map((s) => (
                 <li key={s.n} className="relative">
                   <div className="h-16 w-16 rounded-full bg-background border-2 border-brand text-brand flex items-center justify-center text-sm font-medium tracking-widest mx-auto lg:mx-0">
