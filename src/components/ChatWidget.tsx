@@ -68,11 +68,11 @@ export function ChatWidget() {
   return (
     <>
       {/* Floating button */}
-      <div className="fixed right-5 top-1/2 -translate-y-1/2 z-50 flex flex-col items-center gap-2">
+      <div className="fixed right-4 md:right-5 bottom-4 md:top-1/2 md:bottom-auto md:-translate-y-1/2 z-50 flex flex-col items-center gap-2">
         <button
           onClick={() => setOpen((v) => !v)}
           aria-label="Abrir chat"
-          className="h-16 w-16 rounded-full bg-gradient-brand shadow-glow flex items-center justify-center text-primary-foreground transition-transform hover:scale-105 active:scale-95 overflow-hidden border-2 border-background"
+          className="h-14 w-14 md:h-16 md:w-16 rounded-full bg-gradient-brand shadow-glow flex items-center justify-center text-primary-foreground transition-transform hover:scale-105 active:scale-95 overflow-hidden border-2 border-background"
         >
           {open ? (
             <X className="h-7 w-7" />
@@ -85,8 +85,8 @@ export function ChatWidget() {
           )}
         </button>
         {!open && (
-          <span className="px-3.5 py-1.5 rounded-2xl bg-card border border-border text-xs font-medium text-foreground shadow-sm whitespace-pre-line text-center">
-            Pergunte para nossa IA{"\n"}como{"\u00a0"}podemos ajudá-lo
+          <span className="hidden md:inline-block px-3.5 py-1.5 rounded-2xl bg-card border border-border text-xs font-medium text-foreground shadow-sm text-center max-w-[180px]">
+            Veja como o Atende&Vende pode ajudar sua empresa.
           </span>
         )}
       </div>
