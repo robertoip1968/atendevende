@@ -25,11 +25,16 @@ export const Route = createFileRoute("/")({
 
 function Landing() {
   const [scrolled, setScrolled] = useState(false);
+  const [activeStep, setActiveStep] = useState(0);
   useEffect(() => {
     const on = () => setScrolled(window.scrollY > 40);
     on();
     window.addEventListener("scroll", on, { passive: true });
     return () => window.removeEventListener("scroll", on);
+  }, []);
+  useEffect(() => {
+    const id = setInterval(() => setActiveStep((s) => (s + 1) % 4), 2600);
+    return () => clearInterval(id);
   }, []);
 
   const navLinks = [
