@@ -63,7 +63,7 @@ function Landing() {
       >
         <div className={`${container} flex items-center justify-between`}>
           <a href="#inicio" className="flex items-center gap-4">
-            <img src={logo.url} alt="Atende&Vende" className="h-16 w-16 object-contain" />
+            <img src={logo} alt="Atende&Vende" className="h-16 w-16 object-contain" />
             <span className={`font-semibold text-2xl tracking-tight transition-colors ${scrolled ? "text-foreground" : "text-white drop-shadow-lg"}`}>
               Atende<span className="text-brand">&</span>Vende
             </span>
@@ -87,7 +87,7 @@ function Landing() {
       {/* Hero */}
       <section id="inicio" className="relative h-[78vh] min-h-[560px] w-full overflow-hidden">
         <img
-          src={heroRobot.url}
+          src={heroRobot}
           alt="Interface Atende&Vende conduzindo uma conversa pelo WhatsApp"
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -217,10 +217,10 @@ function Landing() {
           <div className="mt-14">
             {(() => {
               const steps = [
-                { n: "01", title: "Recebe e entende", desc: "Responde na hora pelo WhatsApp e identifica o que o cliente precisa.", img: fluxo01.url },
-                { n: "02", title: "Executa a tarefa identificada", desc: "Consulta preço, agenda consulta, gera orçamento ou registra o pedido.", img: fluxo02.url },
-                { n: "03", title: "Acompanha a oportunidade", desc: "Faz follow-up automático e retoma conversas paradas.", img: fluxo03.url },
-                { n: "04", title: "Fecha o negócio", desc: "Fecha a venda ou transfere com contexto e próximo passo.", img: fluxo04.url },
+                { n: "01", title: "Recebe e entende", desc: "Responde na hora pelo WhatsApp e identifica o que o cliente precisa.", img: fluxo01 },
+                { n: "02", title: "Executa a tarefa identificada", desc: "Consulta preço, agenda consulta, gera orçamento ou registra o pedido.", img: fluxo02 },
+                { n: "03", title: "Acompanha a oportunidade", desc: "Faz follow-up automático e retoma conversas paradas.", img: fluxo03 },
+                { n: "04", title: "Fecha o negócio", desc: "Fecha a venda ou transfere com contexto e próximo passo.", img: fluxo04 },
               ];
               return (
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -276,8 +276,8 @@ function Landing() {
           <div className="mt-14 grid md:grid-cols-3 gap-6">
             {[
               { tag: "Atendimento", title: "Atendimento, agendamento e suporte", desc: "Atende, responde, agenda, faz triagem, tira dúvidas e encaminha para a equipe.", image: atendimentoImg },
-              { tag: "Vendas", title: "Vendas e pedidos", desc: "Gera orçamentos, efetua vendas, gera pedidos, pedidos, pagamentos e executa follow-up.", image: vendasImg.url },
-              { tag: "Automação", title: "Automação", desc: "Automatiza processos internos e faz integração com os sistemas da empresa.", image: automacaoImg.url },
+              { tag: "Vendas", title: "Vendas e pedidos", desc: "Gera orçamentos, efetua vendas, gera pedidos, pedidos, pagamentos e executa follow-up.", image: vendasImg },
+              { tag: "Automação", title: "Automação", desc: "Automatiza processos internos e faz integração com os sistemas da empresa.", image: automacaoImg },
             ].map((a) => (
               <article
                 key={a.title}
@@ -481,7 +481,7 @@ function Landing() {
       <footer className="border-t border-border">
         <div className={`${container} py-8 flex flex-col md:flex-row items-center justify-between gap-4`}>
           <div className="flex items-center gap-2.5">
-            <img src={logo.url} alt="Atende&Vende" className="h-7 w-7 object-contain" />
+            <img src={logo} alt="Atende&Vende" className="h-7 w-7 object-contain" />
             <span className="text-sm font-medium">Atende<span className="text-brand">&</span>Vende</span>
           </div>
           <div className="flex items-center gap-6 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">

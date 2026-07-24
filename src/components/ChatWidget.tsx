@@ -82,7 +82,7 @@ export function ChatWidget() {
             <X className="h-7 w-7" />
           ) : (
             <img
-              src={chatbotAvatar.url}
+              src={chatbotAvatar}
               alt="Avatar da IA Atende&Vende"
               className="h-full w-full object-cover"
             />
@@ -106,7 +106,7 @@ export function ChatWidget() {
         <header className="bg-gradient-brand text-primary-foreground p-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="h-10 w-10 rounded-full bg-white/95 p-1 flex items-center justify-center">
-              <img src={logo.url} alt="Atende&Vende" className="h-full w-full object-contain" />
+              <img src={logo} alt="Atende&Vende" className="h-full w-full object-contain" />
             </div>
             <div>
               <div className="font-semibold leading-tight">IA Atende&Vende</div>
