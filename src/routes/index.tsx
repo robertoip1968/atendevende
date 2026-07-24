@@ -216,29 +216,29 @@ function Landing() {
           <div className="mt-14">
             {(() => {
               const steps = [
-                { n: "01", title: "Recebe e entende", desc: "Responde na hora pelo WhatsApp e identifica o que o cliente precisa." },
-                { n: "02", title: "Executa a tarefa", desc: "Consulta preço, agenda, gera orçamento ou registra o pedido." },
-                { n: "03", title: "Acompanha a oportunidade", desc: "Faz follow-up automático e retoma conversas paradas." },
-                { n: "04", title: "Fecha o negócio", desc: "Fecha a venda ou transfere com contexto e próximo passo." },
+                { n: "01", title: "Recebe e entende", desc: "Responde na hora pelo WhatsApp e identifica o que o cliente precisa.", img: fluxo01.url },
+                { n: "02", title: "Executa a tarefa", desc: "Consulta preço, agenda, gera orçamento ou registra o pedido.", img: fluxo02.url },
+                { n: "03", title: "Acompanha a oportunidade", desc: "Faz follow-up automático e retoma conversas paradas.", img: fluxo03.url },
+                { n: "04", title: "Fecha o negócio", desc: "Fecha a venda ou transfere com contexto e próximo passo.", img: fluxo04.url },
               ];
               return (
                 <>
-                  <div className="relative overflow-hidden border border-border bg-card">
-                    <img
-                      src={comoFuncionaFluxo.url}
-                      alt="Fluxo do Atende&Vende: recebe, executa, acompanha e transfere"
-                      className="w-full h-auto block"
-                    />
-                    <div
-                      className="hidden md:block absolute top-0 bottom-0 w-1/4 pointer-events-none transition-all duration-700 ease-in-out"
-                      style={{
-                        left: `${activeStep * 25}%`,
-                        background: "linear-gradient(180deg, color-mix(in oklab, var(--brand) 18%, transparent), transparent 60%)",
-                        borderLeft: "2px solid var(--brand)",
-                        borderRight: "2px solid var(--brand)",
-                      }}
-                      aria-hidden
-                    />
+                  <div className="relative overflow-hidden border border-border bg-card aspect-[16/9]">
+                    {steps.map((s, i) => (
+                      <img
+                        key={s.n}
+                        src={s.img}
+                        alt={`${s.n} — ${s.title}`}
+                        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${
+                          i === activeStep ? "opacity-100" : "opacity-0"
+                        }`}
+                      />
+                    ))}
+                    <div className="absolute top-4 left-4 bg-background/90 backdrop-blur-sm border border-border px-3 py-1.5 text-[11px] tracking-[0.2em] font-medium">
+                      <span className="text-brand">{steps[activeStep].n}</span>
+                      <span className="mx-2 text-border">/</span>
+                      <span>{steps[activeStep].title}</span>
+                    </div>
                   </div>
 
                   <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3">
