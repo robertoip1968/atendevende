@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { X, Send } from "lucide-react";
-import logo from "@/assets/atende-vende-logo.asset.json";
-import chatbotAvatar from "@/assets/chatbot-avatar.png.asset.json";
+
+const logo = "/images/atende-vende-logo.png";
+const chatbotAvatar = "/images/chatbot-avatar.png";
 
 type Msg = { role: "bot" | "user"; text: string };
 

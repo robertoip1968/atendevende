@@ -1,16 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Instagram, Check, ArrowRight, MessageSquare, Cog, Repeat, Users, Clock3, Timer, UserCheck, CalendarCheck, Send } from "lucide-react";
-import logo from "@/assets/atende-vende-logo.asset.json";
 import atendimentoImg from "@/assets/atendimento.jpg";
-import vendasImg from "@/assets/vendas-whatsapp.png.asset.json";
-import automacaoImg from "@/assets/automacao-agente.png.asset.json";
-import heroRobot from "@/assets/hero-robot.png.asset.json";
-import fluxo01 from "@/assets/fluxo-01-recebe.png.asset.json";
-import fluxo02 from "@/assets/fluxo-02-executa.png.asset.json";
-import fluxo03 from "@/assets/fluxo-03-acompanha.png.asset.json";
-import fluxo04 from "@/assets/fluxo-04-fecha.png.asset.json";
 import { ChatWidget } from "@/components/ChatWidget";
+
+const logo = "/images/atende-vende-logo.png";
+const vendasImg = "/images/vendas-whatsapp.png";
+const automacaoImg = "/images/automacao-agente.png";
+const heroRobot = "/images/hero-robot.png";
+const fluxo01 = "/images/fluxo-01-recebe.png";
+const fluxo02 = "/images/fluxo-02-executa.png";
+const fluxo03 = "/images/fluxo-03-acompanha.png";
+const fluxo04 = "/images/fluxo-04-fecha.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
