@@ -6,6 +6,7 @@ import atendimentoImg from "@/assets/atendimento.jpg";
 import vendasImg from "@/assets/vendas-whatsapp.png.asset.json";
 import automacaoImg from "@/assets/automacao-agente.png.asset.json";
 import heroRobot from "@/assets/hero-robot.png.asset.json";
+import comoFuncionaFluxo from "@/assets/como-funciona-fluxo.png.asset.json";
 import { ChatWidget } from "@/components/ChatWidget";
 
 export const Route = createFileRoute("/")({
