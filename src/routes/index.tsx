@@ -6,7 +6,10 @@ import atendimentoImg from "@/assets/atendimento.jpg";
 import vendasImg from "@/assets/vendas-whatsapp.png.asset.json";
 import automacaoImg from "@/assets/automacao-agente.png.asset.json";
 import heroRobot from "@/assets/hero-robot.png.asset.json";
-import comoFuncionaFluxo from "@/assets/como-funciona-fluxo.png.asset.json";
+import fluxo01 from "@/assets/fluxo-01-recebe.png.asset.json";
+import fluxo02 from "@/assets/fluxo-02-executa.png.asset.json";
+import fluxo03 from "@/assets/fluxo-03-acompanha.png.asset.json";
+import fluxo04 from "@/assets/fluxo-04-fecha.png.asset.json";
 import { ChatWidget } from "@/components/ChatWidget";
 
 export const Route = createFileRoute("/")({
