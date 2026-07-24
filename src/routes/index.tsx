@@ -217,7 +217,7 @@ function Landing() {
             {(() => {
               const steps = [
                 { n: "01", title: "Recebe e entende", desc: "Responde na hora pelo WhatsApp e identifica o que o cliente precisa.", img: fluxo01.url },
-                { n: "02", title: "Executa a tarefa", desc: "Consulta preço, agenda, gera orçamento ou registra o pedido.", img: fluxo02.url },
+                { n: "02", title: "Executa a tarefa identificada", desc: "Consulta preço, agenda consulta, gera orçamento ou registra o pedido.", img: fluxo02.url },
                 { n: "03", title: "Acompanha a oportunidade", desc: "Faz follow-up automático e retoma conversas paradas.", img: fluxo03.url },
                 { n: "04", title: "Fecha o negócio", desc: "Fecha a venda ou transfere com contexto e próximo passo.", img: fluxo04.url },
               ];
