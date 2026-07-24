@@ -89,7 +89,7 @@ export function ChatWidget() {
         </button>
         {!open && (
           <span className="hidden md:inline-block px-3.5 py-1.5 rounded-2xl bg-card border border-border text-xs font-medium text-foreground shadow-sm text-center max-w-[180px]">
-            Como posso te ajudar?
+            Como posso ajudar?
           </span>
         )}
       </div>
