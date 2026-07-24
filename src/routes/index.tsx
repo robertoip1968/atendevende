@@ -222,48 +222,40 @@ function Landing() {
                 { n: "04", title: "Fecha o negócio", desc: "Fecha a venda ou transfere com contexto e próximo passo.", img: fluxo04.url },
               ];
               return (
-                <>
-                  <div className="relative overflow-hidden border border-border bg-card aspect-[16/9]">
-                    {steps.map((s, i) => (
-                      <img
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                  {steps.map((s, i) => {
+                    const active = i === activeStep;
+                    return (
+                      <button
                         key={s.n}
-                        src={s.img}
-                        alt={`${s.n} — ${s.title}`}
-                        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${
-                          i === activeStep ? "opacity-100" : "opacity-0"
+                        onClick={() => setActiveStep(i)}
+                        className={`text-left border bg-card overflow-hidden transition-all duration-500 ${
+                          active ? "border-brand shadow-md -translate-y-1" : "border-border hover:border-foreground/40"
                         }`}
-                      />
-                    ))}
-                    <div className="absolute top-4 left-4 bg-background/90 backdrop-blur-sm border border-border px-3 py-1.5 text-[11px] tracking-[0.2em] font-medium">
-                      <span className="text-brand">{steps[activeStep].n}</span>
-                      <span className="mx-2 text-border">/</span>
-                      <span>{steps[activeStep].title}</span>
-                    </div>
-                  </div>
-
-                  <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3">
-                    {steps.map((s, i) => {
-                      const active = i === activeStep;
-                      return (
-                        <button
-                          key={s.n}
-                          onClick={() => setActiveStep(i)}
-                          className={`text-left border p-4 transition-all duration-500 ${
-                            active ? "border-brand bg-brand/5 shadow-sm" : "border-border bg-card hover:border-foreground/40"
-                          }`}
-                        >
-                          <div className={`text-[11px] tracking-[0.2em] font-medium ${active ? "text-brand" : "text-muted-foreground"}`}>
-                            {s.n}
+                      >
+                        <div className="relative aspect-[4/5] overflow-hidden">
+                          <img
+                            src={s.img}
+                            alt={`${s.n} — ${s.title}`}
+                            className={`w-full h-full object-cover transition-transform duration-700 ${
+                              active ? "scale-105" : "scale-100"
+                            }`}
+                          />
+                          <div className="absolute top-3 left-3 bg-background/90 backdrop-blur-sm border border-border px-2 py-1 text-[10px] tracking-[0.2em] font-medium">
+                            <span className={active ? "text-brand" : "text-foreground"}>{s.n}</span>
                           </div>
-                          <div className="mt-2 text-sm font-medium tracking-tight">{s.title}</div>
-                          <p className="mt-1 text-xs text-muted-foreground font-light leading-relaxed hidden md:block">{s.desc}</p>
-                        </button>
-                      );
-                    })}
-                  </div>
-                </>
+                        </div>
+                        <div className="p-4">
+                          <div className="text-sm font-medium tracking-tight">{s.title}</div>
+                          <p className="mt-1 text-xs text-muted-foreground font-light leading-relaxed">{s.desc}</p>
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
               );
             })()}
+
           </div>
 
         </div>
