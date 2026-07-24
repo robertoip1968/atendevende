@@ -18,25 +18,15 @@ const initialMsgs: Msg[] = [
   { role: "bot", text: "Olá! Qual é hoje o maior problema do seu atendimento?" },
 ];
 
-function reply(input: string): string {
-  const t = input.toLowerCase();
-  if (/(demora|resposta|lento|tempo)/.test(t))
-    return "Entendi. O Atende&Vende responde na hora pelo WhatsApp, 24/7, e garante que nenhum cliente fique esperando.";
-  if (/(acompanh|follow|sumiu|parou)/.test(t))
-    return "O Atende&Vende faz follow-up automático e retoma conversas que pararam antes da decisão.";
-  if (/(sobrecarreg|equipe|time|volume)/.test(t))
-    return "A IA cuida do atendimento inicial, qualifica e só transfere para sua equipe quando faz sentido — com todo o contexto.";
-  if (/(vend|convers|orçamento|pedido)/.test(t))
-    return "Conduzimos o cliente até orçamento, pedido ou agendamento dentro do próprio WhatsApp. Quer receber um diagnóstico?";
-  if (/(integr|crm|erp|sistema|api)/.test(t))
-    return "Integramos com CRM, ERP, planilhas e sistemas internos para automatizar processos ponta a ponta.";
-  if (/(conhec|solu|saber|demo|diagn)/.test(t))
-    return "Ótimo! Deixe seu nome e WhatsApp no formulário abaixo que um especialista entra em contato para um diagnóstico gratuito.";
-  if (/(pre[çc]o|valor|plano|custo)/.test(t))
-    return "Temos planos a partir de R$ 790/mês. Posso te encaminhar para a seção de planos ou para falar com um especialista.";
-  if (/(oi|ol[aá]|bom dia|boa tarde|boa noite)/.test(t))
-    return "Oi! Qual é hoje o maior desafio do seu atendimento?";
-  return "Anotado. Um especialista pode te ajudar com um diagnóstico. Quer que eu conecte você com o time?";
+function getSessionId(): string {
+  if (typeof window === "undefined") return "ssr";
+  const key = "av_chat_session";
+  let id = window.localStorage.getItem(key);
+  if (!id) {
+    id = crypto.randomUUID?.() ?? `s_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+    window.localStorage.setItem(key, id);
+  }
+  return id;
 }
 
 export function ChatWidget() {
@@ -50,19 +40,32 @@ export function ChatWidget() {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
   }, [msgs, typing]);
 
-  function sendText(text: string) {
+  async function sendText(text: string) {
     const clean = text.trim();
-    if (!clean) return;
+    if (!clean || typing) return;
     setMsgs((m) => [...m, { role: "user", text: clean }]);
     setInput("");
     setTyping(true);
-    setTimeout(() => {
-      setMsgs((m) => [...m, { role: "bot", text: reply(clean) }]);
+    try {
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ sessionId: getSessionId(), message: clean }),
+      });
+      const data = (await res.json().catch(() => ({}))) as { reply?: string };
+      const botReply = data.reply?.trim() || "Desculpe, não consegui responder agora.";
+      setMsgs((m) => [...m, { role: "bot", text: botReply }]);
+    } catch {
+      setMsgs((m) => [
+        ...m,
+        { role: "bot", text: "Falha de conexão. Tente novamente em instantes." },
+      ]);
+    } finally {
       setTyping(false);
-    }, 700);
+    }
   }
   function send() {
-    sendText(input);
+    void sendText(input);
   }
 
   return (
