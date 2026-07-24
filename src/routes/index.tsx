@@ -63,7 +63,7 @@ function Landing() {
         <div className={`${container} flex items-center justify-between`}>
           <a href="#inicio" className="flex items-center gap-4">
             <img src={logo.url} alt="Atende&Vende" className="h-16 w-16 object-contain" />
-            <span className={`font-semibold text-2xl tracking-tight transition-colors ${scrolled ? "text-foreground" : "text-white drop-shadow"}`}>
+            <span className={`font-semibold text-2xl tracking-tight transition-colors ${scrolled ? "text-foreground" : "text-white drop-shadow-lg"}`}>
               Atende<span className="text-brand">&</span>Vende
             </span>
           </a>
@@ -73,7 +73,7 @@ function Landing() {
                 key={l.href}
                 href={l.href}
                 className={`text-sm uppercase tracking-[0.18em] font-medium transition-colors ${
-                  scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/90 hover:text-white"
+                  scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/90 hover:text-white drop-shadow-md"
                 }`}
               >
                 {l.label}
