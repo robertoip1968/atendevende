@@ -274,9 +274,9 @@ function Landing() {
 
           <div className="mt-14 grid md:grid-cols-3 gap-6">
             {[
-              { tag: "Atendimento", title: "Atendimento e suporte", desc: "Respostas, triagem, dúvidas frequentes e encaminhamento para a equipe.", image: atendimentoImg },
-              { tag: "Vendas", title: "Vendas e pedidos", desc: "Produtos, preços, orçamentos, pedidos, pagamentos e follow-up.", image: vendasImg.url },
-              { tag: "Automação", title: "Agendamentos e automação", desc: "Agenda, confirmações, reagendamentos e integração com os sistemas da empresa.", image: automacaoImg.url },
+              { tag: "Atendimento", title: "Atendimento, agendamento e suporte", desc: "Atende, responde, agenda, faz triagem, tira dúvidas e encaminha para a equipe.", image: atendimentoImg },
+              { tag: "Vendas", title: "Vendas e pedidos", desc: "Gera orçamentos, efetua vendas, gera pedidos, pedidos, pagamentos e executa follow-up.", image: vendasImg.url },
+              { tag: "Automação", title: "Automação", desc: "Automatiza processos internos e faz integração com os sistemas da empresa.", image: automacaoImg.url },
             ].map((a) => (
               <article
                 key={a.title}
