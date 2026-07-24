@@ -1,16 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Instagram, Check, ArrowRight, MessageSquare, Cog, Repeat, Users, Clock3, Timer, UserCheck, CalendarCheck, Send } from "lucide-react";
-import logo from "@/assets/atende-vende-logo.asset.json";
 import atendimentoImg from "@/assets/atendimento.jpg";
-import vendasImg from "@/assets/vendas-whatsapp.png.asset.json";
-import automacaoImg from "@/assets/automacao-agente.png.asset.json";
-import heroRobot from "@/assets/hero-robot.png.asset.json";
-import fluxo01 from "@/assets/fluxo-01-recebe.png.asset.json";
-import fluxo02 from "@/assets/fluxo-02-executa.png.asset.json";
-import fluxo03 from "@/assets/fluxo-03-acompanha.png.asset.json";
-import fluxo04 from "@/assets/fluxo-04-fecha.png.asset.json";
 import { ChatWidget } from "@/components/ChatWidget";
+
+const logo = "/images/atende-vende-logo.png";
+const vendasImg = "/images/vendas-whatsapp.png";
+const automacaoImg = "/images/automacao-agente.png";
+const heroRobot = "/images/hero-robot.png";
+const fluxo01 = "/images/fluxo-01-recebe.png";
+const fluxo02 = "/images/fluxo-02-executa.png";
+const fluxo03 = "/images/fluxo-03-acompanha.png";
+const fluxo04 = "/images/fluxo-04-fecha.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -62,7 +63,7 @@ function Landing() {
       >
         <div className={`${container} flex items-center justify-between`}>
           <a href="#inicio" className="flex items-center gap-4">
-            <img src={logo.url} alt="Atende&Vende" className="h-16 w-16 object-contain" />
+            <img src={logo} alt="Atende&Vende" className="h-16 w-16 object-contain" />
             <span className={`font-semibold text-2xl tracking-tight transition-colors ${scrolled ? "text-foreground" : "text-white drop-shadow-lg"}`}>
               Atende<span className="text-brand">&</span>Vende
             </span>
@@ -86,7 +87,7 @@ function Landing() {
       {/* Hero */}
       <section id="inicio" className="relative h-[78vh] min-h-[560px] w-full overflow-hidden">
         <img
-          src={heroRobot.url}
+          src={heroRobot}
           alt="Interface Atende&Vende conduzindo uma conversa pelo WhatsApp"
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -216,10 +217,10 @@ function Landing() {
           <div className="mt-14">
             {(() => {
               const steps = [
-                { n: "01", title: "Recebe e entende", desc: "Responde na hora pelo WhatsApp e identifica o que o cliente precisa.", img: fluxo01.url },
-                { n: "02", title: "Executa a tarefa identificada", desc: "Consulta preço, agenda consulta, gera orçamento ou registra o pedido.", img: fluxo02.url },
-                { n: "03", title: "Acompanha a oportunidade", desc: "Faz follow-up automático e retoma conversas paradas.", img: fluxo03.url },
-                { n: "04", title: "Fecha o negócio", desc: "Fecha a venda ou transfere com contexto e próximo passo.", img: fluxo04.url },
+                { n: "01", title: "Recebe e entende", desc: "Responde na hora pelo WhatsApp e identifica o que o cliente precisa.", img: fluxo01 },
+                { n: "02", title: "Executa a tarefa identificada", desc: "Consulta preço, agenda consulta, gera orçamento ou registra o pedido.", img: fluxo02 },
+                { n: "03", title: "Acompanha a oportunidade", desc: "Faz follow-up automático e retoma conversas paradas.", img: fluxo03 },
+                { n: "04", title: "Fecha o negócio", desc: "Fecha a venda ou transfere com contexto e próximo passo.", img: fluxo04 },
               ];
               return (
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -275,8 +276,8 @@ function Landing() {
           <div className="mt-14 grid md:grid-cols-3 gap-6">
             {[
               { tag: "Atendimento", title: "Atendimento, agendamento e suporte", desc: "Atende, responde, agenda, faz triagem, tira dúvidas e encaminha para a equipe.", image: atendimentoImg },
-              { tag: "Vendas", title: "Vendas e pedidos", desc: "Gera orçamentos, efetua vendas, gera pedidos, pedidos, pagamentos e executa follow-up.", image: vendasImg.url },
-              { tag: "Automação", title: "Automação", desc: "Automatiza processos internos e faz integração com os sistemas da empresa.", image: automacaoImg.url },
+              { tag: "Vendas", title: "Vendas e pedidos", desc: "Gera orçamentos, efetua vendas, gera pedidos, pedidos, pagamentos e executa follow-up.", image: vendasImg },
+              { tag: "Automação", title: "Automação", desc: "Automatiza processos internos e faz integração com os sistemas da empresa.", image: automacaoImg },
             ].map((a) => (
               <article
                 key={a.title}
@@ -480,7 +481,7 @@ function Landing() {
       <footer className="border-t border-border">
         <div className={`${container} py-8 flex flex-col md:flex-row items-center justify-between gap-4`}>
           <div className="flex items-center gap-2.5">
-            <img src={logo.url} alt="Atende&Vende" className="h-7 w-7 object-contain" />
+            <img src={logo} alt="Atende&Vende" className="h-7 w-7 object-contain" />
             <span className="text-sm font-medium">Atende<span className="text-brand">&</span>Vende</span>
           </div>
           <div className="flex items-center gap-6 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
