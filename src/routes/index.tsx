@@ -210,25 +210,59 @@ function Landing() {
             </p>
           </div>
 
-          <div className="mt-14 relative">
-            <div className="hidden lg:block absolute top-8 left-[8%] right-[8%] h-px bg-border" aria-hidden />
-            <ol className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 relative">
-              {[
+          <div className="mt-14">
+            {(() => {
+              const steps = [
                 { n: "01", title: "Recebe e entende", desc: "Responde na hora pelo WhatsApp e identifica o que o cliente precisa." },
                 { n: "02", title: "Executa a tarefa", desc: "Consulta preço, agenda, gera orçamento ou registra o pedido." },
                 { n: "03", title: "Acompanha a oportunidade", desc: "Faz follow-up automático e retoma conversas paradas." },
                 { n: "04", title: "Fecha o negócio", desc: "Fecha a venda ou transfere com contexto e próximo passo." },
-              ].map((s) => (
-                <li key={s.n} className="relative">
-                  <div className="h-16 w-16 rounded-full bg-background border-2 border-brand text-brand flex items-center justify-center text-sm font-medium tracking-widest mx-auto lg:mx-0">
-                    {s.n}
+              ];
+              return (
+                <>
+                  <div className="relative overflow-hidden border border-border bg-card">
+                    <img
+                      src={comoFuncionaFluxo.url}
+                      alt="Fluxo do Atende&Vende: recebe, executa, acompanha e transfere"
+                      className="w-full h-auto block"
+                    />
+                    <div
+                      className="hidden md:block absolute top-0 bottom-0 w-1/4 pointer-events-none transition-all duration-700 ease-in-out"
+                      style={{
+                        left: `${activeStep * 25}%`,
+                        background: "linear-gradient(180deg, color-mix(in oklab, var(--brand) 18%, transparent), transparent 60%)",
+                        borderLeft: "2px solid var(--brand)",
+                        borderRight: "2px solid var(--brand)",
+                      }}
+                      aria-hidden
+                    />
                   </div>
-                  <h3 className="mt-5 text-lg font-medium tracking-tight text-center lg:text-left">{s.title}</h3>
-                  <p className="mt-3 text-sm text-muted-foreground font-light leading-relaxed text-center lg:text-left">{s.desc}</p>
-                </li>
-              ))}
-            </ol>
+
+                  <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3">
+                    {steps.map((s, i) => {
+                      const active = i === activeStep;
+                      return (
+                        <button
+                          key={s.n}
+                          onClick={() => setActiveStep(i)}
+                          className={`text-left border p-4 transition-all duration-500 ${
+                            active ? "border-brand bg-brand/5 shadow-sm" : "border-border bg-card hover:border-foreground/40"
+                          }`}
+                        >
+                          <div className={`text-[11px] tracking-[0.2em] font-medium ${active ? "text-brand" : "text-muted-foreground"}`}>
+                            {s.n}
+                          </div>
+                          <div className="mt-2 text-sm font-medium tracking-tight">{s.title}</div>
+                          <p className="mt-1 text-xs text-muted-foreground font-light leading-relaxed hidden md:block">{s.desc}</p>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </>
+              );
+            })()}
           </div>
+
         </div>
       </section>
 
