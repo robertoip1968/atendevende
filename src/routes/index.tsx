@@ -3,6 +3,38 @@ import { useEffect, useState } from "react";
 import { Instagram, Check, ArrowRight, MessageSquare, Cog, Repeat, Users, Clock3, Timer, UserCheck, CalendarCheck, Send } from "lucide-react";
 import atendimentoImg from "@/assets/atendimento.jpg";
 import { ChatWidget } from "@/components/ChatWidget";
+import { openChatAgent } from "@/lib/chat-agent";
+
+const impactos = [
+  {
+    titulo: "Leads sem conversão",
+    pergunta: "Quantos interessados realmente viram clientes?",
+    impacto:
+      "Leads sem resposta ou acompanhamento desperdiçam parte do investimento feito para atraí-los.",
+    solucao: "Atendimento imediato e acompanhamento de cada oportunidade.",
+  },
+  {
+    titulo: "Orçamentos esquecidos",
+    pergunta: "Quantos orçamentos ficam sem retorno?",
+    impacto:
+      "Uma oportunidade próxima da venda pode ser perdida porque ninguém retomou a conversa.",
+    solucao: "Follow-up automático conforme as regras da empresa.",
+  },
+  {
+    titulo: "Horários ociosos",
+    pergunta: "Quantos horários deixam de gerar atendimento?",
+    impacto: "Demora, desistências e falta de confirmação reduzem a ocupação da agenda.",
+    solucao: "Agendamento, confirmação e acompanhamento pelo WhatsApp.",
+  },
+  {
+    titulo: "Equipe sobrecarregada",
+    pergunta: "Quanto custa o trabalho repetitivo da sua equipe?",
+    impacto:
+      "Tempo gasto com consultas e confirmações reduz a capacidade de atender, negociar e vender.",
+    solucao: "Automação das tarefas previsíveis e transferência no momento certo.",
+  },
+];
+
 
 const logo = "/images/atende-vende-logo.png";
 const vendasImg = "/images/vendas-whatsapp.png";
