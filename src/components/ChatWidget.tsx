@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { X, Send } from "lucide-react";
+import { CHAT_AGENT_OPEN_EVENT, type ChatAgentContext } from "@/lib/chat-agent";
+
 
 const logo = "/images/atende-vende-logo.png";
 const chatbotAvatar = "/images/chatbot-avatar.png";
