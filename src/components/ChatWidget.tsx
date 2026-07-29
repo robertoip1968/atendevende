@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { X, Send } from "lucide-react";
+import { CHAT_AGENT_OPEN_EVENT, type ChatAgentContext } from "@/lib/chat-agent";
+
 
 const logo = "/images/atende-vende-logo.png";
 const chatbotAvatar = "/images/chatbot-avatar.png";
@@ -36,10 +38,21 @@ export function ChatWidget() {
   const [input, setInput] = useState("");
   const [typing, setTyping] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const contextRef = useRef<ChatAgentContext>({});
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
   }, [msgs, typing]);
+
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const detail = (e as CustomEvent<ChatAgentContext>).detail ?? {};
+      contextRef.current = { ...contextRef.current, ...detail };
+      setOpen(true);
+    };
+    window.addEventListener(CHAT_AGENT_OPEN_EVENT, handler);
+    return () => window.removeEventListener(CHAT_AGENT_OPEN_EVENT, handler);
+  }, []);
 
   async function sendText(text: string) {
     const clean = text.trim();
@@ -51,8 +64,13 @@ export function ChatWidget() {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ sessionId: getSessionId(), message: clean }),
+        body: JSON.stringify({
+          sessionId: getSessionId(),
+          message: clean,
+          context: contextRef.current,
+        }),
       });
+
       const data = (await res.json().catch(() => ({}))) as { reply?: string };
       const botReply = data.reply?.trim() || "Desculpe, não consegui responder agora.";
       setMsgs((m) => [...m, { role: "bot", text: botReply }]);
