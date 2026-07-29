@@ -45,9 +45,14 @@ export const Route = createFileRoute("/api/chat")({
           const res = await fetch(webhookUrl, {
             method: "POST",
             headers,
-            body: JSON.stringify({ sessionId, message }),
+            body: JSON.stringify({
+              sessionId,
+              message,
+              context: body.context && typeof body.context === "object" ? body.context : undefined,
+            }),
             signal: controller.signal,
           });
+
           clearTimeout(timeout);
 
           if (!res.ok) {
