@@ -91,35 +91,35 @@ function Landing() {
           alt="Interface Atende&Vende conduzindo uma conversa pelo WhatsApp"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/55 to-black/25" aria-hidden />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/30" aria-hidden />
 
-        <div className={`relative h-full flex flex-col items-start justify-center ${container} pt-20 md:pt-24`}>
-          <div className="uppercase tracking-[0.28em] text-[11px] text-white/85 font-medium">
+        <div className={`relative h-full flex flex-col items-start justify-center ${container} pt-24 md:pt-28 pb-24 md:pb-10`}>
+          <div className="uppercase tracking-[0.28em] text-[11px] text-white/90 font-medium">
             IA PARA ATENDIMENTO E VENDAS NO WHATSAPP
           </div>
-          <h1 className="mt-6 text-white font-light tracking-tight text-[1.7rem] md:text-[2.6rem] lg:text-[3rem] leading-[1.08] max-w-3xl">
-            Transforme conversas em<br className="hidden md:block" /> agendamentos, pedidos e vendas.
+          <h1 className="mt-5 text-white font-light tracking-tight text-[1.55rem] md:text-[2.1rem] lg:text-[2.7rem] leading-[1.1] max-w-3xl">
+            Transforme conversas<br className="hidden md:block" /> em agendamentos, pedidos e vendas.
           </h1>
-          <p className="mt-6 text-white/90 text-base md:text-lg lg:text-xl max-w-2xl font-light leading-relaxed">
+          <p className="mt-5 text-white/90 text-base md:text-lg lg:text-xl max-w-2xl font-light leading-relaxed">
             O Atende&Vende atende 24/7, consulta informações, executa processos e acompanha cada oportunidade até a conclusão.
           </p>
 
-          <div className="mt-10 flex flex-wrap items-center gap-4">
+          <div className="mt-9 flex flex-wrap items-center gap-3 md:gap-4">
             <a
               href="#demonstracoes"
-              className="inline-flex items-center gap-3 bg-brand text-white text-[11px] uppercase tracking-[0.22em] font-medium px-7 py-4 hover:bg-brand/90 transition"
+              className="inline-flex items-center gap-2 bg-brand text-white text-[11px] uppercase tracking-[0.2em] font-medium px-5 md:px-7 py-3.5 md:py-4 hover:bg-brand/90 transition"
             >
               VER DEMONSTRAÇÃO <ArrowRight className="h-4 w-4" />
             </a>
             <a
               href="#impacto"
-              className="inline-flex items-center gap-3 border border-white/70 text-white text-[11px] uppercase tracking-[0.22em] font-medium px-7 py-4 hover:bg-white hover:text-foreground transition"
+              className="inline-flex items-center gap-2 border border-white/70 text-white text-[11px] uppercase tracking-[0.2em] font-medium px-5 md:px-7 py-3.5 md:py-4 hover:bg-white hover:text-foreground transition text-center leading-tight"
             >
               IDENTIFICAR OPORTUNIDADES PERDIDAS
             </a>
           </div>
 
-          <div className="mt-12 flex flex-wrap items-center gap-x-5 gap-y-2 text-white/75 text-[11px] uppercase tracking-[0.18em]">
+          <div className="mt-10 md:mt-12 flex flex-wrap items-center gap-x-4 md:gap-x-5 gap-y-2 text-white/80 text-[11px] uppercase tracking-[0.18em]">
             {[
               "Atendimento 24/7",
               "Texto e áudio",
