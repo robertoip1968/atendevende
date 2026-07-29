@@ -91,14 +91,14 @@ function Landing() {
           alt="Interface Atende&Vende conduzindo uma conversa pelo WhatsApp"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/30" aria-hidden />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/35" aria-hidden />
 
-        <div className={`relative h-full flex flex-col items-start justify-center ${container} pt-24 md:pt-28 pb-24 md:pb-10`}>
+        <div className={`relative h-full flex flex-col items-start justify-center ${container} pt-24 md:pt-28 pb-28 md:pb-12`}>
           <div className="uppercase tracking-[0.28em] text-[11px] text-white/90 font-medium">
             IA PARA ATENDIMENTO E VENDAS NO WHATSAPP
           </div>
-          <h1 className="mt-5 text-white font-light tracking-tight text-[1.55rem] md:text-[2.1rem] lg:text-[2.7rem] leading-[1.1] max-w-3xl">
-            Transforme conversas<br className="hidden md:block" /> em agendamentos, pedidos e vendas.
+          <h1 className="mt-5 text-white font-light tracking-tight text-[1.4rem] md:text-[1.9rem] lg:text-[2.5rem] leading-[1.12] max-w-[18ch] md:max-w-xl lg:max-w-2xl">
+            Transforme conversas em agendamentos, pedidos e vendas.
           </h1>
           <p className="mt-5 text-white/90 text-base md:text-lg lg:text-xl max-w-2xl font-light leading-relaxed">
             O Atende&Vende atende 24/7, consulta informações, executa processos e acompanha cada oportunidade até a conclusão.
@@ -113,7 +113,7 @@ function Landing() {
             </a>
             <a
               href="#impacto"
-              className="inline-flex items-center gap-2 border border-white/70 text-white text-[11px] uppercase tracking-[0.2em] font-medium px-5 md:px-7 py-3.5 md:py-4 hover:bg-white hover:text-foreground transition text-center leading-tight"
+              className="inline-flex items-center gap-2 border border-white/70 text-white text-[11px] uppercase tracking-[0.2em] font-medium px-4 md:px-7 py-3.5 md:py-4 hover:bg-white hover:text-foreground transition text-center leading-tight"
             >
               IDENTIFICAR OPORTUNIDADES PERDIDAS
             </a>
