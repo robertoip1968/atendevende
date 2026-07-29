@@ -91,13 +91,14 @@ function Landing() {
           alt="Interface Atende&Vende conduzindo uma conversa pelo WhatsApp"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/35" aria-hidden />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/75 to-black/40" aria-hidden />
+        <div className="absolute inset-y-0 left-0 w-3/4 bg-gradient-to-r from-black/50 to-transparent" aria-hidden />
 
-        <div className={`relative h-full flex flex-col items-start justify-center ${container} pt-24 md:pt-28 pb-28 md:pb-12`}>
+        <div className={`relative h-full flex flex-col items-start justify-center ${container} pt-24 md:pt-28 pb-16 md:pb-12`}>
           <div className="uppercase tracking-[0.28em] text-[11px] text-white/90 font-medium">
             IA PARA ATENDIMENTO E VENDAS NO WHATSAPP
           </div>
-          <h1 className="mt-5 text-white font-light tracking-tight text-[1.4rem] md:text-[1.9rem] lg:text-[2.5rem] leading-[1.12] max-w-[18ch] md:max-w-xl lg:max-w-2xl">
+          <h1 className="mt-5 text-white font-light tracking-tight text-[1.35rem] md:text-[1.9rem] lg:text-[2.5rem] leading-[1.12] max-w-[18ch] md:max-w-xl lg:max-w-2xl">
             Transforme conversas em agendamentos, pedidos e vendas.
           </h1>
           <p className="mt-5 text-white/90 text-base md:text-lg lg:text-xl max-w-2xl font-light leading-relaxed">
