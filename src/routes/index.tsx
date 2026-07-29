@@ -91,44 +91,39 @@ function Landing() {
           alt="Interface Atende&Vende conduzindo uma conversa pelo WhatsApp"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-black/50" aria-hidden />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/55 to-black/25" aria-hidden />
 
-        <div className={`relative h-full flex flex-col items-start justify-center ${container}`}>
-          <div className="uppercase tracking-[0.28em] text-[11px] text-white/80 font-medium">
-            Atendente e vendedor virtual com IA para WhatsApp
+        <div className={`relative h-full flex flex-col items-start justify-center ${container} pt-20 md:pt-24`}>
+          <div className="uppercase tracking-[0.28em] text-[11px] text-white/85 font-medium">
+            IA PARA ATENDIMENTO E VENDAS NO WHATSAPP
           </div>
-          <h1 className="mt-5 text-white font-light tracking-tight text-[1.9rem] md:text-[3rem] lg:text-[3.4rem] leading-[1.05] max-w-3xl">
-            Transforme cada conversa em agendamento, orçamento, pedido ou venda.
+          <h1 className="mt-6 text-white font-light tracking-tight text-[1.7rem] md:text-[2.6rem] lg:text-[3rem] leading-[1.08] max-w-3xl">
+            Transforme conversas em<br className="hidden md:block" /> agendamentos, pedidos e vendas.
           </h1>
-          <p className="mt-5 text-white/90 text-lg md:text-xl lg:text-2xl max-w-2xl font-light">
-            O Atende&amp;Vende resolve gargalos de atendimento e vendas. Responde clientes, coleta informações, consulta sistemas, executa processos e acompanha cada oportunidade até a conclusão.
-          </p>
-          <p className="mt-4 text-white/80 text-base md:text-lg max-w-2xl font-light">
-            Não é apenas uma IA que responde mensagens. É uma solução configurada para executar os processos da sua empresa.
+          <p className="mt-6 text-white/90 text-base md:text-lg lg:text-xl max-w-2xl font-light leading-relaxed">
+            O Atende&Vende atende 24/7, consulta informações, executa processos e acompanha cada oportunidade até a conclusão.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <a
-              href="#impacto"
+              href="#demonstracoes"
               className="inline-flex items-center gap-3 bg-brand text-white text-[11px] uppercase tracking-[0.22em] font-medium px-7 py-4 hover:bg-brand/90 transition"
             >
-              Descobrir onde estou perdendo oportunidades <ArrowRight className="h-4 w-4" />
+              VER DEMONSTRAÇÃO <ArrowRight className="h-4 w-4" />
             </a>
             <a
-              href="#demonstracoes"
+              href="#impacto"
               className="inline-flex items-center gap-3 border border-white/70 text-white text-[11px] uppercase tracking-[0.22em] font-medium px-7 py-4 hover:bg-white hover:text-foreground transition"
             >
-              Ver demonstração
+              IDENTIFICAR OPORTUNIDADES PERDIDAS
             </a>
           </div>
 
-          <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 text-white/70 text-[11px] uppercase tracking-[0.18em]">
+          <div className="mt-12 flex flex-wrap items-center gap-x-5 gap-y-2 text-white/75 text-[11px] uppercase tracking-[0.18em]">
             {[
               "Atendimento 24/7",
               "Texto e áudio",
-              "Agendamentos",
-              "Orçamentos e pedidos",
-              "Follow-up",
+              "Agendamentos e vendas",
               "Integrações",
             ].map((item, idx, arr) => (
               <span key={item} className="inline-flex items-center gap-2">
