@@ -125,7 +125,7 @@ export function ChatWidget() {
 
       {/* Chat panel */}
       <div
-        className={`fixed right-4 md:right-5 top-1/2 -translate-y-1/2 z-50 w-[92vw] max-w-sm h-[70vh] max-h-[560px] bg-card rounded-2xl shadow-glow border border-border flex flex-col overflow-hidden transition-all duration-300 origin-center-right ${
+        className={`fixed right-4 md:right-6 bottom-24 md:bottom-28 z-50 w-[92vw] max-w-sm h-[70vh] max-h-[560px] bg-card rounded-2xl shadow-glow border border-border flex flex-col overflow-hidden transition-all duration-300 origin-bottom-right ${
           open ? "opacity-100 scale-100 pointer-events-auto" : "opacity-0 scale-95 pointer-events-none"
         }`}
         role="dialog"
