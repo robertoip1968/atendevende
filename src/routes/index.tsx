@@ -8,30 +8,23 @@ import { openChatAgent } from "@/lib/chat-agent";
 const impactos = [
   {
     titulo: "Leads sem conversão",
-    pergunta: "Quantos interessados realmente viram clientes?",
-    impacto:
-      "Leads sem resposta ou acompanhamento desperdiçam parte do investimento feito para atraí-los.",
-    solucao: "Atendimento imediato e acompanhamento de cada oportunidade.",
+    pergunta: "Quantos interessados não chegam a virar clientes?",
+    impacto: "Investimento em divulgação desperdiçado.",
   },
   {
     titulo: "Orçamentos esquecidos",
-    pergunta: "Quantos orçamentos ficam sem retorno?",
-    impacto:
-      "Uma oportunidade próxima da venda pode ser perdida porque ninguém retomou a conversa.",
-    solucao: "Follow-up automático conforme as regras da empresa.",
+    pergunta: "Quantas propostas ficam sem acompanhamento?",
+    impacto: "Vendas próximas da decisão são perdidas.",
   },
   {
     titulo: "Horários ociosos",
     pergunta: "Quantos horários deixam de gerar atendimento?",
-    impacto: "Demora, desistências e falta de confirmação reduzem a ocupação da agenda.",
-    solucao: "Agendamento, confirmação e acompanhamento pelo WhatsApp.",
+    impacto: "Capacidade disponível sem gerar receita.",
   },
   {
     titulo: "Equipe sobrecarregada",
-    pergunta: "Quanto custa o trabalho repetitivo da sua equipe?",
-    impacto:
-      "Tempo gasto com consultas e confirmações reduz a capacidade de atender, negociar e vender.",
-    solucao: "Automação das tarefas previsíveis e transferência no momento certo.",
+    pergunta: "Quanto tempo é gasto em tarefas repetitivas?",
+    impacto: "Menos tempo para atender, negociar e vender.",
   },
 ];
 
