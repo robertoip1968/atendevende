@@ -136,6 +136,63 @@ function Landing() {
         </div>
       </section>
 
+      {/* Impacto */}
+      <section id="impacto" className={sectionPad}>
+        <div className={container}>
+          <div className="max-w-3xl">
+            <div className="uppercase tracking-[0.3em] text-[11px] text-muted-foreground">
+              O impacto no seu negócio
+            </div>
+            <div className="mt-5 h-px w-12 bg-border" />
+            <h2 className="mt-6 text-3xl md:text-4xl font-light tracking-tight leading-tight">
+              Você sabe quantas oportunidades perde pelo caminho?
+            </h2>
+            <p className="mt-6 text-lg text-muted-foreground font-light leading-relaxed">
+              Nem todo interessado vira cliente. Muitas oportunidades se perdem entre a primeira
+              mensagem e a conclusão do atendimento.
+            </p>
+          </div>
+
+          <div className="mt-12 md:mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-7">
+            {impactos.map((card) => (
+              <article
+                key={card.titulo}
+                className="border-t-2 border-brand bg-card p-6 flex flex-col h-full"
+              >
+                <h3 className="text-base font-medium tracking-tight">{card.titulo}</h3>
+                <p className="mt-4 text-lg font-light leading-snug tracking-tight">
+                  {card.pergunta}
+                </p>
+                <p className="mt-4 text-sm text-muted-foreground font-light leading-relaxed">
+                  {card.impacto}
+                </p>
+                <p className="mt-auto pt-6 flex items-start gap-2 text-sm text-brand font-medium leading-snug">
+                  <Check className="h-4 w-4 shrink-0 mt-0.5" aria-hidden />
+                  <span>{card.solucao}</span>
+                </p>
+              </article>
+            ))}
+          </div>
+
+          <div className="mt-12 flex justify-center">
+            <button
+              type="button"
+              onClick={() =>
+                openChatAgent({
+                  origem: "seção impacto",
+                  interesse: "diagnóstico de oportunidades perdidas",
+                })
+              }
+              className="inline-flex items-center gap-2 bg-brand text-white text-[11px] uppercase tracking-[0.2em] font-medium px-7 py-4 hover:bg-brand/90 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+            >
+              ANALISAR MEU ATENDIMENTO <ArrowRight className="h-4 w-4" />
+            </button>
+          </div>
+        </div>
+      </section>
+
+
+
       {/* Sobre — consolidada */}
       <section id="sobre" className={sectionPad}>
         <div className={`${container} grid lg:grid-cols-12 gap-10 lg:gap-16 items-start`}>
