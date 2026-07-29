@@ -37,6 +37,7 @@ export function ChatWidget() {
   const [msgs, setMsgs] = useState<Msg[]>(initialMsgs);
   const [input, setInput] = useState("");
   const [typing, setTyping] = useState(false);
+  const [hintVisible, setHintVisible] = useState(true);
   const scrollRef = useRef<HTMLDivElement>(null);
   const contextRef = useRef<ChatAgentContext>({});
 
@@ -90,11 +91,11 @@ export function ChatWidget() {
   return (
     <>
       {/* Floating button */}
-      <div className="fixed right-4 md:right-5 top-1/2 -translate-y-1/2 z-50 flex flex-col items-center gap-2">
+      <div className="fixed right-4 md:right-6 bottom-4 md:bottom-6 z-50 flex flex-col items-center gap-2">
         <button
           onClick={() => setOpen((v) => !v)}
           aria-label="Abrir chat"
-          className="h-14 w-14 md:h-16 md:w-16 rounded-full bg-gradient-brand shadow-glow flex items-center justify-center text-primary-foreground transition-transform hover:scale-105 active:scale-95 overflow-hidden border-2 border-background"
+          className="order-2 h-14 w-14 md:h-16 md:w-16 rounded-full bg-gradient-brand shadow-glow flex items-center justify-center text-primary-foreground transition-transform hover:scale-105 active:scale-95 overflow-hidden border-2 border-background"
         >
           {open ? (
             <X className="h-7 w-7" />
@@ -106,16 +107,25 @@ export function ChatWidget() {
             />
           )}
         </button>
-        {!open && (
-          <span className="hidden md:inline-block px-3.5 py-1.5 rounded-2xl bg-card border border-border text-xs font-medium text-foreground shadow-sm text-center max-w-[180px]">
+        {!open && hintVisible && (
+          <span className="order-1 hidden md:flex items-center gap-1.5 px-3.5 py-1.5 rounded-2xl bg-card border border-border text-xs font-medium text-foreground shadow-sm text-center max-w-[180px]">
             Como posso ajudar?
+            <button
+              type="button"
+              onClick={() => setHintVisible(false)}
+              aria-label="Ocultar mensagem"
+              className="text-muted-foreground hover:text-foreground"
+            >
+              <X className="h-3 w-3" />
+            </button>
           </span>
         )}
       </div>
 
+
       {/* Chat panel */}
       <div
-        className={`fixed right-4 md:right-5 top-1/2 -translate-y-1/2 z-50 w-[92vw] max-w-sm h-[70vh] max-h-[560px] bg-card rounded-2xl shadow-glow border border-border flex flex-col overflow-hidden transition-all duration-300 origin-center-right ${
+        className={`fixed right-4 md:right-6 bottom-24 md:bottom-28 z-50 w-[92vw] max-w-sm h-[70vh] max-h-[560px] bg-card rounded-2xl shadow-glow border border-border flex flex-col overflow-hidden transition-all duration-300 origin-bottom-right ${
           open ? "opacity-100 scale-100 pointer-events-auto" : "opacity-0 scale-95 pointer-events-none"
         }`}
         role="dialog"

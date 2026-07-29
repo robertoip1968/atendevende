@@ -8,30 +8,23 @@ import { openChatAgent } from "@/lib/chat-agent";
 const impactos = [
   {
     titulo: "Leads sem conversão",
-    pergunta: "Quantos interessados realmente viram clientes?",
-    impacto:
-      "Leads sem resposta ou acompanhamento desperdiçam parte do investimento feito para atraí-los.",
-    solucao: "Atendimento imediato e acompanhamento de cada oportunidade.",
+    pergunta: "Quantos interessados não chegam a virar clientes?",
+    impacto: "Investimento em divulgação desperdiçado.",
   },
   {
     titulo: "Orçamentos esquecidos",
-    pergunta: "Quantos orçamentos ficam sem retorno?",
-    impacto:
-      "Uma oportunidade próxima da venda pode ser perdida porque ninguém retomou a conversa.",
-    solucao: "Follow-up automático conforme as regras da empresa.",
+    pergunta: "Quantas propostas ficam sem acompanhamento?",
+    impacto: "Vendas próximas da decisão são perdidas.",
   },
   {
     titulo: "Horários ociosos",
     pergunta: "Quantos horários deixam de gerar atendimento?",
-    impacto: "Demora, desistências e falta de confirmação reduzem a ocupação da agenda.",
-    solucao: "Agendamento, confirmação e acompanhamento pelo WhatsApp.",
+    impacto: "Capacidade disponível sem gerar receita.",
   },
   {
     titulo: "Equipe sobrecarregada",
-    pergunta: "Quanto custa o trabalho repetitivo da sua equipe?",
-    impacto:
-      "Tempo gasto com consultas e confirmações reduz a capacidade de atender, negociar e vender.",
-    solucao: "Automação das tarefas previsíveis e transferência no momento certo.",
+    pergunta: "Quanto tempo é gasto em tarefas repetitivas?",
+    impacto: "Menos tempo para atender, negociar e vender.",
   },
 ];
 
@@ -180,31 +173,33 @@ function Landing() {
               Você sabe quantas oportunidades perde pelo caminho?
             </h2>
             <p className="mt-6 text-lg text-muted-foreground font-light leading-relaxed">
-              Nem todo interessado vira cliente. Muitas oportunidades se perdem entre a primeira
-              mensagem e a conclusão do atendimento.
+              Falhas no atendimento afetam vendas, agenda e produtividade.
             </p>
           </div>
 
-          <div className="mt-12 md:mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-7">
+          <div className="mt-10 md:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
             {impactos.map((card) => (
               <article
                 key={card.titulo}
-                className="border-t-2 border-brand bg-card p-6 flex flex-col h-full"
+                className="border-t-2 border-brand bg-card px-5 py-5 flex flex-col h-full"
               >
-                <h3 className="text-base font-medium tracking-tight">{card.titulo}</h3>
-                <p className="mt-4 text-lg font-light leading-snug tracking-tight">
+                <h3 className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+                  {card.titulo}
+                </h3>
+                <p className="mt-3 text-base font-light leading-snug tracking-tight">
                   {card.pergunta}
                 </p>
-                <p className="mt-4 text-sm text-muted-foreground font-light leading-relaxed">
+                <p className="mt-auto pt-4 text-xs text-muted-foreground font-light leading-snug">
                   {card.impacto}
-                </p>
-                <p className="mt-auto pt-6 flex items-start gap-2 text-sm text-brand font-medium leading-snug">
-                  <Check className="h-4 w-4 shrink-0 mt-0.5" aria-hidden />
-                  <span>{card.solucao}</span>
                 </p>
               </article>
             ))}
           </div>
+
+          <div className="mt-10 border-y border-border py-5 text-center text-sm md:text-base font-light text-muted-foreground">
+            O Atende&amp;Vende responde, acompanha, agenda e conduz cada oportunidade até a próxima ação.
+          </div>
+
 
           <div className="mt-12 flex justify-center">
             <button
