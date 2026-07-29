@@ -37,6 +37,7 @@ export function ChatWidget() {
   const [msgs, setMsgs] = useState<Msg[]>(initialMsgs);
   const [input, setInput] = useState("");
   const [typing, setTyping] = useState(false);
+  const [hintVisible, setHintVisible] = useState(true);
   const scrollRef = useRef<HTMLDivElement>(null);
   const contextRef = useRef<ChatAgentContext>({});
 
