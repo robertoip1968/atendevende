@@ -95,28 +95,47 @@ function Landing() {
 
         <div className={`relative h-full flex flex-col items-start justify-center ${container}`}>
           <div className="uppercase tracking-[0.28em] text-[11px] text-white/80 font-medium">
-            Atendimento e vendas pelo WhatsApp
+            Atendente e vendedor virtual com IA para WhatsApp
           </div>
           <h1 className="mt-5 text-white font-light tracking-tight text-[1.9rem] md:text-[3rem] lg:text-[3.4rem] leading-[1.05] max-w-3xl">
-            Atenda, acompanhe e venda sem perder clientes pelo caminho.
+            Transforme cada conversa em agendamento, orçamento, pedido ou venda.
           </h1>
           <p className="mt-5 text-white/90 text-lg md:text-xl lg:text-2xl max-w-2xl font-light">
-            O Atende&amp;Vende responde, qualifica e conduz cada oportunidade até o orçamento, agendamento, pedido ou venda.
+            O Atende&amp;Vende resolve gargalos de atendimento e vendas. Responde clientes, coleta informações, consulta sistemas, executa processos e acompanha cada oportunidade até a conclusão.
+          </p>
+          <p className="mt-4 text-white/80 text-base md:text-lg max-w-2xl font-light">
+            Não é apenas uma IA que responde mensagens. É uma solução configurada para executar os processos da sua empresa.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <a
-              href="#contato"
+              href="#impacto"
               className="inline-flex items-center gap-3 bg-brand text-white text-[11px] uppercase tracking-[0.22em] font-medium px-7 py-4 hover:bg-brand/90 transition"
             >
-              Solicitar diagnóstico <ArrowRight className="h-4 w-4" />
+              Descobrir onde estou perdendo oportunidades <ArrowRight className="h-4 w-4" />
             </a>
             <a
-              href="#como-funciona"
+              href="#demonstracoes"
               className="inline-flex items-center gap-3 border border-white/70 text-white text-[11px] uppercase tracking-[0.22em] font-medium px-7 py-4 hover:bg-white hover:text-foreground transition"
             >
-              Ver como funciona
+              Ver demonstração
             </a>
+          </div>
+
+          <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 text-white/70 text-[11px] uppercase tracking-[0.18em]">
+            {[
+              "Atendimento 24/7",
+              "Texto e áudio",
+              "Agendamentos",
+              "Orçamentos e pedidos",
+              "Follow-up",
+              "Integrações",
+            ].map((item, idx, arr) => (
+              <span key={item} className="inline-flex items-center gap-2">
+                {item}
+                {idx < arr.length - 1 && <span className="hidden sm:inline-block h-1 w-1 rounded-full bg-white/40" aria-hidden />}
+              </span>
+            ))}
           </div>
         </div>
       </section>
