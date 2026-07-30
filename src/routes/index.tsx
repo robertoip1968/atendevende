@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Instagram, Check, ArrowRight, MessageSquare, Cog, Repeat, Users, Clock3, Timer, UserCheck, CalendarCheck, Send } from "lucide-react";
 import atendimentoImg from "@/assets/atendimento.jpg";
 import atendimentoVendasVideo from "@/assets/demo-atendimento-vendas.mp4.asset.json";
