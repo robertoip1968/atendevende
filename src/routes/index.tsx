@@ -89,14 +89,6 @@ export const Route = createFileRoute("/")({
 function Landing() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [demo, setDemo] = useState(0);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   const navLinks = [
     { href: "#inicio", label: "Início" },
