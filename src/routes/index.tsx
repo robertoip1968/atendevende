@@ -295,21 +295,8 @@ function Landing() {
           </div>
 
           <div className="mt-10 md:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
-            {impactos.map((card) => (
-              <article
-                key={card.titulo}
-                className="border-t-2 border-brand bg-card px-5 py-5 flex flex-col h-full"
-              >
-                <h3 className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-                  {card.titulo}
-                </h3>
-                <p className="mt-3 text-base font-light leading-snug tracking-tight">
-                  {card.pergunta}
-                </p>
-                <p className="mt-auto pt-4 text-xs text-muted-foreground font-light leading-snug">
-                  {card.impacto}
-                </p>
-              </article>
+            {impactos.map((card, i) => (
+              <ImpactoFlipCard key={card.titulo} card={card} index={i} />
             ))}
           </div>
 
