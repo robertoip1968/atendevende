@@ -11,109 +11,23 @@ const impactos = [
     titulo: "Leads sem conversão",
     pergunta: "Quantos interessados não chegam a virar clientes?",
     impacto: "Investimento em divulgação desperdiçado.",
-    img: "/images/impacto-leads.jpg",
   },
   {
     titulo: "Orçamentos esquecidos",
     pergunta: "Quantas propostas ficam sem acompanhamento?",
     impacto: "Vendas próximas da decisão são perdidas.",
-    img: "/images/impacto-orcamentos.jpg",
   },
   {
     titulo: "Horários ociosos",
     pergunta: "Quantos horários deixam de gerar atendimento?",
     impacto: "Capacidade disponível sem gerar receita.",
-    img: "/images/impacto-horarios.jpg",
   },
   {
     titulo: "Equipe sobrecarregada",
     pergunta: "Quanto tempo é gasto em tarefas repetitivas?",
     impacto: "Menos tempo para atender, negociar e vender.",
-    img: "/images/impacto-equipe.jpg",
   },
 ];
-
-function ImpactoFlipCard({
-  card,
-  index,
-}: {
-  card: (typeof impactos)[number];
-  index: number;
-}) {
-  const [hovered, setHovered] = useState(false);
-  const [auto, setAuto] = useState(false);
-
-  useEffect(() => {
-    let flipTimer: ReturnType<typeof setTimeout>;
-    const cycle = setInterval(() => {
-      setAuto(true);
-      flipTimer = setTimeout(() => setAuto(false), 3200);
-    }, 7000 + index * 900);
-    return () => {
-      clearInterval(cycle);
-      clearTimeout(flipTimer);
-    };
-  }, [index]);
-
-  const flipped = hovered || auto;
-
-  return (
-    <div
-      className="group [perspective:1200px] h-[220px]"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      onFocus={() => setHovered(true)}
-      onBlur={() => setHovered(false)}
-      tabIndex={0}
-    >
-      <div
-        className="relative h-full w-full transition-transform duration-700 [transform-style:preserve-3d]"
-        style={{ transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)" }}
-      >
-        {/* Frente */}
-        <article className="absolute inset-0 [backface-visibility:hidden] overflow-hidden border-t-2 border-brand bg-card">
-          <img
-            src={card.img}
-            alt=""
-            aria-hidden
-            loading="lazy"
-            width={800}
-            height={600}
-            className="absolute inset-0 h-full w-full object-cover opacity-20"
-          />
-          <div className="absolute inset-0 bg-card/70" />
-          <div className="relative h-full px-5 py-5 flex flex-col">
-            <h3 className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-              {card.titulo}
-            </h3>
-            <p className="mt-3 text-base font-light leading-snug tracking-tight">
-              {card.pergunta}
-            </p>
-          </div>
-        </article>
-
-        {/* Verso */}
-        <article className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] overflow-hidden border-t-2 border-brand bg-card">
-          <img
-            src={card.img}
-            alt={card.titulo}
-            loading="lazy"
-            width={800}
-            height={600}
-            className="absolute inset-0 h-full w-full object-cover opacity-30"
-          />
-          <div className="absolute inset-0 bg-foreground/80" />
-          <div className="relative h-full px-5 py-5 flex flex-col justify-center">
-            <p className="text-base font-light leading-snug tracking-tight text-background">
-              {card.impacto}
-            </p>
-          </div>
-        </article>
-      </div>
-    </div>
-  );
-}
-
 
 const demos = [
   {
@@ -295,8 +209,21 @@ function Landing() {
           </div>
 
           <div className="mt-10 md:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
-            {impactos.map((card, i) => (
-              <ImpactoFlipCard key={card.titulo} card={card} index={i} />
+            {impactos.map((card) => (
+              <article
+                key={card.titulo}
+                className="border-t-2 border-brand bg-card px-5 py-5 flex flex-col h-full"
+              >
+                <h3 className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+                  {card.titulo}
+                </h3>
+                <p className="mt-3 text-base font-light leading-snug tracking-tight">
+                  {card.pergunta}
+                </p>
+                <p className="mt-auto pt-4 text-xs text-muted-foreground font-light leading-snug">
+                  {card.impacto}
+                </p>
+              </article>
             ))}
           </div>
 
