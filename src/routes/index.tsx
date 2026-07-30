@@ -32,6 +32,7 @@ const demos = [
   {
     id: "agendamento",
     tab: "Agendamento",
+    video: "/videos/demo-agendamento.mp4",
     titulo: "Do primeiro contato ao horário confirmado",
     chat: [
       { from: "cliente", text: "Olá! Quero agendar uma avaliação." },
@@ -375,6 +376,19 @@ function Landing() {
                   <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
                     Simulação de funcionamento
                   </div>
+                  {"video" in d && d.video ? (
+                    <div className="mt-4 flex justify-center">
+                      <video
+                        src={d.video}
+                        className="h-[300px] md:h-[340px] w-auto max-w-full rounded-lg border border-border object-contain bg-black"
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        controls
+                      />
+                    </div>
+                  ) : (
                   <div className="mt-4 space-y-2.5">
                     {d.chat.map((m, k) => (
                       <div
@@ -394,6 +408,7 @@ function Landing() {
                       </div>
                     ))}
                   </div>
+                  )}
                 </div>
 
                 {/* Etapas + resultado */}
