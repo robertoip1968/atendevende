@@ -92,7 +92,7 @@ function Landing() {
 
   const navLinks = [
     { href: "#inicio", label: "Início" },
-    { href: "#sobre", label: "A Atende&Vende" },
+    { href: "#sobre", label: "O ATENDE&VENDE" },
     { href: "#demonstracoes", label: "Demonstrações" },
     { href: "#beneficios", label: "Benefícios" },
     { href: "#planos", label: "Planos" },
