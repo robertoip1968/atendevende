@@ -28,6 +28,41 @@ const impactos = [
   },
 ];
 
+const demos = [
+  {
+    id: "agendamento",
+    tab: "Agendamento",
+    titulo: "Do primeiro contato ao horário confirmado",
+    chat: [
+      { from: "cliente", text: "Olá! Quero agendar uma avaliação." },
+      { from: "ia", text: "Claro. Tenho terça às 14h ou quarta às 9h. Qual horário prefere?" },
+      { from: "cliente", text: "Quarta às 9h." },
+      { from: "ia", text: "Agendamento confirmado. Vou enviar os dados e a confirmação." },
+    ],
+    etapas: ["Entende a solicitação", "Consulta a agenda", "Registra o horário", "Confirma ou transfere"],
+    resultado: "Menos mensagens e mais agendamentos concluídos.",
+    cta: "Quero aplicar na minha clínica",
+    contexto: { origem: "demonstração", interesse: "agendamento", segmento: "saúde" },
+  },
+  {
+    id: "vendas",
+    tab: "Atendimento e vendas",
+    titulo: "Da consulta ao orçamento ou pedido",
+    chat: [
+      { from: "cliente", text: "Olá! Vocês têm este produto?" },
+      { from: "ia", text: "Sim. Posso consultar o preço e montar o orçamento. Qual quantidade você precisa?" },
+      { from: "cliente", text: "Preciso de 10 unidades." },
+      { from: "ia", text: "Orçamento preparado. Posso registrar o pedido ou encaminhar para um vendedor." },
+    ],
+    etapas: ["Identifica a necessidade", "Consulta produto e preço", "Gera orçamento ou pedido", "Acompanha ou transfere"],
+    resultado: "A conversa avança até uma ação comercial.",
+    cta: "Quero aplicar na minha empresa",
+    contexto: { origem: "demonstração", interesse: "vendas" },
+  },
+];
+
+
+
 
 const logo = "/images/atende-vende-logo.png";
 const vendasImg = "/images/vendas-whatsapp.png";
