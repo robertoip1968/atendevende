@@ -112,15 +112,22 @@ function Landing() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Top bar — fixed on scroll */}
-      <header className="fixed top-0 inset-x-0 z-50 bg-background/95 backdrop-blur border-b border-border py-3">
+      {/* Top bar — fixed, transparent over hero */}
+      <header
+        className={`fixed top-0 inset-x-0 z-50 py-3 transition-colors duration-300 ${
+          scrolled || menuOpen
+            ? "bg-background/95 backdrop-blur border-b border-border"
+            : "bg-transparent border-b border-transparent"
+        }`}
+      >
         <div className={`${container} flex items-center justify-between`}>
           <a href="#inicio" className="flex items-center gap-4">
             <img src={logo} alt="Atende&Vende" className="h-14 w-14 object-contain" />
-            <span className="font-semibold text-2xl tracking-tight text-foreground">
+            <span className={`font-semibold text-2xl tracking-tight ${scrolled || menuOpen ? "text-foreground" : "text-white"}`}>
               Atende<span className="text-brand">&</span>Vende
             </span>
           </a>
+
 
           {/* Desktop nav */}
           <nav className="hidden lg:flex items-center gap-8">
