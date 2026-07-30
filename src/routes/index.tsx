@@ -380,7 +380,7 @@ function Landing() {
                     <div className="mt-4 flex justify-center">
                       <video
                         src={d.video}
-                        className="h-[420px] md:h-[480px] w-auto max-w-full rounded-lg border border-border object-contain bg-black"
+                        className="h-[500px] md:h-[575px] w-auto max-w-full rounded-lg border border-border object-contain bg-black"
                         autoPlay
                         muted
                         loop
