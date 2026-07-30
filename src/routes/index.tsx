@@ -68,10 +68,6 @@ const logo = "/images/atende-vende-logo.png";
 const vendasImg = "/images/vendas-whatsapp.png";
 const automacaoImg = "/images/automacao-agente.png";
 const heroRobot = "/images/hero-robot.png";
-const fluxo01 = "/images/fluxo-01-recebe.png";
-const fluxo02 = "/images/fluxo-02-executa.png";
-const fluxo03 = "/images/fluxo-03-acompanha.png";
-const fluxo04 = "/images/fluxo-04-fecha.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -101,7 +97,7 @@ function Landing() {
   const navLinks = [
     { href: "#inicio", label: "Início" },
     { href: "#sobre", label: "A Atende&Vende" },
-    { href: "#como-funciona", label: "Como funciona" },
+    { href: "#demonstracoes", label: "Demonstrações" },
     { href: "#beneficios", label: "Benefícios" },
     { href: "#planos", label: "Planos" },
     { href: "#contato", label: "Contato" },
@@ -653,7 +649,7 @@ function Landing() {
             <span className="text-sm font-medium">Atende<span className="text-brand">&</span>Vende</span>
           </div>
           <div className="flex items-center gap-6 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-            <a href="#como-funciona" className="hover:text-foreground transition">Como funciona</a>
+            <a href="#demonstracoes" className="hover:text-foreground transition">Demonstrações</a>
             <a href="#planos" className="hover:text-foreground transition">Planos</a>
             <a href="#contato" className="hover:text-foreground transition">Contato</a>
           </div>
