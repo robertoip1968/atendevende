@@ -32,6 +32,7 @@ const demos = [
   {
     id: "agendamento",
     tab: "Agendamento",
+    video: "/videos/demo-agendamento.mp4",
     titulo: "Do primeiro contato ao horário confirmado",
     chat: [
       { from: "cliente", text: "Olá! Quero agendar uma avaliação." },
