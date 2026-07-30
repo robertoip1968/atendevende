@@ -89,6 +89,14 @@ export const Route = createFileRoute("/")({
 function Landing() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [demo, setDemo] = useState(0);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const navLinks = [
     { href: "#inicio", label: "Início" },
@@ -104,15 +112,22 @@ function Landing() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Top bar — fixed on scroll */}
-      <header className="fixed top-0 inset-x-0 z-50 bg-background/95 backdrop-blur border-b border-border py-3">
+      {/* Top bar — fixed, transparent over hero */}
+      <header
+        className={`fixed top-0 inset-x-0 z-50 py-3 transition-colors duration-300 ${
+          scrolled || menuOpen
+            ? "bg-background/95 backdrop-blur border-b border-border"
+            : "bg-transparent border-b border-transparent"
+        }`}
+      >
         <div className={`${container} flex items-center justify-between`}>
           <a href="#inicio" className="flex items-center gap-4">
             <img src={logo} alt="Atende&Vende" className="h-14 w-14 object-contain" />
-            <span className="font-semibold text-2xl tracking-tight text-foreground">
+            <span className={`font-semibold text-2xl tracking-tight ${scrolled || menuOpen ? "text-foreground" : "text-white"}`}>
               Atende<span className="text-brand">&</span>Vende
             </span>
           </a>
+
 
           {/* Desktop nav */}
           <nav className="hidden lg:flex items-center gap-8">
@@ -120,7 +135,7 @@ function Landing() {
               <a
                 key={l.href}
                 href={l.href}
-                className="text-sm uppercase tracking-[0.18em] font-medium text-muted-foreground hover:text-foreground transition-colors"
+                className={`text-sm uppercase tracking-[0.18em] font-medium transition-colors ${scrolled || menuOpen ? "text-muted-foreground hover:text-foreground" : "text-white/85 hover:text-white"}`}
               >
                 {l.label}
               </a>
@@ -132,7 +147,7 @@ function Landing() {
             type="button"
             aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
             aria-expanded={menuOpen}
-            className="lg:hidden inline-flex items-center justify-center p-2 text-foreground"
+            className={`lg:hidden inline-flex items-center justify-center p-2 ${scrolled || menuOpen ? "text-foreground" : "text-white"}`}
             onClick={() => setMenuOpen((v) => !v)}
           >
             <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
