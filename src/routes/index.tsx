@@ -408,6 +408,7 @@ function Landing() {
                       </div>
                     ))}
                   </div>
+                  )}
                 </div>
 
                 {/* Etapas + resultado */}
