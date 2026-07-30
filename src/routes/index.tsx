@@ -49,6 +49,7 @@ const demos = [
   {
     id: "vendas",
     tab: "Atendimento e vendas",
+    video: atendimentoVendasVideo.url,
     titulo: "Da consulta ao orçamento ou pedido",
     chat: [
       { from: "cliente", text: "Olá! Vocês têm este produto?" },
