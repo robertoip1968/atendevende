@@ -87,15 +87,8 @@ export const Route = createFileRoute("/")({
 });
 
 function Landing() {
-  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [demo, setDemo] = useState(0);
-  useEffect(() => {
-    const on = () => setScrolled(window.scrollY > 40);
-    on();
-    window.addEventListener("scroll", on, { passive: true });
-    return () => window.removeEventListener("scroll", on);
-  }, []);
-
 
   const navLinks = [
     { href: "#inicio", label: "Início" },
@@ -111,33 +104,64 @@ function Landing() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Top bar */}
-      <header
-        className={`fixed top-0 inset-x-0 z-40 transition-all duration-300 ${
-          scrolled ? "bg-background/95 backdrop-blur border-b border-border py-3" : "bg-transparent py-5"
-        }`}
-      >
+      {/* Top bar — fixed on scroll */}
+      <header className="fixed top-0 inset-x-0 z-50 bg-background/95 backdrop-blur border-b border-border py-3">
         <div className={`${container} flex items-center justify-between`}>
           <a href="#inicio" className="flex items-center gap-4">
-            <img src={logo} alt="Atende&Vende" className="h-16 w-16 object-contain" />
-            <span className={`font-semibold text-2xl tracking-tight transition-colors ${scrolled ? "text-foreground" : "text-white drop-shadow-lg"}`}>
+            <img src={logo} alt="Atende&Vende" className="h-14 w-14 object-contain" />
+            <span className="font-semibold text-2xl tracking-tight text-foreground">
               Atende<span className="text-brand">&</span>Vende
             </span>
           </a>
+
+          {/* Desktop nav */}
           <nav className="hidden lg:flex items-center gap-8">
             {navLinks.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
-                className={`text-sm uppercase tracking-[0.18em] font-medium transition-colors ${
-                  scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/90 hover:text-white drop-shadow-md"
-                }`}
+                className="text-sm uppercase tracking-[0.18em] font-medium text-muted-foreground hover:text-foreground transition-colors"
               >
                 {l.label}
               </a>
             ))}
           </nav>
+
+          {/* Mobile menu button */}
+          <button
+            type="button"
+            aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
+            aria-expanded={menuOpen}
+            className="lg:hidden inline-flex items-center justify-center p-2 text-foreground"
+            onClick={() => setMenuOpen((v) => !v)}
+          >
+            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              {menuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
         </div>
+
+        {/* Mobile nav */}
+        {menuOpen && (
+          <div className="lg:hidden border-t border-border bg-background/95 backdrop-blur">
+            <nav className={`${container} py-4 flex flex-col gap-4`}>
+              {navLinks.map((l) => (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="text-sm uppercase tracking-[0.18em] font-medium text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  {l.label}
+                </a>
+              ))}
+            </nav>
+          </div>
+        )}
       </header>
 
       {/* Hero */}
