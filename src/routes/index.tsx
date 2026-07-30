@@ -135,7 +135,7 @@ function Landing() {
               <a
                 key={l.href}
                 href={l.href}
-                className="text-sm uppercase tracking-[0.18em] font-medium text-muted-foreground hover:text-foreground transition-colors"
+                className={`text-sm uppercase tracking-[0.18em] font-medium transition-colors ${scrolled || menuOpen ? "text-muted-foreground hover:text-foreground" : "text-white/85 hover:text-white"}`}
               >
                 {l.label}
               </a>
