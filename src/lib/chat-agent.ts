@@ -3,6 +3,8 @@ export type ChatAgentContext = {
   origem?: string;
   /** Intenção declarada, ex.: "diagnóstico de oportunidades perdidas" */
   interesse?: string;
+  /** Segmento provável, ex.: "saúde" */
+  segmento?: string;
 };
 
 export const CHAT_AGENT_OPEN_EVENT = "atendevende:open-chat";
