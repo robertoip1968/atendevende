@@ -299,67 +299,104 @@ function Landing() {
         </div>
       </section>
 
-      {/* Como funciona */}
-      <section id="como-funciona" className={sectionPad}>
+      {/* Demonstrações */}
+      <section id="demonstracoes" className={sectionPad}>
         <div className={container}>
           <div className="max-w-2xl">
-            <div className="uppercase tracking-[0.3em] text-[11px] text-muted-foreground">Como funciona</div>
+            <div className="uppercase tracking-[0.3em] text-[11px] text-muted-foreground">Na prática</div>
             <div className="mt-5 h-px w-12 bg-border" />
             <h2 className="mt-6 text-3xl md:text-4xl font-light tracking-tight leading-tight">
-              Da primeira mensagem ao resultado.
+              Veja como uma conversa vira resultado
             </h2>
             <p className="mt-5 text-muted-foreground font-light">
-              O Atende&Vende acompanha cada oportunidade durante todo o processo comercial.
+              Escolha um exemplo e acompanhe o processo.
             </p>
           </div>
 
-          <div className="mt-14">
-            {(() => {
-              const steps = [
-                { n: "01", title: "Recebe e entende", desc: "Responde na hora pelo WhatsApp e identifica o que o cliente precisa.", img: fluxo01 },
-                { n: "02", title: "Executa a tarefa identificada", desc: "Consulta preço, agenda consulta, gera orçamento ou registra o pedido.", img: fluxo02 },
-                { n: "03", title: "Acompanha a oportunidade", desc: "Faz follow-up automático e retoma conversas paradas.", img: fluxo03 },
-                { n: "04", title: "Fecha o negócio", desc: "Fecha a venda ou transfere com contexto e próximo passo.", img: fluxo04 },
-              ];
-              return (
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  {steps.map((s, i) => {
-                    const active = i === activeStep;
-                    return (
-                      <button
-                        key={s.n}
-                        onClick={() => setActiveStep(i)}
-                        className={`text-left border bg-card overflow-hidden transition-all duration-500 ${
-                          active ? "border-brand shadow-md -translate-y-1" : "border-border hover:border-foreground/40"
-                        }`}
-                      >
-                        <div className="relative aspect-[4/5] overflow-hidden">
-                          <img
-                            src={s.img}
-                            alt={`${s.n} — ${s.title}`}
-                            className={`w-full h-full object-cover transition-transform duration-700 ${
-                              active ? "scale-105" : "scale-100"
-                            }`}
-                          />
-                          <div className="absolute top-3 left-3 bg-background/90 backdrop-blur-sm border border-border px-2 py-1 text-[10px] tracking-[0.2em] font-medium">
-                            <span className={active ? "text-brand" : "text-foreground"}>{s.n}</span>
-                          </div>
-                        </div>
-                        <div className="p-4">
-                          <div className="text-sm font-medium tracking-tight">{s.title}</div>
-                          <p className="mt-1 text-xs text-muted-foreground font-light leading-relaxed">{s.desc}</p>
-                        </div>
-                      </button>
-                    );
-                  })}
-                </div>
-              );
-            })()}
-
+          <div className="mt-10 flex flex-wrap gap-2" role="tablist" aria-label="Demonstrações">
+            {demos.map((d, i) => (
+              <button
+                key={d.id}
+                role="tab"
+                id={`tab-${d.id}`}
+                aria-selected={demo === i}
+                aria-controls={`panel-${d.id}`}
+                onClick={() => setDemo(i)}
+                className={`px-5 py-2.5 text-sm tracking-tight border transition ${
+                  demo === i
+                    ? "border-brand text-brand bg-brand/5"
+                    : "border-border text-muted-foreground hover:border-foreground/40"
+                }`}
+              >
+                {d.tab}
+              </button>
+            ))}
           </div>
 
+          {demos.map((d, i) =>
+            demo !== i ? null : (
+              <div
+                key={d.id}
+                role="tabpanel"
+                id={`panel-${d.id}`}
+                aria-labelledby={`tab-${d.id}`}
+                className="mt-8 grid lg:grid-cols-2 gap-8 lg:gap-12 items-start"
+              >
+                {/* Conversa */}
+                <div className="border border-border bg-muted/30 p-4 md:p-5">
+                  <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                    Simulação de funcionamento
+                  </div>
+                  <div className="mt-4 space-y-2.5">
+                    {d.chat.map((m, k) => (
+                      <div
+                        key={k}
+                        className={`flex ${m.from === "cliente" ? "justify-start" : "justify-end"} motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-1`}
+                        style={{ animationDelay: `${k * 90}ms`, animationFillMode: "both" }}
+                      >
+                        <div
+                          className={`max-w-[85%] px-3.5 py-2.5 text-sm leading-relaxed border ${
+                            m.from === "cliente"
+                              ? "bg-card border-border rounded-2xl rounded-bl-sm"
+                              : "bg-brand/10 border-brand/30 rounded-2xl rounded-br-sm"
+                          }`}
+                        >
+                          {m.text}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Etapas + resultado */}
+                <div>
+                  <h3 className="text-xl md:text-2xl font-light tracking-tight">{d.titulo}</h3>
+                  <ol className="mt-6 space-y-3">
+                    {d.etapas.map((e, k) => (
+                      <li key={e} className="flex items-center gap-3 text-sm">
+                        <span className="shrink-0 h-6 w-6 rounded-full border border-brand text-brand text-[11px] flex items-center justify-center">
+                          {k + 1}
+                        </span>
+                        <span className="font-light">{e}</span>
+                      </li>
+                    ))}
+                  </ol>
+                  <p className="mt-6 text-sm text-muted-foreground font-light border-l-2 border-brand pl-3">
+                    {d.resultado}
+                  </p>
+                  <button
+                    onClick={() => openChatAgent(d.contexto)}
+                    className="mt-7 inline-flex items-center gap-2 bg-foreground text-background px-6 py-3 text-xs tracking-[0.15em] uppercase hover:opacity-90 transition"
+                  >
+                    {d.cta} <ArrowRight className="h-4 w-4" />
+                  </button>
+                </div>
+              </div>
+            ),
+          )}
         </div>
       </section>
+
 
       {/* Áreas de atuação */}
       <section id="areas" className={`${sectionPad} bg-muted/30 border-y border-border`}>
