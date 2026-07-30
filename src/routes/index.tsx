@@ -174,7 +174,7 @@ function Landing() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/75 to-black/40" aria-hidden />
         <div className="absolute inset-y-0 left-0 w-3/4 bg-gradient-to-r from-black/50 to-transparent" aria-hidden />
 
-        <div className={`relative h-full flex flex-col items-start justify-center ${container} pt-24 md:pt-28 pb-16 md:pb-12`}>
+        <div className={`relative h-full flex flex-col items-start justify-center ${container} pt-10 md:pt-14 pb-16 md:pb-12`}>
           <div className="uppercase tracking-[0.28em] text-[11px] text-white/90 font-medium">
             IA PARA ATENDIMENTO E VENDAS NO WHATSAPP
           </div>
