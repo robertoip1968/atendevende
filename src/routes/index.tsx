@@ -104,68 +104,8 @@ function Landing() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Top bar — scrolls with the page */}
-      <header className="relative z-50 py-3 bg-background border-b border-border">
-        <div className={`${container} flex items-center justify-between`}>
-          <a href="#inicio" className="flex items-center gap-4">
-            <img src={logo} alt="Atende&Vende" className="h-14 w-14 object-contain" />
-            <span className="font-semibold text-2xl tracking-tight text-foreground">
-              Atende<span className="text-brand">&</span>Vende
-            </span>
-          </a>
-
-          {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-8">
-            {navLinks.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                className="text-sm uppercase tracking-[0.18em] font-medium text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {l.label}
-              </a>
-            ))}
-          </nav>
-
-          {/* Mobile menu button */}
-          <button
-            type="button"
-            aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
-            aria-expanded={menuOpen}
-            className="lg:hidden inline-flex items-center justify-center p-2 text-foreground"
-            onClick={() => setMenuOpen((v) => !v)}
-          >
-            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              {menuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
-        </div>
-
-        {/* Mobile nav */}
-        {menuOpen && (
-          <div className="lg:hidden border-t border-border bg-background">
-            <nav className={`${container} py-4 flex flex-col gap-4`}>
-              {navLinks.map((l) => (
-                <a
-                  key={l.href}
-                  href={l.href}
-                  onClick={() => setMenuOpen(false)}
-                  className="text-sm uppercase tracking-[0.18em] font-medium text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  {l.label}
-                </a>
-              ))}
-            </nav>
-          </div>
-        )}
-      </header>
-
-      {/* Hero */}
-      <section id="inicio" className="relative h-[78vh] min-h-[560px] w-full overflow-hidden">
+      {/* Hero + header that scrolls together over the image */}
+      <section id="inicio" className="relative min-h-[78vh] w-full overflow-hidden">
         <img
           src={heroRobot}
           alt="Interface Atende&Vende conduzindo uma conversa pelo WhatsApp"
@@ -174,14 +114,74 @@ function Landing() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/75 to-black/40" aria-hidden />
         <div className="absolute inset-y-0 left-0 w-3/4 bg-gradient-to-r from-black/50 to-transparent" aria-hidden />
 
-        <div className={`relative h-full flex flex-col items-start justify-center ${container} pt-10 md:pt-14 pb-16 md:pb-12`}>
+        {/* Header — scrolls naturally, image shows through */}
+        <header className="relative z-50 py-3">
+          <div className={`${container} flex items-center justify-between`}>
+            <a href="#inicio" className="flex items-center gap-4">
+              <img src={logo} alt="Atende&Vende" className="h-14 w-14 object-contain" />
+              <span className="font-semibold text-2xl tracking-tight text-white drop-shadow">
+                Atende<span className="text-brand">&</span>Vende
+              </span>
+            </a>
+
+            {/* Desktop nav */}
+            <nav className="hidden lg:flex items-center gap-8">
+              {navLinks.map((l) => (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  className="text-sm uppercase tracking-[0.18em] font-medium text-white/90 hover:text-white transition-colors drop-shadow"
+                >
+                  {l.label}
+                </a>
+              ))}
+            </nav>
+
+            {/* Mobile menu button */}
+            <button
+              type="button"
+              aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
+              aria-expanded={menuOpen}
+              className="lg:hidden inline-flex items-center justify-center p-2 text-white drop-shadow"
+              onClick={() => setMenuOpen((v) => !v)}
+            >
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                {menuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
+          </div>
+
+          {/* Mobile nav */}
+          {menuOpen && (
+            <div className="lg:hidden border-t border-white/20 bg-black/80 backdrop-blur">
+              <nav className={`${container} py-4 flex flex-col gap-4`}>
+                {navLinks.map((l) => (
+                  <a
+                    key={l.href}
+                    href={l.href}
+                    onClick={() => setMenuOpen(false)}
+                    className="text-sm uppercase tracking-[0.18em] font-medium text-white/90 hover:text-white transition-colors"
+                  >
+                    {l.label}
+                  </a>
+                ))}
+              </nav>
+            </div>
+          )}
+        </header>
+
+        <div className={`relative flex flex-col items-start justify-center ${container} pt-8 md:pt-10 pb-16 md:pb-12 min-h-[calc(78vh-72px)]`}>
           <div className="uppercase tracking-[0.28em] text-[11px] text-white/90 font-medium">
             IA PARA ATENDIMENTO E VENDAS NO WHATSAPP
           </div>
-          <h1 className="mt-5 text-white font-light tracking-tight text-[1.35rem] md:text-[1.9rem] lg:text-[2.5rem] leading-[1.12] max-w-[18ch] md:max-w-xl lg:max-w-2xl">
+          <h1 className="mt-5 text-white font-light tracking-tight text-[1.35rem] md:text-[1.9rem] lg:text-[2.5rem] leading-[1.12] max-w-[18ch] md:max-w-xl lg:max-w-2xl drop-shadow-sm">
             Transforme conversas em agendamentos, pedidos e vendas.
           </h1>
-          <p className="mt-5 text-white/90 text-base md:text-lg lg:text-xl max-w-2xl font-light leading-relaxed">
+          <p className="mt-5 text-white/90 text-base md:text-lg lg:text-xl max-w-2xl font-light leading-relaxed drop-shadow-sm">
             O Atende&Vende atende 24/7, consulta informações, executa processos e acompanha cada oportunidade até a conclusão.
           </p>
 
