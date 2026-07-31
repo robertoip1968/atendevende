@@ -489,7 +489,11 @@ function Landing() {
       </section>
 
       {/* Integrações */}
-      <section id="integracoes" className={`${sectionPad} bg-muted/20 border-y border-border`}>
+      <section
+        id="integracoes"
+        ref={integracoesRef}
+        className={`${sectionPad} bg-muted/20 border-y border-border ${integrationsVisible ? "av-conn-active" : ""}`}
+      >
         <div className={container}>
           <div className="max-w-3xl">
             <div className="uppercase tracking-[0.3em] text-[11px] text-muted-foreground">Operação conectada</div>
