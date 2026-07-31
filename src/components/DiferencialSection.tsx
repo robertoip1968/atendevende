@@ -123,9 +123,10 @@ export function DiferencialSection({
               Atende&amp;Vende
             </span>
 
-            <div className="mt-7 flex flex-col md:flex-row md:flex-wrap md:items-center gap-3 md:gap-0">
+            <div className="mt-7 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 xl:flex xl:flex-nowrap xl:items-center xl:gap-2">
               {proSteps.map((s, i) => (
-                <div key={s.label} className="flex md:contents items-center gap-3">
+                <div key={s.label} className="flex xl:contents items-center gap-3">
+
                   <div
                     className="av-step flex items-center gap-2 rounded-md border border-white/15 bg-white/[0.07] px-3 py-2 backdrop-blur-[1px] whitespace-nowrap"
                     style={{ ["--d" as string]: `${500 + i * 200}ms` }}
