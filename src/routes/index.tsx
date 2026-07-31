@@ -291,7 +291,7 @@ function Landing() {
 
           <div className="mt-12 lg:mt-16">
             {/* Desktop: duas colunas lado a lado */}
-            <div className="hidden lg:grid grid-cols-2 gap-8 xl:gap-16">
+            <div className="hidden lg:grid grid-cols-2 gap-8 xl:gap-16 pr-20">
               <div className="pb-4 border-b border-border">
                 <span className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground">Chatbot</span>
               </div>
@@ -322,7 +322,7 @@ function Landing() {
             </div>
 
             {/* Mobile: pares verticais */}
-            <div className="lg:hidden space-y-10">
+            <div className="lg:hidden space-y-10 pr-12">
               {[
                 { chatbot: "Responde perguntas", atendevende: "Consulta informações e realiza ações" },
                 { chatbot: "Aguarda o cliente retornar", atendevende: "Acompanha a oportunidade" },
@@ -342,7 +342,7 @@ function Landing() {
             </div>
           </div>
 
-          <div className="mt-14 lg:mt-20 max-w-3xl">
+          <div className="mt-14 lg:mt-20 max-w-3xl pr-12 md:pr-0">
             <p className="text-xl md:text-2xl font-light tracking-tight leading-snug">
               A diferença não está apenas na conversa, mas no que acontece depois dela.
             </p>
