@@ -291,7 +291,7 @@ function Landing() {
 
           <div className="mt-12 lg:mt-16">
             {/* Desktop: duas colunas lado a lado */}
-            <div className="hidden lg:grid grid-cols-2 gap-8 xl:gap-16 pr-20">
+            <div className="hidden lg:grid grid-cols-2 gap-8 xl:gap-16">
               <div className="pb-4 border-b border-border">
                 <span className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground">Chatbot</span>
               </div>
