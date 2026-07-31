@@ -48,12 +48,6 @@ export function DiferencialSection({
       ref={ref}
       className={`${sectionPad} pb-36 md:pb-40 lg:pb-28 relative overflow-hidden bg-[oklch(0.20_0.05_260)] text-white ${revealed ? "av-reveal" : ""}`}
     >
-      {/* brilho decorativo */}
-      <div
-        aria-hidden
-        className="absolute -top-24 right-0 h-[420px] w-[420px] rounded-full blur-3xl opacity-25"
-        style={{ background: "radial-gradient(circle, oklch(0.70 0.16 210), transparent 65%)" }}
-      />
 
       <div className={`${container} relative`}>
         <div className="max-w-3xl">
