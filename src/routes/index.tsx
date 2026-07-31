@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import { Instagram, Check, ArrowRight, MessageSquare, Cog, Repeat, Users, Clock3, Timer, UserCheck, CalendarCheck, Send } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Instagram, Check, ArrowRight, MessageSquare, Cog, Repeat, Users, Clock3, Timer, UserCheck, CalendarCheck, Send, Calendar, Database, CreditCard, Server } from "lucide-react";
 import atendimentoImg from "@/assets/atendimento.jpg";
 import atendimentoVendasVideo from "@/assets/demo-atendimento-vendas.mp4.asset.json";
 import { ChatWidget } from "@/components/ChatWidget";
@@ -91,6 +91,24 @@ export const Route = createFileRoute("/")({
 function Landing() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [demo, setDemo] = useState(0);
+  const integracoesRef = useRef<HTMLElement | null>(null);
+  const [integrationsVisible, setIntegrationsVisible] = useState(false);
+
+  useEffect(() => {
+    const el = integracoesRef.current;
+    if (!el || integrationsVisible) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setIntegrationsVisible(true);
+          io.disconnect();
+        }
+      },
+      { threshold: 0.25 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [integrationsVisible]);
 
   const navLinks = [
     { href: "#inicio", label: "Início" },
@@ -470,34 +488,115 @@ function Landing() {
         </div>
       </section>
 
-      {/* Resultados */}
-      <section className={sectionPad}>
-        <div className={`${container} grid lg:grid-cols-12 gap-10 items-start`}>
-          <div className="lg:col-span-5">
-            <div className="uppercase tracking-[0.3em] text-[11px] text-muted-foreground">Resultados</div>
+      {/* Integrações */}
+      <section
+        id="integracoes"
+        ref={integracoesRef}
+        className={`${sectionPad} bg-muted/20 border-y border-border ${integrationsVisible ? "av-conn-active" : ""}`}
+      >
+        <div className={container}>
+          <div className="max-w-3xl">
+            <div className="uppercase tracking-[0.3em] text-[11px] text-muted-foreground">Operação conectada</div>
             <div className="mt-5 h-px w-12 bg-border" />
             <h2 className="mt-6 text-3xl md:text-4xl font-light tracking-tight leading-tight">
-              Mais controle sobre cada oportunidade.
+              Conectado aos seus processos. Visível na gestão.
             </h2>
-            <p className="mt-6 text-muted-foreground font-light leading-relaxed">
-              O Atende&Vende ajuda sua empresa a acompanhar onde os clientes estão parando e quais etapas do
-              atendimento podem ser melhoradas.
+            <p className="mt-5 text-muted-foreground font-light leading-relaxed max-w-2xl">
+              A solução pode consultar sistemas, registrar ações e organizar os principais indicadores do atendimento.
             </p>
           </div>
 
-          <div className="lg:col-span-7 grid sm:grid-cols-2 gap-5">
-            {[
-              { icon: Timer, l: "Tempo de primeira resposta" },
-              { icon: UserCheck, l: "Clientes qualificados" },
-              { icon: Repeat, l: "Follow-ups realizados" },
-              { icon: CalendarCheck, l: "Agendamentos e pedidos concluídos" },
-            ].map((i) => (
-              <div key={i.l} className="border border-border p-6 flex items-start gap-4 bg-card">
-                <i.icon className="h-6 w-6 text-brand shrink-0" strokeWidth={1.5} />
-                <div className="text-sm font-medium tracking-tight">{i.l}</div>
+          <div className="mt-12 grid lg:grid-cols-2 gap-6 lg:gap-8">
+            {/* Painel 1 — Integrações */}
+            <div className="bg-card border border-border p-6 md:p-8 lg:p-10">
+              <div className="flex items-center gap-3">
+                <div className="h-8 w-8 rounded-full border border-brand/30 flex items-center justify-center">
+                  <Server className="h-4 w-4 text-brand" strokeWidth={1.5} />
+                </div>
+                <h3 className="text-lg md:text-xl font-medium tracking-tight">Integrações</h3>
               </div>
-            ))}
+              <p className="mt-4 text-sm text-muted-foreground font-light leading-relaxed">
+                O atendimento pode consultar e registrar informações nas ferramentas utilizadas pela empresa.
+              </p>
+
+              <div className="mt-8 relative">
+                {/* Linha de conexão decorativa */}
+                <div
+                  className="pointer-events-none absolute inset-0 flex items-center justify-center text-border"
+                  aria-hidden
+                >
+                  <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                    <line x1="50" y1="8" x2="50" y2="92" className="av-conn-line" stroke="currentColor" strokeWidth="0.6" strokeDasharray="3 3" />
+                    <line x1="8" y1="50" x2="92" y2="50" className="av-conn-line" stroke="currentColor" strokeWidth="0.6" strokeDasharray="3 3" />
+                  </svg>
+                </div>
+
+                {/* Hub central */}
+                <div
+                  className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 h-10 w-10 rounded-full border border-brand/30 bg-background flex items-center justify-center"
+                  aria-hidden
+                >
+                  <span className="text-[10px] font-semibold text-brand">A&V</span>
+                </div>
+
+                <div className="relative grid grid-cols-2 gap-4">
+                  {[
+                    { icon: Calendar, label: "Agenda" },
+                    { icon: Database, label: "ERP ou CRM" },
+                    { icon: CreditCard, label: "Pagamentos" },
+                    { icon: Server, label: "Banco de dados" },
+                  ].map((item) => (
+                    <div
+                      key={item.label}
+                      className="flex flex-col items-center text-center gap-3 rounded-lg border border-border bg-background p-4"
+                    >
+                      <item.icon className="h-5 w-5 text-brand" strokeWidth={1.5} />
+                      <span className="text-xs md:text-sm font-medium tracking-tight">{item.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Painel 2 — Acompanhamento */}
+            <div className="bg-card border border-border p-6 md:p-8 lg:p-10">
+              <div className="flex items-center gap-3">
+                <div className="h-8 w-8 rounded-full border border-brand/30 flex items-center justify-center">
+                  <Clock3 className="h-4 w-4 text-brand" strokeWidth={1.5} />
+                </div>
+                <h3 className="text-lg md:text-xl font-medium tracking-tight">Acompanhamento</h3>
+              </div>
+              <p className="mt-4 text-sm text-muted-foreground font-light leading-relaxed">
+                Informações importantes da operação podem ser organizadas para análise.
+              </p>
+
+              <div className="mt-8 grid grid-cols-2 gap-4">
+                {[
+                  { icon: MessageSquare, label: "Atendimentos" },
+                  { icon: CalendarCheck, label: "Agendamentos e pedidos" },
+                  { icon: Repeat, label: "Follow-ups" },
+                  { icon: Users, label: "Transferências para a equipe" },
+                ].map((item) => (
+                  <div
+                    key={item.label}
+                    className="flex flex-col items-start gap-3 rounded-lg border border-border bg-background p-4"
+                  >
+                    <div className="flex items-center gap-2">
+                      <item.icon className="h-4 w-4 text-brand" strokeWidth={1.5} />
+                      <span className="h-1.5 w-12 rounded-full bg-brand/20 overflow-hidden">
+                        <span className="block h-full w-2/3 bg-brand/50" />
+                      </span>
+                    </div>
+                    <span className="text-xs md:text-sm font-medium tracking-tight leading-snug">{item.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
+
+          <p className="mt-8 text-center text-xs text-muted-foreground font-light">
+            As integrações e os indicadores disponíveis dependem da configuração do projeto e do acesso técnico aos sistemas utilizados.
+          </p>
         </div>
       </section>
 
