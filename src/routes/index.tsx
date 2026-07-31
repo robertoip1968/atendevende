@@ -522,20 +522,12 @@ function Landing() {
               <div className="mt-8 relative">
                 {/* Linha de conexão decorativa */}
                 <div
-                  className="pointer-events-none absolute inset-0 flex items-center justify-center"
+                  className="pointer-events-none absolute inset-0 flex items-center justify-center text-border"
                   aria-hidden
                 >
-                  <svg className="w-full h-full" preserveAspectRatio="none">
-                    <line
-                      x1="50%"
-                      y1="50%"
-                      x2="50%"
-                      y2="50%"
-                      className="av-conn-line"
-                      stroke="currentColor"
-                      strokeWidth="1"
-                      strokeDasharray="4 4"
-                    />
+                  <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                    <line x1="50" y1="8" x2="50" y2="92" className="av-conn-line" stroke="currentColor" strokeWidth="0.6" strokeDasharray="3 3" />
+                    <line x1="8" y1="50" x2="92" y2="50" className="av-conn-line" stroke="currentColor" strokeWidth="0.6" strokeDasharray="3 3" />
                   </svg>
                 </div>
 
