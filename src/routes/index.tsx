@@ -94,6 +94,22 @@ function Landing() {
   const integracoesRef = useRef<HTMLElement | null>(null);
   const [integrationsVisible, setIntegrationsVisible] = useState(false);
 
+  useEffect(() => {
+    const el = integracoesRef.current;
+    if (!el || integrationsVisible) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setIntegrationsVisible(true);
+          io.disconnect();
+        }
+      },
+      { threshold: 0.25 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [integrationsVisible]);
+
   const navLinks = [
     { href: "#inicio", label: "Início" },
     { href: "#sobre", label: "O ATENDE&VENDE" },
