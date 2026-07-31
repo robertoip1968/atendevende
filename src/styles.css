@@ -120,10 +120,21 @@
   animation-delay: var(--d, 0ms);
 }
 
+/* ---- Seção Integrações: linha de conexão ---- */
+@keyframes av-conn-flow {
+  from { stroke-dashoffset: 16; }
+  to   { stroke-dashoffset: 0; }
+}
+
+.av-conn-active .av-conn-line {
+  animation: av-conn-flow 1.4s ease-out forwards;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .av-reveal .av-step,
   .av-reveal .av-line,
-  .av-reveal .av-result {
+  .av-reveal .av-result,
+  .av-conn-active .av-conn-line {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
