@@ -101,7 +101,6 @@ export function DiferencialSection({
               ["--d" as string]: "300ms",
               background:
                 "linear-gradient(135deg, oklch(0.26 0.07 258), oklch(0.30 0.09 235))",
-              boxShadow: "0 0 0 1px oklch(0.70 0.14 210 / 0.15), 0 30px 70px -35px oklch(0.70 0.14 210 / 0.55)",
             }}
           >
             <span className="text-[11px] uppercase tracking-[0.2em] text-[oklch(0.82_0.13_205)] font-medium">
