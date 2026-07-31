@@ -531,6 +531,14 @@ function Landing() {
                   </svg>
                 </div>
 
+                {/* Hub central */}
+                <div
+                  className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 h-10 w-10 rounded-full border border-brand/30 bg-background flex items-center justify-center"
+                  aria-hidden
+                >
+                  <span className="text-[10px] font-semibold text-brand">A&V</span>
+                </div>
+
                 <div className="relative grid grid-cols-2 gap-4">
                   {[
                     { icon: Calendar, label: "Agenda" },
