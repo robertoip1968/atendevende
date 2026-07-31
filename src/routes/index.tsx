@@ -4,6 +4,8 @@ import { Instagram, Check, ArrowRight, MessageSquare, Cog, Repeat, Users, Clock3
 import atendimentoImg from "@/assets/atendimento.jpg";
 import atendimentoVendasVideo from "@/assets/demo-atendimento-vendas.mp4.asset.json";
 import { ChatWidget } from "@/components/ChatWidget";
+import { DiferencialSection } from "@/components/DiferencialSection";
+
 import { openChatAgent } from "@/lib/chat-agent";
 
 const impactos = [
