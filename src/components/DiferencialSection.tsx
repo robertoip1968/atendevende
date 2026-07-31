@@ -48,16 +48,7 @@ export function DiferencialSection({
       ref={ref}
       className={`${sectionPad} pb-36 md:pb-40 lg:pb-28 relative overflow-hidden bg-[oklch(0.20_0.05_260)] text-white ${revealed ? "av-reveal" : ""}`}
     >
-      {/* grid técnico + brilhos */}
-      <div
-        aria-hidden
-        className="absolute inset-0 opacity-[0.10]"
-        style={{
-          backgroundImage:
-            "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)",
-          backgroundSize: "56px 56px",
-        }}
-      />
+      {/* brilho decorativo */}
       <div
         aria-hidden
         className="absolute -top-24 right-0 h-[420px] w-[420px] rounded-full blur-3xl opacity-25"
