@@ -91,6 +91,8 @@ export const Route = createFileRoute("/")({
 function Landing() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [demo, setDemo] = useState(0);
+  const integracoesRef = useRef<HTMLElement | null>(null);
+  const [integrationsVisible, setIntegrationsVisible] = useState(false);
 
   const navLinks = [
     { href: "#inicio", label: "Início" },
