@@ -13,7 +13,7 @@ const proSteps = [
   { label: "Consulta", Icon: Database },
   { label: "Executa", Icon: Cog },
   { label: "Acompanha", Icon: Repeat },
-  { label: "Resultado", Icon: CheckCircle2 },
+  { label: "Conclui", Icon: CheckCircle2 },
 ];
 
 export function DiferencialSection({
