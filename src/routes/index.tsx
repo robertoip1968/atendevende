@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Instagram, Check, ArrowRight, MessageSquare, Cog, Repeat, Users, Clock3, Timer, UserCheck, CalendarCheck, Send } from "lucide-react";
+import { Instagram, Check, ArrowRight, MessageSquare, Cog, Repeat, Users, Clock3, Timer, UserCheck, CalendarCheck, Send, Calendar, Database, CreditCard, Server } from "lucide-react";
 import atendimentoImg from "@/assets/atendimento.jpg";
 import atendimentoVendasVideo from "@/assets/demo-atendimento-vendas.mp4.asset.json";
 import { ChatWidget } from "@/components/ChatWidget";
