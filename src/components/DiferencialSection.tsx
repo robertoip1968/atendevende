@@ -123,27 +123,26 @@ export function DiferencialSection({
               Atende&amp;Vende
             </span>
 
-            <div className="mt-7 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 xl:flex xl:flex-nowrap xl:items-center xl:gap-2">
-              {proSteps.map((s, i) => (
-                <div key={s.label} className="flex xl:contents items-center gap-3">
-
+            <div className="relative mt-7">
+              <span
+                aria-hidden
+                className="av-line hidden lg:block absolute left-0 right-0 top-1/2 h-px bg-gradient-to-r from-[oklch(0.72_0.14_205)]/70 via-[oklch(0.72_0.14_205)]/45 to-[oklch(0.72_0.14_205)]/70"
+                style={{ ["--d" as string]: "500ms" }}
+              />
+              <div className="relative grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 lg:gap-1.5">
+                {proSteps.map((s, i) => (
                   <div
-                    className="av-step flex items-center gap-2 rounded-md border border-white/15 bg-white/[0.07] px-3 py-2 backdrop-blur-[1px] whitespace-nowrap"
+                    key={s.label}
+                    className="av-step flex items-center justify-center gap-1.5 rounded-md border border-white/15 bg-[oklch(0.24_0.06_255)] px-2 py-2 lg:px-1.5"
                     style={{ ["--d" as string]: `${500 + i * 200}ms` }}
                   >
                     <s.Icon className="h-4 w-4 text-[oklch(0.82_0.13_205)] shrink-0" />
-                    <span className="text-sm font-medium text-white">{s.label}</span>
+                    <span className="text-[13px] lg:text-xs font-medium text-white whitespace-nowrap">{s.label}</span>
                   </div>
-                  {i < proSteps.length - 1 && (
-                    <span
-                      className="av-line hidden xl:block h-px flex-1 min-w-3 bg-[oklch(0.72_0.14_205)]/60"
-                      style={{ ["--d" as string]: `${600 + i * 200}ms` }}
-                    />
-                  )}
-
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
+
 
             <div
               className="av-result mt-7 rounded-lg border border-[oklch(0.75_0.14_205)]/50 bg-[oklch(0.72_0.14_205)]/12 px-5 py-4"
