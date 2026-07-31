@@ -135,10 +135,11 @@ export function DiferencialSection({
                   </div>
                   {i < proSteps.length - 1 && (
                     <span
-                      className="av-line hidden md:block h-px w-4 lg:w-6 bg-[oklch(0.72_0.14_205)]/60"
+                      className="av-line hidden xl:block h-px flex-1 min-w-3 bg-[oklch(0.72_0.14_205)]/60"
                       style={{ ["--d" as string]: `${600 + i * 200}ms` }}
                     />
                   )}
+
                 </div>
               ))}
             </div>
