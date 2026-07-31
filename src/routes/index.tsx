@@ -275,44 +275,77 @@ function Landing() {
 
 
 
-      {/* Sobre — consolidada */}
-      <section id="sobre" className={sectionPad}>
-        <div className={`${container} grid lg:grid-cols-12 gap-10 lg:gap-16 items-start`}>
-          <div className="lg:col-span-7">
-            <div className="uppercase tracking-[0.3em] text-[11px] text-muted-foreground">Sobre</div>
+      {/* Diferencial */}
+      <section id="sobre" className={`${sectionPad} pb-44 md:pb-52 lg:pb-36`}>
+        <div className={`${container} pr-14 md:pr-16 lg:pr-0`}>
+          <div className="max-w-3xl">
+            <div className="uppercase tracking-[0.3em] text-[11px] text-muted-foreground">Diferencial</div>
             <div className="mt-5 h-px w-12 bg-border" />
             <h2 className="mt-6 text-3xl md:text-4xl font-light tracking-tight leading-tight">
-              Muito mais do que responder mensagens.
+              Não é apenas um chatbot
             </h2>
-            <p className="mt-6 text-lg text-muted-foreground font-light leading-relaxed">
-              Responder rápido é apenas o primeiro passo. Muitas oportunidades são perdidas depois da primeira resposta,
-              quando ninguém acompanha o cliente até a decisão.
-            </p>
-            <p className="mt-4 text-lg text-muted-foreground font-light leading-relaxed">
-              O Atende&Vende organiza a jornada comercial: entende a necessidade, executa tarefas, acompanha a oportunidade
-              e aciona sua equipe no momento certo.
+            <p className="mt-5 text-lg text-muted-foreground font-light leading-relaxed">
+              Um chatbot responde. O Atende&Vende executa o processo.
             </p>
           </div>
 
-          <div className="lg:col-span-5 lg:pt-6">
-            <div className="border-l-2 border-brand pl-6">
-              <p className="text-xl md:text-2xl font-light tracking-tight leading-snug">
-                A IA cuida do processo.<br />
-                <span className="text-brand">Sua equipe cuida das decisões.</span>
-              </p>
+          <div className="mt-12 lg:mt-16">
+            {/* Desktop: duas colunas lado a lado */}
+            <div className="hidden lg:grid grid-cols-2 gap-8 xl:gap-16">
+              <div className="pb-4 border-b border-border">
+                <span className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground">Chatbot</span>
+              </div>
+              <div className="pb-4 border-b border-border">
+                <span className="text-[11px] uppercase tracking-[0.2em] text-brand font-medium">Atende&Vende</span>
+              </div>
+
+              <div className="py-6 text-lg font-light text-foreground/80">
+                Responde perguntas
+              </div>
+              <div className="py-6 text-lg font-medium text-foreground border-l-2 border-brand pl-8">
+                Consulta informações e realiza ações
+              </div>
+
+              <div className="py-6 text-lg font-light text-foreground/80 border-t border-border">
+                Aguarda o cliente retornar
+              </div>
+              <div className="py-6 text-lg font-medium text-foreground border-l-2 border-brand pl-8 border-t border-border">
+                Acompanha a oportunidade
+              </div>
+
+              <div className="py-6 text-lg font-light text-foreground/80 border-t border-border">
+                Transfere a conversa
+              </div>
+              <div className="py-6 text-lg font-medium text-foreground border-l-2 border-brand pl-8 border-t border-border">
+                Transfere com histórico e contexto
+              </div>
             </div>
-            <div className="mt-8 grid grid-cols-3 gap-4 text-center">
+
+            {/* Mobile: pares verticais */}
+            <div className="lg:hidden space-y-10 pr-12">
               {[
-                { n: "01", l: "Organiza" },
-                { n: "02", l: "Executa" },
-                { n: "03", l: "Acompanha" },
-              ].map((i) => (
-                <div key={i.n} className="border border-border py-5">
-                  <div className="text-brand text-sm font-medium">{i.n}</div>
-                  <div className="mt-1 text-[11px] uppercase tracking-[0.2em] text-muted-foreground">{i.l}</div>
+                { chatbot: "Responde perguntas", atendevende: "Consulta informações e realiza ações" },
+                { chatbot: "Aguarda o cliente retornar", atendevende: "Acompanha a oportunidade" },
+                { chatbot: "Transfere a conversa", atendevende: "Transfere com histórico e contexto" },
+              ].map((item, idx) => (
+                <div key={idx} className="space-y-4">
+                  <div>
+                    <span className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground">Chatbot</span>
+                    <p className="mt-1 text-lg font-light text-foreground/80">{item.chatbot}</p>
+                  </div>
+                  <div className="border-l-2 border-brand pl-5">
+                    <span className="text-[11px] uppercase tracking-[0.2em] text-brand font-medium">Atende&Vende</span>
+                    <p className="mt-1 text-lg font-medium text-foreground">{item.atendevende}</p>
+                  </div>
                 </div>
               ))}
             </div>
+          </div>
+
+          <div className="mt-14 lg:mt-20 max-w-3xl pr-12 md:pr-0">
+            <p className="text-xl md:text-2xl font-light tracking-tight leading-snug">
+              A diferença não está apenas na conversa, mas no que acontece depois dela.
+            </p>
           </div>
         </div>
       </section>
