@@ -108,7 +108,7 @@ export function ChatWidget() {
           )}
         </button>
         {!open && hintVisible && (
-          <span className="order-1 hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-2xl bg-card border border-border text-xs font-medium text-foreground shadow-sm text-center max-w-[160px]">
+          <span className="order-1 hidden xl:flex items-center gap-1.5 px-3 py-1.5 rounded-2xl bg-card border border-border text-xs font-medium text-foreground shadow-sm text-center max-w-[160px]">
             Como posso ajudar?
             <button
               type="button"
