@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { Instagram, Check, ArrowRight, MessageSquare, Repeat, Users, Clock3, Timer, UserCheck, CalendarCheck, Send, Calendar, Database, CreditCard, Server, HeartPulse, ShoppingBag, Briefcase } from "lucide-react";
 import atendimentoVendasVideo from "@/assets/demo-atendimento-vendas.mp4.asset.json";
 import capturaAgendamento from "@/assets/captura-agendamento.png.asset.json";
+import capturaDashboard from "@/assets/captura-dashboard.png.asset.json";
 
 import { ChatWidget } from "@/components/ChatWidget";
 import { DiferencialSection } from "@/components/DiferencialSection";
@@ -526,7 +527,7 @@ function Landing() {
             </p>
           </div>
 
-          <div className="mt-12 grid lg:grid-cols-2 gap-6 lg:gap-8">
+          <div className="mt-12 grid gap-6 lg:gap-8">
             {[
               {
                 titulo: "Integrações",
@@ -540,7 +541,7 @@ function Landing() {
                 titulo: "Acompanhamento",
                 texto:
                   "Acompanhe atendimentos, oportunidades, agendamentos e follow-ups em um único lugar.",
-                img: "/images/mock-painel.png",
+                img: capturaDashboard.url,
                 alt: "Painel gerencial demonstrativo com indicadores de atendimento e vendas",
                 tags: ["Atendimentos", "Oportunidades", "Follow-ups", "Gestão"],
               },
