@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { Instagram, Check, ArrowRight, MessageSquare, Repeat, Users, Clock3, Timer, UserCheck, CalendarCheck, Send, Calendar, Database, CreditCard, Server, HeartPulse, ShoppingBag, Briefcase } from "lucide-react";
 import atendimentoVendasVideo from "@/assets/demo-atendimento-vendas.mp4.asset.json";
+import capturaAgendamento from "@/assets/captura-agendamento.png.asset.json";
 
 import { ChatWidget } from "@/components/ChatWidget";
 import { DiferencialSection } from "@/components/DiferencialSection";
@@ -531,7 +532,7 @@ function Landing() {
                 titulo: "Integrações",
                 texto:
                   "Consulte disponibilidade, registre ações e mantenha o processo conectado à operação.",
-                img: "/images/mock-agenda.png",
+                img: capturaAgendamento.url,
                 alt: "Tela demonstrativa de agenda com horários e agendamentos genéricos",
                 tags: ["Agenda", "Horários", "Agendamentos", "Operação"],
               },
