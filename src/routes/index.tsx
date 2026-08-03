@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { Instagram, Check, ArrowRight, MessageSquare, Cog, Repeat, Users, Clock3, Timer, UserCheck, CalendarCheck, Send, Calendar, Database, CreditCard, Server } from "lucide-react";
+import { Instagram, Check, ArrowRight, MessageSquare, Repeat, Users, Clock3, Timer, UserCheck, CalendarCheck, Send, Calendar, Database, CreditCard, Server } from "lucide-react";
 import atendimentoImg from "@/assets/atendimento.jpg";
 import atendimentoVendasVideo from "@/assets/demo-atendimento-vendas.mp4.asset.json";
 import { ChatWidget } from "@/components/ChatWidget";
@@ -114,7 +114,7 @@ function Landing() {
     { href: "#inicio", label: "Início" },
     { href: "#sobre", label: "O ATENDE&VENDE" },
     { href: "#demonstracoes", label: "Demonstrações" },
-    { href: "#beneficios", label: "Benefícios" },
+    
     { href: "#planos", label: "Planos" },
     { href: "#contato", label: "Contato" },
   ];
@@ -299,42 +299,7 @@ function Landing() {
       <DiferencialSection container={container} sectionPad={sectionPad} />
 
 
-      {/* Benefícios */}
-      <section id="beneficios" className={`${sectionPad} bg-muted/30 border-y border-border`}>
-        <div className={container}>
-          <div className="max-w-3xl">
-            <div className="uppercase tracking-[0.3em] text-[11px] text-muted-foreground">Benefícios</div>
-            <div className="mt-5 h-px w-12 bg-border" />
-            <h2 className="mt-6 text-3xl md:text-4xl font-light tracking-tight leading-tight">
-              Tudo o que sua operação precisa para atender, acompanhar e vender melhor.
-            </h2>
-          </div>
 
-          <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { icon: MessageSquare, title: "Atende e qualifica", desc: "Responde rapidamente e identifica o que cada cliente procura." },
-              { icon: Cog, title: "Executa processos", desc: "Consulta informações, agenda, gera orçamento ou registra pedidos." },
-              { icon: Repeat, title: "Acompanha oportunidades", desc: "Faz follow-up e recupera conversas que pararam antes da decisão." },
-              { icon: Users, title: "Transfere com contexto", desc: "Entrega à equipe o histórico da conversa e o próximo passo recomendado." },
-            ].map((f) => (
-              <div key={f.title} className="bg-card border border-border p-7">
-                <f.icon className="h-6 w-6 text-brand" strokeWidth={1.5} />
-                <h3 className="mt-5 text-lg font-medium tracking-tight">{f.title}</h3>
-                <p className="mt-3 text-sm text-muted-foreground font-light leading-relaxed">{f.desc}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-            {["24/7", "Texto e áudio", "Integrações", "Histórico", "Segurança"].map((t, i, a) => (
-              <span key={t} className="flex items-center gap-6">
-                {t}
-                {i < a.length - 1 && <span className="h-1 w-1 rounded-full bg-border" />}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Demonstrações */}
       <section id="demonstracoes" className={sectionPad}>
