@@ -91,6 +91,7 @@ function Landing() {
   const [demo, setDemo] = useState(0);
   const integracoesRef = useRef<HTMLElement | null>(null);
   const [integrationsVisible, setIntegrationsVisible] = useState(false);
+  const [zoom, setZoom] = useState<{ src: string; alt: string } | null>(null);
 
   useEffect(() => {
     const el = integracoesRef.current;
