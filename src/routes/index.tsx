@@ -624,66 +624,72 @@ function Landing() {
           <div className="max-w-2xl mx-auto text-center">
             <div className="uppercase tracking-[0.3em] text-[11px] text-muted-foreground">Planos</div>
             <div className="mt-5 h-px w-12 bg-border mx-auto" />
-            <h2 className="mt-6 text-3xl md:text-4xl font-light tracking-tight">Preço justo, sem surpresa.</h2>
+            <h2 className="mt-6 text-3xl md:text-4xl font-light tracking-tight">Escolha a solução ideal para sua operação</h2>
+            <p className="mt-5 text-muted-foreground font-light leading-relaxed">
+              Comece com um processo objetivo ou construa uma solução integrada às necessidades da sua empresa.
+            </p>
           </div>
 
-          <div className="mt-14 grid md:grid-cols-3 gap-6 items-start">
+          <div className="mt-14 grid md:grid-cols-3 gap-6 items-stretch lg:pr-16 xl:pr-24">
             {[
               {
                 name: "Plano Essencial",
-                price: "790",
-                impl: "2.500",
-                desc: "Para automatizar um processo principal de atendimento.",
+                price: "R$ 790/mês",
+                impl: "Implantação: R$ 2.500",
+                desc: "Para empresas que querem automatizar um processo principal de atendimento.",
                 feats: [
                   "1 número de WhatsApp",
-                  "Atendimento automatizado com IA",
+                  "Atendimento automatizado 24/7",
                   "Respostas sobre produtos e serviços",
-                  "Captura e qualificação de clientes",
-                  "Fluxo principal personalizado",
+                  "Captura e qualificação de leads",
+                  "Um processo principal personalizado",
                   "Suporte técnico em horário comercial",
                 ],
-                cta: "QUERO COMEÇAR",
+                cta: "SOLICITAR DIAGNÓSTICO",
                 highlight: false,
                 badge: null,
-              },
-              {
-                name: "Plano Profissional",
-                price: "990",
-                impl: "3.000",
-                desc: "Para automatizar atendimento, qualificação e acompanhamento comercial.",
-                feats: [
-                  "Tudo do Plano Essencial",
-                  "IA treinada para o negócio",
-                  "Múltiplos fluxos de atendimento",
-                  "Integração com formulário, CRM ou sistema interno",
-                  "Recuperação de clientes e follow-up",
-                  "Relatórios de atendimento e conversão",
-                ],
-                cta: "QUERO AUTOMATIZAR MINHAS VENDAS",
-                highlight: true,
-                badge: "MAIS ESCOLHIDO",
+                contexto: { origem: "planos", plano: "essencial" },
               },
               {
                 name: "Plano Performance",
-                price: "1.290",
-                impl: "3.500",
-                desc: "Para integrar atendimento, pedidos, pagamentos e sistemas internos.",
+                price: "R$ 1.290/mês",
+                impl: "Implantação: R$ 3.500",
+                desc: "Para empresas que querem automatizar atendimento, vendas e acompanhamento de oportunidades.",
                 feats: [
-                  "Tudo do Plano Profissional",
-                  "Integração com ERP, CRM ou banco de dados",
-                  "Automação de pedidos e pagamentos",
-                  "Follow-up e recuperação de oportunidades",
-                  "Painel de acompanhamento",
-                  "Reunião periódica de acompanhamento",
+                  "Tudo do Plano Essencial",
+                  "IA configurada com as informações e regras da empresa",
+                  "Atendimento, agendamento, orçamento ou pedidos",
+                  "Follow-up de clientes e oportunidades",
+                  "Integração com sistemas prevista no escopo técnico",
+                  "Relatórios ou painel de acompanhamento",
                 ],
-                cta: "FALAR COM UM ESPECIALISTA",
+                cta: "SOLICITAR DIAGNÓSTICO",
+                highlight: true,
+                badge: "MAIS COMPLETO",
+                contexto: { origem: "planos", plano: "performance" },
+              },
+              {
+                name: "Plano Enterprise",
+                price: "PROJETO PERSONALIZADO",
+                impl: "Implantação e mensalidade sob consulta",
+                desc: "Para empresas com múltiplas operações, alto volume de atendimento ou necessidade de integrações e processos personalizados.",
+                feats: [
+                  "Múltiplos números, unidades ou equipes",
+                  "Processos personalizados para diferentes operações",
+                  "Integrações avançadas com APIs e sistemas internos",
+                  "Regras específicas por unidade ou área",
+                  "Painéis e indicadores personalizados",
+                  "Acompanhamento técnico e estratégico",
+                ],
+                cta: "FALAR SOBRE MEU PROJETO",
                 highlight: false,
                 badge: null,
+                contexto: { origem: "planos", plano: "enterprise", interesse: "projeto personalizado" },
               },
             ].map((p) => (
               <div
                 key={p.name}
-                className={`relative p-8 border transition-colors ${p.highlight ? "border-foreground bg-foreground text-background" : "border-border bg-card"}`}
+                className={`relative p-8 border transition-colors flex flex-col ${p.highlight ? "border-foreground bg-foreground text-background shadow-xl" : "border-border bg-card"}`}
               >
                 {p.badge && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand text-white text-[10px] uppercase tracking-[0.25em] px-4 py-1.5">
@@ -691,32 +697,42 @@ function Landing() {
                   </div>
                 )}
                 <div className={`uppercase tracking-[0.3em] text-[11px] ${p.highlight ? "text-background/70" : "text-muted-foreground"}`}>{p.name}</div>
-                <div className="mt-5 flex items-baseline gap-1">
-                  <span className={`text-sm ${p.highlight ? "text-background/70" : "text-muted-foreground"}`}>R$</span>
-                  <span className="text-5xl font-light">{p.price}</span>
-                  <span className={`text-sm ${p.highlight ? "text-background/70" : "text-muted-foreground"}`}>/mês</span>
+                <div className="mt-5 flex items-baseline gap-1 min-h-[3rem]">
+                  {p.price.startsWith("R$") ? (
+                    <>
+                      <span className={`text-sm ${p.highlight ? "text-background/70" : "text-muted-foreground"}`}>R$</span>
+                      <span className="text-4xl md:text-5xl font-light">{p.price.replace("R$ ", "").replace("/mês", "")}</span>
+                      <span className={`text-sm ${p.highlight ? "text-background/70" : "text-muted-foreground"}`}>/mês</span>
+                    </>
+                  ) : (
+                    <span className="text-xl md:text-2xl font-medium tracking-tight uppercase">{p.price}</span>
+                  )}
                 </div>
-                <div className={`mt-2 text-sm font-light ${p.highlight ? "text-background/70" : "text-muted-foreground"}`}>
-                  Implantação: R$ {p.impl}
-                </div>
+                <div className={`mt-2 text-sm font-light ${p.highlight ? "text-background/70" : "text-muted-foreground"}`}>{p.impl}</div>
                 <p className={`mt-4 text-sm font-light ${p.highlight ? "text-background/80" : "text-muted-foreground"}`}>{p.desc}</p>
-                <ul className="mt-6 space-y-3">
+                <ul className="mt-6 space-y-3 flex-1">
                   {p.feats.map((f) => (
                     <li key={f} className="flex items-start gap-3 text-sm font-light">
                       <Check className={`h-4 w-4 mt-0.5 shrink-0 ${p.highlight ? "text-background" : "text-brand"}`} /> {f}
                     </li>
                   ))}
                 </ul>
-                <a
-                  href="#contato"
-                  className={`mt-8 block text-center text-[11px] uppercase tracking-[0.2em] py-4 border transition ${
+                <button
+                  type="button"
+                  onClick={() => openChatAgent(p.contexto)}
+                  className={`mt-8 block w-full text-center text-[11px] uppercase tracking-[0.2em] py-4 border transition ${
                     p.highlight ? "border-background hover:bg-background hover:text-foreground" : "border-foreground hover:bg-foreground hover:text-background"
                   }`}
                 >
                   {p.cta}
-                </a>
+                </button>
               </div>
             ))}
+          </div>
+
+          <div className="mt-10 max-w-3xl mx-auto text-center space-y-2 text-sm text-muted-foreground font-light">
+            <p>Atendimento automatizado aos clientes: disponível 24 horas por dia.</p>
+            <p>Escopo, integrações, implantação e suporte são definidos após avaliação técnica.</p>
           </div>
         </div>
       </section>
