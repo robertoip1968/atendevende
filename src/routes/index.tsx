@@ -91,6 +91,7 @@ function Landing() {
   const [demo, setDemo] = useState(0);
   const integracoesRef = useRef<HTMLElement | null>(null);
   const [integrationsVisible, setIntegrationsVisible] = useState(false);
+  const [zoom, setZoom] = useState<{ src: string; alt: string } | null>(null);
 
   useEffect(() => {
     const el = integracoesRef.current;
@@ -525,97 +526,94 @@ function Landing() {
           </div>
 
           <div className="mt-12 grid lg:grid-cols-2 gap-6 lg:gap-8">
-            {/* Painel 1 — Integrações */}
-            <div className="bg-card border border-border p-6 md:p-8 lg:p-10">
-              <div className="flex items-center gap-3">
-                <div className="h-8 w-8 rounded-full border border-brand/30 flex items-center justify-center">
-                  <Server className="h-4 w-4 text-brand" strokeWidth={1.5} />
-                </div>
-                <h3 className="text-lg md:text-xl font-medium tracking-tight">Integrações</h3>
-              </div>
-              <p className="mt-4 text-sm text-muted-foreground font-light leading-relaxed">
-                O atendimento pode consultar e registrar informações nas ferramentas utilizadas pela empresa.
-              </p>
+            {[
+              {
+                titulo: "Integrações",
+                texto:
+                  "Consulte disponibilidade, registre ações e mantenha o processo conectado à operação.",
+                img: "/images/mock-agenda.png",
+                alt: "Tela demonstrativa de agenda com horários e agendamentos genéricos",
+                tags: ["Agenda", "Horários", "Agendamentos", "Operação"],
+              },
+              {
+                titulo: "Acompanhamento",
+                texto:
+                  "Acompanhe atendimentos, oportunidades, agendamentos e follow-ups em um único lugar.",
+                img: "/images/mock-painel.png",
+                alt: "Painel gerencial demonstrativo com indicadores de atendimento e vendas",
+                tags: ["Atendimentos", "Oportunidades", "Follow-ups", "Gestão"],
+              },
+            ].map((p) => (
+              <div key={p.titulo} className="bg-card border border-border rounded-xl p-6 md:p-8 shadow-sm">
+                <h3 className="text-lg md:text-xl font-medium tracking-tight">{p.titulo}</h3>
+                <p className="mt-3 text-sm text-muted-foreground font-light leading-relaxed">{p.texto}</p>
 
-              <div className="mt-8 relative">
-                {/* Linha de conexão decorativa */}
-                <div
-                  className="pointer-events-none absolute inset-0 flex items-center justify-center text-border"
-                  aria-hidden
+                <button
+                  type="button"
+                  onClick={() => setZoom({ src: p.img, alt: p.alt })}
+                  className="mt-6 block w-full overflow-hidden rounded-lg border border-border bg-background shadow-sm"
+                  aria-label={`Ampliar visual — ${p.titulo}`}
                 >
-                  <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-                    <line x1="50" y1="8" x2="50" y2="92" className="av-conn-line" stroke="currentColor" strokeWidth="0.6" strokeDasharray="3 3" />
-                    <line x1="8" y1="50" x2="92" y2="50" className="av-conn-line" stroke="currentColor" strokeWidth="0.6" strokeDasharray="3 3" />
-                  </svg>
-                </div>
+                  <img
+                    src={p.img}
+                    alt={p.alt}
+                    loading="lazy"
+                    width={1600}
+                    height={1008}
+                    className="w-full h-auto object-cover"
+                  />
+                </button>
 
-                {/* Hub central */}
-                <div
-                  className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 h-10 w-10 rounded-full border border-brand/30 bg-background flex items-center justify-center"
-                  aria-hidden
-                >
-                  <span className="text-[10px] font-semibold text-brand">A&V</span>
-                </div>
-
-                <div className="relative grid grid-cols-2 gap-4">
-                  {[
-                    { icon: Calendar, label: "Agenda" },
-                    { icon: Database, label: "ERP ou CRM" },
-                    { icon: CreditCard, label: "Pagamentos" },
-                    { icon: Server, label: "Banco de dados" },
-                  ].map((item) => (
-                    <div
-                      key={item.label}
-                      className="flex flex-col items-center text-center gap-3 rounded-lg border border-border bg-background p-4"
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {p.tags.map((t) => (
+                    <span
+                      key={t}
+                      className="text-[11px] tracking-wide px-2.5 py-1 rounded-full border border-border bg-muted/40 text-muted-foreground"
                     >
-                      <item.icon className="h-5 w-5 text-brand" strokeWidth={1.5} />
-                      <span className="text-xs md:text-sm font-medium tracking-tight">{item.label}</span>
-                    </div>
+                      {t}
+                    </span>
                   ))}
                 </div>
-              </div>
-            </div>
 
-            {/* Painel 2 — Acompanhamento */}
-            <div className="bg-card border border-border p-6 md:p-8 lg:p-10">
-              <div className="flex items-center gap-3">
-                <div className="h-8 w-8 rounded-full border border-brand/30 flex items-center justify-center">
-                  <Clock3 className="h-4 w-4 text-brand" strokeWidth={1.5} />
-                </div>
-                <h3 className="text-lg md:text-xl font-medium tracking-tight">Acompanhamento</h3>
+                <button
+                  type="button"
+                  onClick={() => setZoom({ src: p.img, alt: p.alt })}
+                  className="mt-5 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-brand hover:opacity-80 transition"
+                >
+                  Ampliar visual <ArrowRight className="h-3.5 w-3.5" />
+                </button>
               </div>
-              <p className="mt-4 text-sm text-muted-foreground font-light leading-relaxed">
-                Informações importantes da operação podem ser organizadas para análise.
-              </p>
-
-              <div className="mt-8 grid grid-cols-2 gap-4">
-                {[
-                  { icon: MessageSquare, label: "Atendimentos" },
-                  { icon: CalendarCheck, label: "Agendamentos e pedidos" },
-                  { icon: Repeat, label: "Follow-ups" },
-                  { icon: Users, label: "Transferências para a equipe" },
-                ].map((item) => (
-                  <div
-                    key={item.label}
-                    className="flex flex-col items-start gap-3 rounded-lg border border-border bg-background p-4"
-                  >
-                    <div className="flex items-center gap-2">
-                      <item.icon className="h-4 w-4 text-brand" strokeWidth={1.5} />
-                      <span className="h-1.5 w-12 rounded-full bg-brand/20 overflow-hidden">
-                        <span className="block h-full w-2/3 bg-brand/50" />
-                      </span>
-                    </div>
-                    <span className="text-xs md:text-sm font-medium tracking-tight leading-snug">{item.label}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
+            ))}
           </div>
 
           <p className="mt-8 text-center text-xs text-muted-foreground font-light">
-            As integrações e os indicadores disponíveis dependem da configuração do projeto e do acesso técnico aos sistemas utilizados.
+            Imagens meramente demonstrativas. As integrações e os indicadores disponíveis dependem da configuração do projeto e do acesso técnico aos sistemas utilizados.
           </p>
         </div>
+
+        {zoom && (
+          <div
+            className="fixed inset-0 z-[70] bg-black/80 flex items-center justify-center p-4"
+            onClick={() => setZoom(null)}
+            role="dialog"
+            aria-modal="true"
+          >
+            <div className="relative max-w-5xl w-full" onClick={(e) => e.stopPropagation()}>
+              <button
+                type="button"
+                onClick={() => setZoom(null)}
+                aria-label="Fechar"
+                className="absolute -top-11 right-0 h-9 w-9 rounded-full bg-white text-foreground flex items-center justify-center shadow"
+              >
+                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+              <img src={zoom.src} alt={zoom.alt} className="w-full h-auto max-h-[80vh] object-contain rounded-lg bg-white" />
+            </div>
+          </div>
+        )}
+
       </section>
 
       {/* Planos */}
