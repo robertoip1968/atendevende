@@ -430,7 +430,7 @@ function Landing() {
             {[
               {
                 icon: HeartPulse,
-                title: "Saúde e agendamentos",
+                title: "Área da Saúde",
                 desc: "Consulta informações, valores e horários, coleta dados e confirma o agendamento.",
                 apps: "Clínicas, consultórios, laboratórios e centros de diagnóstico.",
                 tags: ["Agendamento", "Confirmação", "Reagendamento"],
