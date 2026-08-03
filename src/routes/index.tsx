@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { Instagram, Check, ArrowRight, MessageSquare, Repeat, Users, Clock3, Timer, UserCheck, CalendarCheck, Send, Calendar, Database, CreditCard, Server } from "lucide-react";
-import atendimentoImg from "@/assets/atendimento.jpg";
+import { Instagram, Check, ArrowRight, MessageSquare, Repeat, Users, Clock3, Timer, UserCheck, CalendarCheck, Send, Calendar, Database, CreditCard, Server, HeartPulse, ShoppingBag, Briefcase } from "lucide-react";
 import atendimentoVendasVideo from "@/assets/demo-atendimento-vendas.mp4.asset.json";
+
 import { ChatWidget } from "@/components/ChatWidget";
 import { DiferencialSection } from "@/components/DiferencialSection";
 
@@ -70,8 +70,6 @@ const demos = [
 
 
 const logo = "/images/atende-vende-logo.png";
-const vendasImg = "/images/vendas-whatsapp.png";
-const automacaoImg = "/images/automacao-agente.png";
 const heroRobot = "/images/hero-robot.png";
 
 export const Route = createFileRoute("/")({
@@ -414,44 +412,78 @@ function Landing() {
       </section>
 
 
-      {/* Áreas de atuação */}
-      <section id="areas" className={`${sectionPad} bg-muted/30 border-y border-border`}>
+      {/* Soluções por segmento */}
+      <section id="segmentos" className={`${sectionPad} bg-muted/30 border-y border-border`}>
         <div className={container}>
           <div className="max-w-2xl">
-            <div className="uppercase tracking-[0.3em] text-[11px] text-muted-foreground">Áreas de atuação</div>
+            <div className="uppercase tracking-[0.3em] text-[11px] text-muted-foreground">Soluções por segmento</div>
             <div className="mt-5 h-px w-12 bg-border" />
             <h2 className="mt-6 text-3xl md:text-4xl font-light tracking-tight">
-              Soluções para cada etapa do seu negócio.
+              Adaptado ao processo da sua empresa
             </h2>
+            <p className="mt-5 text-muted-foreground font-light leading-relaxed">
+              Agendamento, vendas e atendimento configurados conforme as regras de cada operação.
+            </p>
           </div>
 
-          <div className="mt-14 grid md:grid-cols-3 gap-6">
+          <div className="mt-12 grid md:grid-cols-3 gap-6 items-stretch">
             {[
-              { tag: "Atendimento", title: "Atendimento, agendamento e suporte", desc: "Atende, responde, agenda, faz triagem, tira dúvidas e encaminha para a equipe.", image: atendimentoImg },
-              { tag: "Vendas", title: "Vendas e pedidos", desc: "Gera orçamentos, efetua vendas, gera pedidos, pedidos, pagamentos e executa follow-up.", image: vendasImg },
-              { tag: "Automação", title: "Automação", desc: "Automatiza processos internos e faz integração com os sistemas da empresa.", image: automacaoImg },
-            ].map((a) => (
+              {
+                icon: HeartPulse,
+                title: "Saúde e agendamentos",
+                desc: "Consulta informações, valores e horários, coleta dados e confirma o agendamento.",
+                apps: "Clínicas, consultórios, laboratórios e centros de diagnóstico.",
+                tags: ["Agendamento", "Confirmação", "Reagendamento"],
+                featured: true,
+                contexto: { origem: "segmentos", segmento: "saúde", interesse: "agendamento" },
+              },
+              {
+                icon: ShoppingBag,
+                title: "Comércio e vendas",
+                desc: "Consulta produtos, gera orçamentos, registra pedidos e acompanha oportunidades.",
+                apps: "Lojas, distribuidoras, autopeças, atacadistas e agronegócio.",
+                tags: ["Catálogo", "Orçamento", "Pedido"],
+                featured: false,
+                contexto: { origem: "segmentos", segmento: "comércio", interesse: "vendas" },
+              },
+              {
+                icon: Briefcase,
+                title: "Empresas de serviços",
+                desc: "Qualifica o interessado, coleta informações e agenda reuniões, visitas ou atendimentos.",
+                apps: "Imobiliárias, escolas, consultorias, escritórios e assistência técnica.",
+                tags: ["Qualificação", "Agendamento", "Direcionamento"],
+                featured: false,
+                contexto: { origem: "segmentos", segmento: "serviços", interesse: "atendimento" },
+              },
+            ].map((s) => (
               <article
-                key={a.title}
-                className="group bg-card border-t-4 border-brand overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col"
+                key={s.title}
+                className={`bg-card border border-border ${s.featured ? "border-t-4 border-t-brand" : "border-t-4 border-t-border"} p-7 flex flex-col shadow-sm`}
               >
-                <div className="aspect-[16/10] overflow-hidden bg-muted">
-                  <img
-                    src={a.image}
-                    alt={a.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
+                <s.icon className="h-6 w-6 text-brand" />
+                <h3 className="mt-5 text-xl font-medium tracking-tight leading-tight text-foreground">{s.title}</h3>
+                <p className="mt-3 text-sm text-muted-foreground font-light leading-relaxed">{s.desc}</p>
+                <p className="mt-3 text-xs text-muted-foreground/80 font-light leading-relaxed">{s.apps}</p>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {s.tags.map((t) => (
+                    <span key={t} className="text-[11px] px-2.5 py-1 rounded-full border border-border bg-muted/60 text-foreground/80">
+                      {t}
+                    </span>
+                  ))}
                 </div>
-                <div className="p-8 flex flex-col flex-1">
-                  <div className="uppercase tracking-[0.25em] text-[11px] text-brand font-semibold">{a.tag}</div>
-                  <h3 className="mt-4 text-xl md:text-2xl font-medium tracking-tight leading-tight text-foreground">{a.title}</h3>
-                  <p className="mt-3 text-muted-foreground font-light leading-relaxed text-sm">{a.desc}</p>
-                </div>
+                <button
+                  type="button"
+                  onClick={() => openChatAgent(s.contexto)}
+                  className="mt-auto pt-7 inline-flex items-center gap-2 text-[12px] uppercase tracking-[0.2em] font-semibold text-brand hover:gap-3 transition-all self-start"
+                >
+                  Ver aplicação <ArrowRight className="h-4 w-4" />
+                </button>
               </article>
             ))}
           </div>
         </div>
       </section>
+
 
       {/* Integrações */}
       <section
