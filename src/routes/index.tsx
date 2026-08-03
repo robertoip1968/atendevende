@@ -293,13 +293,10 @@ function Landing() {
 
 
 
-      {/* Diferencial */}
-      <DiferencialSection container={container} sectionPad={sectionPad} />
-
-
-
-
       {/* Demonstrações */}
+
+
+
       <section id="demonstracoes" className={sectionPad}>
         <div className={container}>
           <div className="max-w-2xl">
@@ -410,6 +407,15 @@ function Landing() {
           )}
         </div>
       </section>
+
+
+
+
+
+      {/* Diferencial */}
+      <DiferencialSection container={container} sectionPad={sectionPad} />
+
+
 
 
       {/* Soluções por segmento */}
