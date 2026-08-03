@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { Instagram, Check, ArrowRight, MessageSquare, Repeat, Users, Clock3, Timer, UserCheck, CalendarCheck, Send, Calendar, Database, CreditCard, Server, HeartPulse, ShoppingBag, Briefcase } from "lucide-react";
-import atendimentoVendasVideo from "@/assets/demo-atendimento-vendas.mp4.asset.json";
-import capturaDashboard from "@/assets/captura-dashboard.png.asset.json";
+const atendimentoVendasVideo = { url: "/videos/demo-atendimento-vendas.mp4" };
+const capturaDashboard = { url: "/images/captura-dashboard.png" };
 
 import { ChatWidget } from "@/components/ChatWidget";
 import { DiferencialSection } from "@/components/DiferencialSection";
