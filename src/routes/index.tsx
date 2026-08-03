@@ -630,7 +630,7 @@ function Landing() {
             </p>
           </div>
 
-          <div className="mt-14 grid md:grid-cols-3 gap-6 items-stretch md:pr-16 lg:pr-24">
+          <div className="mt-14 grid md:grid-cols-3 gap-6 items-stretch lg:pr-16 xl:pr-24">
             {[
               {
                 name: "Plano Essencial",
