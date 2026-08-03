@@ -70,8 +70,6 @@ const demos = [
 
 
 const logo = "/images/atende-vende-logo.png";
-const vendasImg = "/images/vendas-whatsapp.png";
-const automacaoImg = "/images/automacao-agente.png";
 const heroRobot = "/images/hero-robot.png";
 
 export const Route = createFileRoute("/")({
