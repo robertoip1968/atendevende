@@ -470,9 +470,9 @@ function Landing() {
                   loading="lazy"
                   width={1024}
                   height={768}
-                  className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-[0.14] group-hover:opacity-25 transition-opacity duration-500"
+                  className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-60 group-hover:opacity-75 transition-opacity duration-500"
                 />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-card/85 via-card/90 to-card" aria-hidden />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-card/70 via-card/85 to-card/95" aria-hidden />
                 <div className="relative flex flex-col h-full">
                   <s.icon className="h-6 w-6 text-brand" />
                   <h3 className="mt-5 text-xl font-medium tracking-tight leading-tight text-foreground">{s.title}</h3>
