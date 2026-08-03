@@ -435,6 +435,7 @@ function Landing() {
                 apps: "Clínicas, consultórios, laboratórios e centros de diagnóstico.",
                 tags: ["Agendamento", "Confirmação", "Reagendamento"],
                 featured: true,
+                bg: "/images/seg-saude.jpg",
                 contexto: { origem: "segmentos", segmento: "saúde", interesse: "agendamento" },
               },
               {
@@ -444,6 +445,7 @@ function Landing() {
                 apps: "Lojas, distribuidoras, autopeças, atacadistas e agronegócio.",
                 tags: ["Catálogo", "Orçamento", "Pedido"],
                 featured: false,
+                bg: "/images/seg-comercio.jpg",
                 contexto: { origem: "segmentos", segmento: "comércio", interesse: "vendas" },
               },
               {
@@ -453,31 +455,44 @@ function Landing() {
                 apps: "Imobiliárias, escolas, consultorias, escritórios e assistência técnica.",
                 tags: ["Qualificação", "Agendamento", "Direcionamento"],
                 featured: false,
+                bg: "/images/seg-servicos.jpg",
                 contexto: { origem: "segmentos", segmento: "serviços", interesse: "atendimento" },
               },
             ].map((s) => (
               <article
                 key={s.title}
-                className={`bg-card border border-border ${s.featured ? "border-t-4 border-t-brand" : "border-t-4 border-t-border"} p-7 flex flex-col shadow-sm`}
+                className={`relative overflow-hidden bg-card border border-border ${s.featured ? "border-t-4 border-t-brand" : "border-t-4 border-t-border"} p-7 flex flex-col shadow-sm group`}
               >
-                <s.icon className="h-6 w-6 text-brand" />
-                <h3 className="mt-5 text-xl font-medium tracking-tight leading-tight text-foreground">{s.title}</h3>
-                <p className="mt-3 text-sm text-muted-foreground font-light leading-relaxed">{s.desc}</p>
-                <p className="mt-3 text-xs text-muted-foreground/80 font-light leading-relaxed">{s.apps}</p>
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {s.tags.map((t) => (
-                    <span key={t} className="text-[11px] px-2.5 py-1 rounded-full border border-border bg-muted/60 text-foreground/80">
-                      {t}
-                    </span>
-                  ))}
+                <img
+                  src={s.bg}
+                  alt=""
+                  aria-hidden
+                  loading="lazy"
+                  width={1024}
+                  height={768}
+                  className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-[0.14] group-hover:opacity-25 transition-opacity duration-500"
+                />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-card/85 via-card/90 to-card" aria-hidden />
+                <div className="relative flex flex-col h-full">
+                  <s.icon className="h-6 w-6 text-brand" />
+                  <h3 className="mt-5 text-xl font-medium tracking-tight leading-tight text-foreground">{s.title}</h3>
+                  <p className="mt-3 text-sm text-muted-foreground font-light leading-relaxed">{s.desc}</p>
+                  <p className="mt-3 text-xs text-muted-foreground/80 font-light leading-relaxed">{s.apps}</p>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {s.tags.map((t) => (
+                      <span key={t} className="text-[11px] px-2.5 py-1 rounded-full border border-border bg-muted/60 text-foreground/80">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => openChatAgent(s.contexto)}
+                    className="mt-auto pt-7 inline-flex items-center gap-2 text-[12px] uppercase tracking-[0.2em] font-semibold text-brand hover:gap-3 transition-all self-start"
+                  >
+                    Ver aplicação <ArrowRight className="h-4 w-4" />
+                  </button>
                 </div>
-                <button
-                  type="button"
-                  onClick={() => openChatAgent(s.contexto)}
-                  className="mt-auto pt-7 inline-flex items-center gap-2 text-[12px] uppercase tracking-[0.2em] font-semibold text-brand hover:gap-3 transition-all self-start"
-                >
-                  Ver aplicação <ArrowRight className="h-4 w-4" />
-                </button>
               </article>
             ))}
           </div>
