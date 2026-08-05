@@ -1,7 +1,7 @@
 # Deploy do site Atende&Vende em VPS (Hostgator)
 
 Aplicação: TanStack Start (React 19 + Vite) com SSR em Node.
-O site é servido por um processo Node próprio; o Nginx fica na frente fazendo proxy e HTTPS.
+O site é servido por um processo Node próprio; o Apache fica na frente fazendo proxy e HTTPS.
 
 ## 1. Requisitos no servidor
 
@@ -11,7 +11,7 @@ npm -v
 sudo npm i -g pm2
 ```
 
-Nginx instalado e, para HTTPS, `certbot`.
+Apache instalado e, para HTTPS, `certbot` com plugin Apache.
 
 ## 2. Enviar o projeto
 
@@ -55,16 +55,24 @@ Saída do build:
 - `dist/server/index.mjs` — servidor Node (SSR + rota `/api/chat`)
 - `dist/client/` — assets estáticos, imagens e vídeos (servidos pelo próprio Node)
 
-## 5. Nginx + HTTPS
+## 5. Apache + HTTPS
+
+Habilite os módulos necessários:
 
 ```bash
-sudo cp deploy/nginx-atende-vende.conf /etc/nginx/sites-available/atende-vende
-sudo ln -s /etc/nginx/sites-available/atende-vende /etc/nginx/sites-enabled/
-sudo nginx -t && sudo systemctl reload nginx
-sudo certbot --nginx -d atendeevende.com.br -d www.atendeevende.com.br
+sudo a2enmod proxy proxy_http headers ssl rewrite
 ```
 
-Ajuste `server_name` no arquivo para o domínio real.
+Copie a configuração do virtual host:
+
+```bash
+sudo cp deploy/apache-atende-vende.conf /etc/apache2/sites-available/atendeevende.conf
+sudo a2ensite atendeevende
+sudo apache2ctl configtest && sudo systemctl reload apache2
+sudo certbot --apache -d atendeevende.com.br -d www.atendeevende.com.br
+```
+
+Ajuste `ServerName` no arquivo para o domínio real.
 
 ## 6. Atualizações futuras
 
@@ -89,4 +97,4 @@ prints da agenda e do painel, e o chat abrindo pelo botão flutuante.
 - Todas as imagens e vídeos estão em `public/images` e `public/videos`, sem dependência
   de CDN externa — por isso funcionam no servidor próprio.
 - Se a Hostgator bloquear a porta 3000 externamente, tudo bem: o acesso é feito só pelo
-  Nginx (127.0.0.1), que responde nas portas 80/443.
+  Apache (127.0.0.1), que responde nas portas 80/443.
