@@ -6,6 +6,32 @@ type ChatBody = {
   context?: Record<string, unknown>;
 };
 
+const REPLY_KEYS = ["reply", "message", "output", "text", "answer", "response", "content"];
+
+/** Extrai o texto da resposta do n8n aceitando string, objeto, array ou aninhamentos comuns. */
+function extractReply(data: unknown, depth = 0): string {
+  if (depth > 4 || data == null) return "";
+  if (typeof data === "string") return data.trim();
+  if (Array.isArray(data)) {
+    for (const item of data) {
+      const found = extractReply(item, depth + 1);
+      if (found) return found;
+    }
+    return "";
+  }
+  if (typeof data === "object") {
+    const obj = data as Record<string, unknown>;
+    for (const key of REPLY_KEYS) {
+      const value = obj[key];
+      if (typeof value === "string" && value.trim()) return value.trim();
+    }
+    for (const key of ["json", "data", "body", "result"]) {
+      const found = extractReply(obj[key], depth + 1);
+      if (found) return found;
+    }
+  }
+  return "";
+}
 
 export const Route = createFileRoute("/api/chat")({
   server: {
@@ -36,8 +62,21 @@ export const Route = createFileRoute("/api/chat")({
         }
 
         const token = process.env.N8N_WEBHOOK_TOKEN;
+        // Nome do header esperado pelo nó Webhook do n8n (Header Auth usa um header custom).
+        const authHeader = process.env.N8N_WEBHOOK_AUTH_HEADER || "Authorization";
+        // Prefixo do valor. Use "none" (ou vazio) para enviar o token puro, sem "Bearer ".
+        const rawScheme = process.env.N8N_WEBHOOK_AUTH_SCHEME;
+        const scheme =
+          rawScheme === undefined
+            ? authHeader.toLowerCase() === "authorization"
+              ? "Bearer"
+              : ""
+            : rawScheme.toLowerCase() === "none"
+              ? ""
+              : rawScheme;
         const headers: Record<string, string> = { "Content-Type": "application/json" };
-        if (token) headers["Authorization"] = `Bearer ${token}`;
+        if (token) headers[authHeader] = scheme ? `${scheme} ${token}` : token;
+
 
         try {
           const controller = new AbortController();
@@ -56,32 +95,38 @@ export const Route = createFileRoute("/api/chat")({
           clearTimeout(timeout);
 
           if (!res.ok) {
-            console.error("n8n webhook error", res.status, await res.text().catch(() => ""));
+            const detail = await res.text().catch(() => "");
+            console.error("n8n webhook error", res.status, detail);
             return Response.json(
-              { reply: "Tive um problema para responder agora. Pode tentar novamente?" },
+              {
+                reply: "Tive um problema para responder agora. Pode tentar novamente?",
+                ...(process.env.NODE_ENV !== "production"
+                  ? { debug: { status: res.status, detail: detail.slice(0, 500) } }
+                  : {}),
+              },
               { status: 200 },
             );
           }
+
 
           const contentType = res.headers.get("content-type") ?? "";
           let reply = "";
           if (contentType.includes("application/json")) {
             const data = (await res.json()) as unknown;
-            if (typeof data === "string") reply = data;
-            else if (data && typeof data === "object") {
-              const d = data as Record<string, unknown>;
-              reply =
-                (typeof d.reply === "string" && d.reply) ||
-                (typeof d.message === "string" && d.message) ||
-                (typeof d.output === "string" && d.output) ||
-                (typeof d.text === "string" && d.text) ||
-                "";
-            }
+            reply = extractReply(data);
           } else {
-            reply = await res.text();
+            reply = (await res.text()).trim();
           }
 
-          return Response.json({ reply: reply || "Ok!" });
+          if (!reply) {
+            console.warn("n8n webhook returned no recognizable reply field");
+            return Response.json({
+              reply: "Recebi sua mensagem, mas não consegui gerar uma resposta agora.",
+            });
+          }
+
+          return Response.json({ reply });
+
         } catch (err) {
           console.error("n8n webhook fetch failed", err);
           return Response.json(
