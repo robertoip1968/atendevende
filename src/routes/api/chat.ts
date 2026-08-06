@@ -119,11 +119,15 @@ export const Route = createFileRoute("/api/chat")({
 
 
           if (!reply) {
-            console.warn("n8n webhook returned no recognizable reply field");
+            console.warn("n8n webhook returned no recognizable reply field:", rawBody.slice(0, 500));
             return Response.json({
               reply: "Recebi sua mensagem, mas não consegui gerar uma resposta agora.",
+              ...(process.env.NODE_ENV !== "production"
+                ? { debug: { rawBody: rawBody.slice(0, 500) } }
+                : {}),
             });
           }
+
 
           return Response.json({ reply });
 
