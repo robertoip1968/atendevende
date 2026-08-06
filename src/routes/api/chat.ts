@@ -62,8 +62,21 @@ export const Route = createFileRoute("/api/chat")({
         }
 
         const token = process.env.N8N_WEBHOOK_TOKEN;
+        // Nome do header esperado pelo nó Webhook do n8n (Header Auth usa um header custom).
+        const authHeader = process.env.N8N_WEBHOOK_AUTH_HEADER || "Authorization";
+        // Prefixo do valor. Use "none" (ou vazio) para enviar o token puro, sem "Bearer ".
+        const rawScheme = process.env.N8N_WEBHOOK_AUTH_SCHEME;
+        const scheme =
+          rawScheme === undefined
+            ? authHeader.toLowerCase() === "authorization"
+              ? "Bearer"
+              : ""
+            : rawScheme.toLowerCase() === "none"
+              ? ""
+              : rawScheme;
         const headers: Record<string, string> = { "Content-Type": "application/json" };
-        if (token) headers["Authorization"] = `Bearer ${token}`;
+        if (token) headers[authHeader] = scheme ? `${scheme} ${token}` : token;
+
 
         try {
           const controller = new AbortController();
