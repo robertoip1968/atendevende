@@ -6,6 +6,32 @@ type ChatBody = {
   context?: Record<string, unknown>;
 };
 
+const REPLY_KEYS = ["reply", "message", "output", "text", "answer", "response", "content"];
+
+/** Extrai o texto da resposta do n8n aceitando string, objeto, array ou aninhamentos comuns. */
+function extractReply(data: unknown, depth = 0): string {
+  if (depth > 4 || data == null) return "";
+  if (typeof data === "string") return data.trim();
+  if (Array.isArray(data)) {
+    for (const item of data) {
+      const found = extractReply(item, depth + 1);
+      if (found) return found;
+    }
+    return "";
+  }
+  if (typeof data === "object") {
+    const obj = data as Record<string, unknown>;
+    for (const key of REPLY_KEYS) {
+      const value = obj[key];
+      if (typeof value === "string" && value.trim()) return value.trim();
+    }
+    for (const key of ["json", "data", "body", "result"]) {
+      const found = extractReply(obj[key], depth + 1);
+      if (found) return found;
+    }
+  }
+  return "";
+}
 
 export const Route = createFileRoute("/api/chat")({
   server: {
