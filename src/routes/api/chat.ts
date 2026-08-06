@@ -67,21 +67,20 @@ export const Route = createFileRoute("/api/chat")({
           let reply = "";
           if (contentType.includes("application/json")) {
             const data = (await res.json()) as unknown;
-            if (typeof data === "string") reply = data;
-            else if (data && typeof data === "object") {
-              const d = data as Record<string, unknown>;
-              reply =
-                (typeof d.reply === "string" && d.reply) ||
-                (typeof d.message === "string" && d.message) ||
-                (typeof d.output === "string" && d.output) ||
-                (typeof d.text === "string" && d.text) ||
-                "";
-            }
+            reply = extractReply(data);
           } else {
-            reply = await res.text();
+            reply = (await res.text()).trim();
           }
 
-          return Response.json({ reply: reply || "Ok!" });
+          if (!reply) {
+            console.warn("n8n webhook returned no recognizable reply field");
+            return Response.json({
+              reply: "Recebi sua mensagem, mas não consegui gerar uma resposta agora.",
+            });
+          }
+
+          return Response.json({ reply });
+
         } catch (err) {
           console.error("n8n webhook fetch failed", err);
           return Response.json(
