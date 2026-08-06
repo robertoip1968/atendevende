@@ -82,12 +82,19 @@ export const Route = createFileRoute("/api/chat")({
           clearTimeout(timeout);
 
           if (!res.ok) {
-            console.error("n8n webhook error", res.status, await res.text().catch(() => ""));
+            const detail = await res.text().catch(() => "");
+            console.error("n8n webhook error", res.status, detail);
             return Response.json(
-              { reply: "Tive um problema para responder agora. Pode tentar novamente?" },
+              {
+                reply: "Tive um problema para responder agora. Pode tentar novamente?",
+                ...(process.env.NODE_ENV !== "production"
+                  ? { debug: { status: res.status, detail: detail.slice(0, 500) } }
+                  : {}),
+              },
               { status: 200 },
             );
           }
+
 
           const contentType = res.headers.get("content-type") ?? "";
           let reply = "";
